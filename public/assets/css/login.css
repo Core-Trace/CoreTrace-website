@@ -1,3 +1,94 @@
-.titulo{
-    color: blue;
+body {
+  background: #1a1a1a;
+  color: #fff;
+  font-family: Arial, sans-serif;
+}
+
+.header {
+ position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+
+.nav {
+  position: absolute;
+  top: 20px;
+  right: 32px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+
+}
+
+.nav-link {
+  color: #fff;
+  text-decoration: none;
+}
+
+.login {
+  display: flex;
+  justify-content: center;
+  margin-top: 80px;
+}
+
+.login-card {
+  background: #242424;
+  border: 1px solid #3a3a3a;
+  border-radius: 10px;
+  padding: 30px;
+  width: 350px;
+  text-align: center;
+}
+
+.dot {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.dot.active {
+  background: #b83c2e;
+}
+
+.dot.inactive {
+  background: #ccc;
+}
+
+.step-line {
+  width: 60px;
+  height: 2px;
+  background: #ccc;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 5px;
+}
+
+.esqueceu {
+  font-size: 13px;
+  margin-top: 15px;
+}
+
+.link {
+  color: #c9483a;
+}
+
+.btn-next {
+  width: 100%;
+  padding: 10px;
+  margin-top: 20px;
+  background: none;
+  border: 1px solid #b83c2e;
+  color: #fff;
+  border-radius: 20px;
+  cursor: pointer;
 }
