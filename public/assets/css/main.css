@@ -7,6 +7,8 @@
 }
 
 body {
+    display: flex;
+    flex-direction: column;
     font-family: 'Segoe UI', 'Poppins', Arial, sans-serif;
     background-color: #17181c;
     color: #f5ede4;
@@ -19,6 +21,7 @@ img {
 
 html {
     scroll-behavior: smooth;
+    height: 100%;
 }
 
 /*----- header -----*/
@@ -91,4 +94,65 @@ html {
 .nav-link:hover,
 .nav-link.active {
     opacity: 1;
+}
+
+
+/* Footer */
+
+footer {
+    margin-top: 1vh;
+    padding: 0vh;
+    background-color: #f5ede4;
+    color: #17181c;
+}
+
+.div-logo-footer {
+    display: flex;
+    justify-content: flex-end;
+    height: 2rem;
+    margin: 2vh;
+    padding-right: 15vh;
+    
+}
+
+.logo-text-white {
+    max-height: 20vh;
+}
+
+.topics-footer {
+    display: flex;
+   
+    align-items: center;
+    flex-direction: column;
+    gap: 2vh;
+    font-size: 0.8rem;
+    
+}
+
+
+.div-textos-footer {
+    
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    flex-direction: row;
+    gap: 25vh;
+    
+}
+
+
+.bold-text-footer {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 2vh;
+    margin-top: 2vh;
+}
+
+.div-coretrace-baixa {
+    display: flex;
+    font-size: 0.9rem;
+    font-weight: 1000;
+    padding-left: 18vh;
+    margin: 1vh;
+    margin-top: 5vh;
 }
