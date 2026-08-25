@@ -235,9 +235,6 @@ html {
     width: auto;
 }
 
-
-
-
 /* DASHBOARD-SOBRE */
 .sobre-dashboard-container{
     display: flex;
@@ -275,59 +272,56 @@ html {
 /* Footer */
 
 footer {
-    margin-top: 1vh;
-    padding: 0vh;
+    margin-top: 10vh;
+    padding: 6vh 5vw 4vh 5vw;
     background-color: #f5ede4;
     color: #17181c;
+    width: 100%; 
 }
 
 .div-logo-footer {
     display: flex;
     justify-content: flex-end;
-    height: 2rem;
-    margin: 2vh;
-    padding-right: 15vh;
-    
+    max-width: 1200px;
+    margin: 0 auto 4vh auto;
 }
 
 .logo-text-white {
-    max-height: 20vh;
+    height: 45px;
+    width: auto;
+}
+
+.div-textos-footer {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .topics-footer {
     display: flex;
-   
-    align-items: center;
     flex-direction: column;
-    gap: 2vh;
-    font-size: 0.8rem;
-    
+    align-items: flex-start;
+    gap: 1.5vh;
+    font-size: 0.95rem;
 }
-
-
-.div-textos-footer {
-    
-    display: flex;
-    justify-content: center;
-    justify-items: center;
-    flex-direction: row;
-    gap: 25vh;
-    
-}
-
 
 .bold-text-footer {
-    font-size: 1.8rem;
-    font-weight: 600;
-    margin-bottom: 2vh;
-    margin-top: 2vh;
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 1vh;
+    margin-top: 1vh;
 }
 
 .div-coretrace-baixa {
     display: flex;
-    font-size: 0.9rem;
-    font-weight: 1000;
-    padding-left: 18vh;
-    margin: 1vh;
-    margin-top: 5vh;
+    justify-content: flex-start; 
+    max-width: 1200px; 
+    margin: 6vh auto 0 auto; 
+    font-size: 0.95rem;
+    font-weight: 700;
+    padding-top: 3vh;
+    border-top: 1px solid rgba(23, 24, 28, 0.1); 
 }
