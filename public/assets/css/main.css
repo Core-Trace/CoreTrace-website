@@ -140,19 +140,27 @@ html {
     font-weight: 700;
 }
 
+.btn-container {
+    width: 100%; 
+    display: flex;
+    justify-content: center;
+}
+
 /* texto e botão */
 .textos-resolver-container {
     flex: 1;
     display: flex;
     flex-direction: column;
     align-items: flex-end; 
-    text-align: right; 
 }
 
 .titulo-resolver {
-    font-size: 2.8rem;
+    font-size: 2.3rem;
     font-weight: 700;
-    margin-bottom: 2vh;
+    margin-bottom: 7vh;
+    text-align: right; 
+    width: 100%; 
+    white-space: nowrap;
 }
 
 .descricao-resolver {
@@ -160,6 +168,8 @@ html {
     line-height: 1.6;
     margin-bottom: 4vh;
     opacity: 0.9;
+    text-align: justify; 
+    width: 100%; 
 }
 
 .button-doc {
