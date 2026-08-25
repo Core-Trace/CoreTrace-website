@@ -179,6 +179,65 @@ html {
     opacity: 0.9;
 }
 
+/* nossos serviços */
+.nossos-servicos-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    margin: 8vh 10vw;
+    gap: 4vh;
+}
+
+.titulo-servicos {
+    color: #d94d3a;
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-align: center;
+}
+
+.servicos-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    width: 100%;
+    max-width: 1100px;
+}
+
+.card-servico {
+    background-color: #23252a;
+    padding: 35px 20px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    gap: 25px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card-servico:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.servico-titulo {
+    font-size: 1.1rem;
+    font-weight: 700;
+    line-height: 1.4;
+    min-height: 3rem; 
+    display: flex;
+    align-items: center;
+}
+
+.servico-icone {
+    max-height: 65px;
+    width: auto;
+}
+
+
+
+
 /* DASHBOARD-SOBRE */
 .sobre-dashboard-container{
     display: flex;
