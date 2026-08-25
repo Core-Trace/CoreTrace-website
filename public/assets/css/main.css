@@ -96,6 +96,41 @@ html {
     opacity: 1;
 }
 
+/* ----body----- */
+
+/* DASHBOARD-SOBRE */
+.sobre-dashboard-container{
+    display: flex;
+    margin: 4vh;
+    padding-left: 0vh; 
+    padding-right:4vh;
+    justify-content: center;
+}
+
+.titulo {
+    font-size: 3.5rem;
+    font-weight: 600;
+    margin-bottom: 2vh;
+}
+
+.sobre-dashboard-texto {
+   
+    font-size: 1.5em;
+
+}
+
+.button-dash{
+
+    height: 5rem;
+    width: auto;
+    padding: 1vh;
+    margin-top: 3vh;
+    border-radius: 15px;
+    background-color: #f5ede4;
+    font-weight: 600;
+    font-size: 1.5rem;
+
+}
 
 /* Footer */
 
