@@ -55,6 +55,7 @@ main{
     justify-content: flex-end;
     align-items: flex-start;
     align-self: stretch;
+    background-color: #161A1D;
 }
 .asideScrollable{
     display: flex;
@@ -64,7 +65,8 @@ main{
     gap: 10px;
     flex: 1 0 0;
     align-self: stretch;
-
+    scrollbar-width: none;
+    overflow: scroll;
 }
 
 .burgerButton{
@@ -72,6 +74,8 @@ main{
     height: 60px;
     flex-shrink: 0;
     aspect-ratio: 1/1;
+    background-color: #161A1D;
+    border: 10px solid#161A1D;
 }
 .burgerButton:hover{
     cursor:pointer
