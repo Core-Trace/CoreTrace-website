@@ -48,7 +48,7 @@ html {
 
 .navbar-logo {
     height: 40px;
-    width: auto;
+    width: 100%;
 }
 
 .menu-btn {
@@ -73,7 +73,7 @@ html {
 .navbar-right {
     display: flex;
     align-items: center;
-    gap: 36px;
+    gap: 65px;
 }
 
 .theme-toggle {
@@ -81,6 +81,10 @@ html {
     border: none;
     cursor: pointer;
     font-size: 18px;
+}
+
+.theme-toggle img {
+    width: 80%;
 }
 
 .nav-link {
@@ -96,7 +100,66 @@ html {
     opacity: 1;
 }
 
-/* ----body----- */
+/* ----banner----- */
+
+.banner {
+    position: relative;
+    min-height: 750px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+.banner-image {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+}
+
+.banner-image img {
+    margin-left: 30%;
+    width: 75%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.banner-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(to right,
+            #17181c 0%,
+            #17181c 35%,
+            #17181cbf 45%,
+            #17181c40 65%,
+            #17181c0d 100%);
+}
+
+.banner-content {
+    position: relative;
+    z-index: 2;
+    padding: 0 48px;
+    max-width: 720px;
+}
+
+.banner-logo {
+    width: 100%;
+    margin-left: 10%;
+    margin-bottom: 24px;
+}
+
+.banner-text {
+    font-size: 30px;
+    font-weight: 700;
+    color: #f5ede4;
+    margin-left: 34%;
+}
+
+.banner-text span {
+    color: #c0432c;
+}
+
 
 /* o que pretendemos resolver */
 
@@ -104,21 +167,21 @@ html {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 8vh 10vw; 
-    gap: 4vw; 
+    margin: 8vh 10vw;
+    gap: 4vw;
 }
 
 /* cards */
 .cards-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); 
+    grid-template-columns: repeat(2, 1fr);
     gap: 20px;
-    flex: 1; 
+    flex: 1;
     max-width: 50%;
 }
 
 .card-estatistica {
-    background-color: #23252a; 
+    background-color: #23252a;
     padding: 40px 20px;
     border-radius: 12px;
     text-align: center;
@@ -126,7 +189,7 @@ html {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 25px; 
+    gap: 25px;
 }
 
 .card-titulo {
@@ -141,7 +204,7 @@ html {
 }
 
 .btn-container {
-    width: 100%; 
+    width: 100%;
     display: flex;
     justify-content: center;
 }
@@ -151,15 +214,15 @@ html {
     flex: 1;
     display: flex;
     flex-direction: column;
-    align-items: flex-end; 
+    align-items: flex-end;
 }
 
 .titulo-resolver {
     font-size: 2.3rem;
     font-weight: 700;
     margin-bottom: 7vh;
-    text-align: right; 
-    width: 100%; 
+    text-align: right;
+    width: 100%;
     white-space: nowrap;
 }
 
@@ -168,8 +231,8 @@ html {
     line-height: 1.6;
     margin-bottom: 4vh;
     opacity: 0.9;
-    text-align: justify; 
-    width: 100%; 
+    text-align: justify;
+    width: 100%;
 }
 
 .button-doc {
@@ -185,7 +248,7 @@ html {
 }
 
 .button-doc:hover {
-    transform: scale(1.05); 
+    transform: scale(1.05);
     opacity: 0.9;
 }
 
@@ -193,7 +256,7 @@ html {
 .nossos-servicos-container {
     display: flex;
     flex-direction: column;
-    align-items: center; 
+    align-items: center;
     margin: 8vh 10vw;
     gap: 4vh;
 }
@@ -235,7 +298,7 @@ html {
     font-size: 1.1rem;
     font-weight: 700;
     line-height: 1.4;
-    min-height: 3rem; 
+    min-height: 3rem;
     display: flex;
     align-items: center;
 }
@@ -246,11 +309,11 @@ html {
 }
 
 /* DASHBOARD-SOBRE */
-.sobre-dashboard-container{
+.sobre-dashboard-container {
     display: flex;
     margin: 4vh;
-    padding-left: 0vh; 
-    padding-right:4vh;
+    padding-left: 0vh;
+    padding-right: 4vh;
     justify-content: center;
 }
 
@@ -261,12 +324,12 @@ html {
 }
 
 .sobre-dashboard-texto {
-   
+
     font-size: 1.5em;
 
 }
 
-.button-dash{
+.button-dash {
 
     height: 5rem;
     width: auto;
@@ -286,7 +349,7 @@ footer {
     padding: 6vh 5vw 4vh 5vw;
     background-color: #f5ede4;
     color: #17181c;
-    width: 100%; 
+    width: 100%;
 }
 
 .div-logo-footer {
@@ -327,11 +390,11 @@ footer {
 
 .div-coretrace-baixa {
     display: flex;
-    justify-content: flex-start; 
-    max-width: 1200px; 
-    margin: 6vh auto 0 auto; 
+    justify-content: flex-start;
+    max-width: 1200px;
+    margin: 6vh auto 0 auto;
     font-size: 0.95rem;
     font-weight: 700;
     padding-top: 3vh;
-    border-top: 1px solid rgba(23, 24, 28, 0.1); 
+    border-top: 1px solid rgba(23, 24, 28, 0.1);
 }
