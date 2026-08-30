@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-     <link rel="stylesheet" href="../assets/css/login.css">
+     <link rel="stylesheet" href="../css/login.css">
 </head>
 <body>
     <header class="header">
@@ -18,12 +18,12 @@
         </div>
         <nav class="nav">
             <svg class="theme-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            
+
             </svg>
-            <a href="#" class="nav-link">Home</a>
+            <a href="./main.html" class="nav-link">Home</a>
             <a href="#" class="nav-link">Equipe</a>
             <a href="#" class="nav-link">Links Úteis</a>
-            <a href="#" class="nav-link">Login</a>
+            <a href="#" class="nav-link active">Login</a>
         </nav>
     </header>
 
@@ -37,13 +37,16 @@
                 <div class="dot inactive"></div>
             </div>
 
-            <form class="login-form">
-                <input type="email" class="input" placeholder="Email" required>
-                <input type="senha" class="input" placeholder="Senha" required>
+            <form class="login-form" id="loginForm">
+                <input type="email" class="input" id="emailInput" placeholder="Email" required>
+                <input type="password" class="input" id="senhaInput" placeholder="Senha" required>
                 <div class="esqueceu">Esqueceu a <a href="#" class="link">senha?</a></div>
+                <p class="form-feedback" id="loginFeedback" role="status" aria-live="polite"></p>
                 <button type="submit" class="btn-next">Próximo</button>
             </form>
         </div>
     </div>
+    <script src="../scripts/api.js"></script>
+    <script src="../scripts/login.js"></script>
 </body>
 </html>
