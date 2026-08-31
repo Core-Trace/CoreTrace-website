@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Monitoramento · vm-ifood-payments</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+</head>
+<body>
+
+<div>
+
+  <!-- TELA DASHBOARD PRINCIPAL-->
+  <section id="mainScreen">
+    <div>
+      <div>
+        <button id="btnVerMais">Ver mais</button>
+        <button id="btnAlertas">Alertas</button>
+      </div>
+      <div>
+        <span>Machine Code: UMCumc#2026</span>
+        <button id="gearMain" aria-label="Configurações">⚙</button>
+      </div>
+    </div>
+
+    <!-- BLOCO CPU -->
+    <div id="metricRowCpu">
+      <div>
+        <div><canvas id="chartCpu"></canvas></div>
+        <div id="rangePickerCpu">
+          <label><input type="checkbox" value="last10" checked> Últimos 10 registros</label>
+          <label><input type="checkbox" value="last24h"> Últimas 24 horas</label>
+          <label><input type="checkbox" value="lastWeek"> Última semana</label>
+          <label><input type="checkbox" value="last4Weeks"> Últimas 4 semanas</label>
+        </div>
+      </div>
+      <div>
+        <div>CPU</div>
+        <div id="kpiCpu">68%</div>
+      </div>
+    </div>
+
+    <!-- BLOCO RAM -->
+    <div id="metricRowRam">
+      <div>
+        <div><canvas id="chartRam"></canvas></div>
+        <div id="rangePickerRam">
+          <label><input type="checkbox" value="last10"> Últimos 10 registros</label>
+          <label><input type="checkbox" value="last24h" checked> Últimas 24 horas</label>
+          <label><input type="checkbox" value="lastWeek"> Última semana</label>
+          <label><input type="checkbox" value="last4Weeks"> Últimas 4 semanas</label>
+        </div>
+      </div>
+      <div>
+        <div>RAM</div>
+        <div id="kpiRam">44%</div>
+      </div>
+    </div>
+
+    <!-- BLOCO DISCO -->
+    <div id="metricRowDisco">
+      <div>
+        <div><canvas id="chartDisco"></canvas></div>
+        <div id="rangePickerDisco">
+          <label><input type="checkbox" value="last10"> Últimos 10 registros</label>
+          <label><input type="checkbox" value="last24h"> Últimas 24 horas</label>
+          <label><input type="checkbox" value="lastWeek" checked> Última semana</label>
+          <label><input type="checkbox" value="last4Weeks"> Últimas 4 semanas</label>
+        </div>
+      </div>
+      <div>
+        <div>DISCO</div>
+        <div id="kpiDisco">25%</div>
+      </div>
+    </div>
+
+    <div>
+      <button id="btnHistorico">Histórico de Alertas</button>
+    </div>
+  </section>
+
+  <!-- TELA VER MAIS DASHBOARD -->
+  <section id="detailScreen">
+    <div>
+      <div>
+        <button id="gearDetail" aria-label="Configurações">⚙</button>
+        <button id="btnRetornar">Retornar</button>
+      </div>
+      <div>
+        <span>Machine Code: UMCumc#2026</span>
+      </div>
+    </div>
+
+    <div id="detailSectionCpu">
+      <h2>CPU</h2>
+      <div>
+        <div><div>Threads</div><div id="dCpuThreads">2</div></div>
+        <div><div>Frequência</div><div id="dCpuFreq">5GHz</div></div>
+        <div><div>Desvio Padrão</div><div id="dCpuDesvio">1.5</div></div>
+        <div><div>Uso</div><div id="dCpuUso">68%</div></div>
+      </div>
+    </div>
+
+    <div id="detailSectionRam">
+      <h2>RAM</h2>
+      <div>
+        <div><div>Espaço Atual</div><div id="dRamAtual">0.8G</div></div>
+        <div><div>Espaço Total</div><div id="dRamTotal">2GB</div></div>
+        <div><div>Desvio Padrão</div><div id="dRamDesvio">0.9</div></div>
+        <div><div>Uso</div><div id="dRamUso">44%</div></div>
+      </div>
+    </div>
+
+    <div id="detailSectionDisco">
+      <h2>DISCO</h2>
+      <div>
+        <div><div>Leitura</div><div id="dDiscoLeitura">3.4GB</div></div>
+        <div><div>Escrita</div><div id="dDiscoEscrita">1.2GB</div></div>
+        <div><div>Desvio Padrão</div><div id="dDiscoDesvio">1.1</div></div>
+        <div><div>Uso</div><div id="dDiscoUso">25%</div></div>
+      </div>
+    </div>
+
+    <div>
+      <button id="btnHistorico2">Histórico de Alertas</button>
+    </div>
+  </section>
+
+</div>
+
+<!-- MENU LATERAL -->
+<div id="overlay"></div>
+<aside id="sidebar">  
+  <div>
+    <h2>Componentes</h2>
+    <button id="gearClose" aria-label="Fechar">✕</button>
+  </div>
+
+  <h3>Componentes do computador:</h3>
+  <div><span>Setor:</span>Pagamentos</div>
+  <div><span>Servidor:</span>vm-ifood-payments</div>
+  <div><span>Código de máquina:</span>UMCumc#2026</div>
+
+  <div>
+    <label><input type="checkbox" id="monitorCpu" checked> Monitorar CPU</label>
+    <label><input type="checkbox" id="monitorRam" checked> Monitorar RAM</label>
+    <label><input type="checkbox" id="monitorDisco" checked> Monitorar DISCO (HD/SSD)</label>
+  </div>
+
+  <h3>Alertas</h3>
+  <label><input type="checkbox" checked> Receber Alertas</label>
+  <label><input type="checkbox" checked> Usar Alertas Personalizados</label>
+</aside>
+
+<script>
+
+</script>
+</body>
+</html>
