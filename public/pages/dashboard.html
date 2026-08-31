@@ -4,152 +4,156 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Monitoramento · vm-ifood-payments</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+<link rel="stylesheet" href="../css/dashboard.css">
 </head>
 <body>
 
-<div>
+<div class="app">
 
   <!-- TELA DASHBOARD PRINCIPAL-->
-  <section id="mainScreen">
-    <div>
-      <div>
-        <button id="btnVerMais">Ver mais</button>
-        <button id="btnAlertas">Alertas</button>
+  <section class="screen active" id="mainScreen">
+    <div class="topbar">
+      <div class="topbar-left">
+        <button class="btn btn-cream" id="btnVerMais">Ver mais</button>
+        
       </div>
-      <div>
-        <span>Machine Code: UMCumc#2026</span>
-        <button id="gearMain" aria-label="Configurações">⚙</button>
+      <div class="topbar-right">
+        <span class="machine-code">Machine Code: UMCumc#2026</span>
+        <button class="icon-btn" id="gearMain" aria-label="Configurações">⚙</button>
       </div>
     </div>
 
     <!-- BLOCO CPU -->
-    <div id="metricRowCpu">
-      <div>
-        <div><canvas id="chartCpu"></canvas></div>
-        <div id="rangePickerCpu">
-          <label><input type="checkbox" value="last10" checked> Últimos 10 registros</label>
-          <label><input type="checkbox" value="last24h"> Últimas 24 horas</label>
-          <label><input type="checkbox" value="lastWeek"> Última semana</label>
-          <label><input type="checkbox" value="last4Weeks"> Últimas 4 semanas</label>
+    <div class="metric-row" id="metricRowCpu">
+      <div class="chart-card">
+        <div class="chart-wrap"><canvas id="chartCpu"></canvas></div>
+        <div class="range-picker" id="rangePickerCpu">
+          <label class="check"><input type="checkbox" value="last10" checked> Últimos 10 registros</label>
+          <label class="check"><input type="checkbox" value="last24h"> Últimas 24 horas</label>
+          <label class="check"><input type="checkbox" value="lastWeek"> Última semana</label>
+          <label class="check"><input type="checkbox" value="last4Weeks"> Últimas 4 semanas</label>
         </div>
       </div>
-      <div>
-        <div>CPU</div>
-        <div id="kpiCpu">68%</div>
+      <div class="kpi-card kpi-cpu">
+        <div class="kpi-label">CPU</div>
+        <div class="kpi-value" id="kpiCpu">68%</div>
       </div>
     </div>
 
     <!-- BLOCO RAM -->
-    <div id="metricRowRam">
-      <div>
-        <div><canvas id="chartRam"></canvas></div>
-        <div id="rangePickerRam">
-          <label><input type="checkbox" value="last10"> Últimos 10 registros</label>
-          <label><input type="checkbox" value="last24h" checked> Últimas 24 horas</label>
-          <label><input type="checkbox" value="lastWeek"> Última semana</label>
-          <label><input type="checkbox" value="last4Weeks"> Últimas 4 semanas</label>
+    <div class="metric-row" id="metricRowRam">
+      <div class="chart-card">
+        <div class="chart-wrap"><canvas id="chartRam"></canvas></div>
+        <div class="range-picker" id="rangePickerRam">
+          <label class="check"><input type="checkbox" value="last10"> Últimos 10 registros</label>
+          <label class="check"><input type="checkbox" value="last24h" checked> Últimas 24 horas</label>
+          <label class="check"><input type="checkbox" value="lastWeek"> Última semana</label>
+          <label class="check"><input type="checkbox" value="last4Weeks"> Últimas 4 semanas</label>
         </div>
       </div>
-      <div>
-        <div>RAM</div>
-        <div id="kpiRam">44%</div>
+      <div class="kpi-card kpi-ram">
+        <div class="kpi-label">RAM</div>
+        <div class="kpi-value" id="kpiRam">44%</div>
       </div>
     </div>
 
     <!-- BLOCO DISCO -->
-    <div id="metricRowDisco">
-      <div>
-        <div><canvas id="chartDisco"></canvas></div>
-        <div id="rangePickerDisco">
-          <label><input type="checkbox" value="last10"> Últimos 10 registros</label>
-          <label><input type="checkbox" value="last24h"> Últimas 24 horas</label>
-          <label><input type="checkbox" value="lastWeek" checked> Última semana</label>
-          <label><input type="checkbox" value="last4Weeks"> Últimas 4 semanas</label>
+    <div class="metric-row" id="metricRowDisco">
+      <div class="chart-card">
+        <div class="chart-wrap"><canvas id="chartDisco"></canvas></div>
+        <div class="range-picker" id="rangePickerDisco">
+          <label class="check"><input type="checkbox" value="last10"> Últimos 10 registros</label>
+          <label class="check"><input type="checkbox" value="last24h"> Últimas 24 horas</label>
+          <label class="check"><input type="checkbox" value="lastWeek" checked> Última semana</label>
+          <label class="check"><input type="checkbox" value="last4Weeks"> Últimas 4 semanas</label>
         </div>
       </div>
-      <div>
-        <div>DISCO</div>
-        <div id="kpiDisco">25%</div>
+      <div class="kpi-card kpi-disco">
+        <div class="kpi-label">DISCO</div>
+        <div class="kpi-value" id="kpiDisco">25%</div>
       </div>
     </div>
 
-    <div>
-      <button id="btnHistorico">Histórico de Alertas</button>
+    <div class="footer-row">
+      
     </div>
   </section>
 
   <!-- TELA VER MAIS DASHBOARD -->
-  <section id="detailScreen">
-    <div>
-      <div>
-        <button id="gearDetail" aria-label="Configurações">⚙</button>
-        <button id="btnRetornar">Retornar</button>
+  <section class="screen" id="detailScreen">
+    <div class="topbar">
+      <div class="topbar-left">
+        <button class="icon-btn" id="gearDetail" aria-label="Configurações">⚙</button>
+        <button class="btn btn-ghost" id="btnRetornar">Retornar</button>
       </div>
-      <div>
-        <span>Machine Code: UMCumc#2026</span>
-      </div>
-    </div>
-
-    <div id="detailSectionCpu">
-      <h2>CPU</h2>
-      <div>
-        <div><div>Threads</div><div id="dCpuThreads">2</div></div>
-        <div><div>Frequência</div><div id="dCpuFreq">5GHz</div></div>
-        <div><div>Desvio Padrão</div><div id="dCpuDesvio">1.5</div></div>
-        <div><div>Uso</div><div id="dCpuUso">68%</div></div>
+      <div class="topbar-right">
+        <span class="machine-code">Machine Code: UMCumc#2026</span>
       </div>
     </div>
 
-    <div id="detailSectionRam">
-      <h2>RAM</h2>
-      <div>
-        <div><div>Espaço Atual</div><div id="dRamAtual">0.8G</div></div>
-        <div><div>Espaço Total</div><div id="dRamTotal">2GB</div></div>
-        <div><div>Desvio Padrão</div><div id="dRamDesvio">0.9</div></div>
-        <div><div>Uso</div><div id="dRamUso">44%</div></div>
+    <div class="detail-section" id="detailSectionCpu">
+      <h2 class="detail-title title-cpu">CPU</h2>
+      <div class="detail-grid">
+        <div class="detail-card"><div class="detail-label">Threads</div><div class="detail-value" id="dCpuThreads">2</div></div>
+        <div class="detail-card"><div class="detail-label">Frequência</div><div class="detail-value" id="dCpuFreq">5GHz</div></div>
+        <div class="detail-card"><div class="detail-label">Desvio Padrão</div><div class="detail-value" id="dCpuDesvio">1.5</div></div>
+        <div class="detail-card"><div class="detail-label accent-cpu">Uso</div><div class="detail-value accent-cpu" id="dCpuUso">68%</div></div>
       </div>
     </div>
 
-    <div id="detailSectionDisco">
-      <h2>DISCO</h2>
-      <div>
-        <div><div>Leitura</div><div id="dDiscoLeitura">3.4GB</div></div>
-        <div><div>Escrita</div><div id="dDiscoEscrita">1.2GB</div></div>
-        <div><div>Desvio Padrão</div><div id="dDiscoDesvio">1.1</div></div>
-        <div><div>Uso</div><div id="dDiscoUso">25%</div></div>
+    <div class="detail-section" id="detailSectionRam">
+      <h2 class="detail-title title-ram">RAM</h2>
+      <div class="detail-grid">
+        <div class="detail-card"><div class="detail-label">Espaço Atual</div><div class="detail-value" id="dRamAtual">0.8G</div></div>
+        <div class="detail-card"><div class="detail-label">Espaço Total</div><div class="detail-value" id="dRamTotal">2GB</div></div>
+        <div class="detail-card"><div class="detail-label">Desvio Padrão</div><div class="detail-value" id="dRamDesvio">0.9</div></div>
+        <div class="detail-card"><div class="detail-label accent-ram">Uso</div><div class="detail-value accent-ram" id="dRamUso">44%</div></div>
       </div>
     </div>
 
-    <div>
-      <button id="btnHistorico2">Histórico de Alertas</button>
+    <div class="detail-section" id="detailSectionDisco">
+      <h2 class="detail-title title-disco">DISCO</h2>
+      <div class="detail-grid">
+        <div class="detail-card"><div class="detail-label">Leitura</div><div class="detail-value" id="dDiscoLeitura">3.4GB</div></div>
+        <div class="detail-card"><div class="detail-label">Escrita</div><div class="detail-value" id="dDiscoEscrita">1.2GB</div></div>
+        <div class="detail-card"><div class="detail-label">Desvio Padrão</div><div class="detail-value" id="dDiscoDesvio">1.1</div></div>
+        <div class="detail-card"><div class="detail-label accent-disco">Uso</div><div class="detail-value accent-disco" id="dDiscoUso">25%</div></div>
+      </div>
+    </div>
+
+    <div class="footer-row">
+      
     </div>
   </section>
 
 </div>
 
 <!-- MENU LATERAL -->
-<div id="overlay"></div>
-<aside id="sidebar">  
-  <div>
+<div class="overlay" id="overlay"></div>
+<aside class="sidebar" id="sidebar">  
+  <div class="sidebar-header">
     <h2>Componentes</h2>
-    <button id="gearClose" aria-label="Fechar">✕</button>
+    <button class="icon-btn small" id="gearClose" aria-label="Fechar">✕</button>
   </div>
 
   <h3>Componentes do computador:</h3>
-  <div><span>Setor:</span>Pagamentos</div>
-  <div><span>Servidor:</span>vm-ifood-payments</div>
-  <div><span>Código de máquina:</span>UMCumc#2026</div>
+  <div class="info-row"><span class="info-label">Setor:</span>Pagamentos</div>
+  <div class="info-row"><span class="info-label">Servidor:</span>vm-ifood-payments</div>
+  <div class="info-row"><span class="info-label">Código de máquina:</span>UMCumc#2026</div>
 
-  <div>
-    <label><input type="checkbox" id="monitorCpu" checked> Monitorar CPU</label>
-    <label><input type="checkbox" id="monitorRam" checked> Monitorar RAM</label>
-    <label><input type="checkbox" id="monitorDisco" checked> Monitorar DISCO (HD/SSD)</label>
+  <div style="margin-top:18px;">
+    <label class="check-row"><input type="checkbox" id="monitorCpu" checked> Monitorar CPU</label>
+    <label class="check-row"><input type="checkbox" id="monitorRam" checked> Monitorar RAM</label>
+    <label class="check-row"><input type="checkbox" id="monitorDisco" checked> Monitorar DISCO (HD/SSD)</label>
   </div>
 
   <h3>Alertas</h3>
-  <label><input type="checkbox" checked> Receber Alertas</label>
-  <label><input type="checkbox" checked> Usar Alertas Personalizados</label>
+  <label class="check-row"><input type="checkbox" checked> Receber Alertas</label>
+  <label class="check-row"><input type="checkbox" checked> Usar Alertas Personalizados</label>
 </aside>
 
 <script>
