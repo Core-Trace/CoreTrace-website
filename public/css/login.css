@@ -124,3 +124,22 @@ body {
 .loading-indicator[hidden] {
   display: none;
 }
+
+
+.termos {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  margin-top: 15px;
+  text-align: left;
+}
+
+.termos input[type="checkbox"] {
+  accent-color: #b83c2e;
+}
+
+.contato {
+  font-size: 13px;
+  margin-top: 10px;
+}

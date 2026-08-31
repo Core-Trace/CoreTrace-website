@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="../css/login.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-left">
+            <div class="menu-icon">
+                <span></span><span></span><span></span>
+            </div>
+            <div class="logo">
+                <span></span><span></span><span></span><span></span><span></span>
+            </div>
+        </div>
+        <nav class="nav">
+            <svg class="theme-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+
+            </svg>
+            <a href="./main.html" class="nav-link">Home</a>
+            <a href="#" class="nav-link">Equipe</a>
+            <a href="#" class="nav-link">Links Úteis</a>
+            <a href="#" class="nav-link active">Login</a>
+        </nav>
+    </header>
+
+    <div class="login">
+        <div class="login-card">
+            <h1 class="titulo">Login</h1>
+
+            <div class="steps">
+                <div class="dot active"></div>
+                <div class="step-line active"></div>
+                <div class="dot active" id="secondDot"></div>
+            </div>
+
+            <form class="login-form" id="loginForm" novalidate>
+                <input type="text" class="input" id="emailInput" placeholder="Insira uma Passkey" required>
+
+                <label class="termos">
+                    <input type="checkbox" id="termosCheckbox" required>
+                    Concordo com os <a href="#" class="link">Termos de Serviço</a>
+                </label>
+
+                <p class="contato">Entre em <a href="#" class="link">Contato</a></p>
+
+                <p class="form-feedback" id="loginFeedback" role="status" aria-live="polite"></p>
+                <button type="submit" class="btn-next">Finalizar</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="../scripts/api.js"></script>
+    <script src="../scripts/login.js"></script>
+</body>
+</html>
