@@ -95,3 +95,52 @@
 .nav-link.active {
     opacity: 1;
 }
+/* Sidebar Nested Items */
+.sidebar-submenu {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    padding-left: 12px;
+}
+
+.sidebar-group {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.sidebar-group-title {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: #686e74;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.sidebar-group-title:hover {
+    color: #f6ece6;
+}
+
+.sidebar-group-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-left: 26px;
+}
+
+.sidebar-sub-link {
+    display: flex;
+    align-items: center;
+    color: #686e74;
+    font-size: 16px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.sidebar-sub-link:hover {
+    color: #f6ece6;
+}
