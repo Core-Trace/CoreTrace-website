@@ -4,7 +4,7 @@
 
 body {
   margin: 0;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Segoe UI', 'Poppins', Arial, sans-serif;
   background: #17181c;
   color: #f5ede4;
   min-height: 100vh;
@@ -12,11 +12,11 @@ body {
 }
 
 input, button {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Segoe UI', 'Poppins', Arial, sans-serif;
 }
 
 h1, h2, h3, h4, .kpi-value, .detail-value, .machine-code {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: 'Segoe UI', 'Poppins', Arial, sans-serif;
 }
 
 .app {
