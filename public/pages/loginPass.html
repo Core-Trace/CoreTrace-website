@@ -54,5 +54,49 @@
     </div>
 
 
+    
+    <script src="../scripts/api.js"></script>
+    <script>
+        const passkeyForm = document.getElementById("passkeyForm");
+        const passkeyInput = document.getElementById("passkeyInput");
+        const passkeyFeedback = document.getElementById("passkeyFeedback");
+        
+        passkeyForm.addEventListener("submit", function(event) {
+            event.preventDefault();
+            
+            const passkeyVar = passkeyInput.value;
+            const idUsuarioVar = sessionStorage.ID_USUARIO;
+            
+            if (!idUsuarioVar) {
+                alert("Sessão expirada. Faça o login novamente.");
+                window.location = "./login.html";
+                return;
+            }
+            
+            fetch("/user/validar-passkey", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    idUsuarioServer: idUsuarioVar,
+                    passkeyServer: passkeyVar
+                })
+            })
+            .then(function (resposta) {
+                if (resposta.ok) {
+                    const tipoPapel = sessionStorage.TIPO_PAPEL;
+                    if (tipoPapel === "GESTOR") {
+                        window.location = "/pages/cadastro-funcionario.html";
+                    } else {
+                        window.location = "/";
+                    }
+                } else {
+                    passkeyFeedback.textContent = "Passkey incorreta!";
+                }
+            })
+            .catch(function (erro) {
+                console.error("Erro na requisição:", erro);
+            });
+        });
+        </script>
 </body>
 </html>

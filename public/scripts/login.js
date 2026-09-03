@@ -29,7 +29,7 @@ function entrar(event) {
             if (usuario.papel.tipo === "GESTOR") {
                 window.location = "/pages/cadastro-funcionario.html";
             } else {
-                window.location = "/";
+                window.location = "/pages/loginPass.html";
             }
         })
         .catch(function (erro) {
@@ -38,5 +38,6 @@ function entrar(event) {
             alternarCarregamento(loginButton, null, false);
         });
 }
+
 
 loginForm.addEventListener("submit", entrar);

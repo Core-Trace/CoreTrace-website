@@ -55,6 +55,18 @@ function cadastrar(nome, email, senha, idPapel, idResponsavel, idEmpresa) {
         idResponsavel,
         idEmpresa
     ]);
+
+    
+}
+
+
+function validarPasskey(idUsuario, passkey) {
+    const instrucaoSql = `
+        SELECT id_usuarios, nome, email 
+        FROM usuarios 
+        WHERE id_usuarios = ? AND passkey = ?;
+    `;
+    return database.executar(instrucaoSql, [idUsuario, passkey]);
 }
 
 module.exports = {
@@ -62,5 +74,6 @@ module.exports = {
     buscarPorEmail,
     validarPapelFuncionario,
     validarResponsavel,
-    cadastrar
+    cadastrar,
+    validarPasskey
 };

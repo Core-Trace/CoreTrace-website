@@ -11,4 +11,8 @@ router.post("/register", function (req, res) {
     loginController.cadastrar(req, res);
 });
 
+router.post("/validar-passkey", function (req, res) {
+    loginController.validarPasskey(req, res);
+});
+
 module.exports = router;

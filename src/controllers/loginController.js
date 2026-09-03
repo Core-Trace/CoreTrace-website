@@ -124,7 +124,33 @@ function cadastrar(req, res) {
         });
 }
 
+function validarPasskey(req, res) {
+    const idUsuario = req.body.idUsuarioServer;
+    const passkey = req.body.passkeyServer;
+
+    if (!idUsuario) {
+        return res.status(400).send("O ID está undefined!");
+    }
+    if (!passkey) {
+        return res.status(400).send("A Passkey está undefined!");
+    }
+
+    loginModel.validarPasskey(idUsuario, passkey)
+        .then(function (resultado) {
+            if (resultado.length > 0) {
+                return res.json(resultado[0]);
+            } else {
+                return res.status(403).send("Passkey inválida!");
+            }
+        })
+        .catch(function (erro) {
+            console.error("Erro na validação da passkey:", erro);
+            return res.status(500).json(erro.sqlMessage);
+        });
+}
+
 module.exports = {
     autenticar,
-    cadastrar
+    cadastrar,
+    validarPasskey
 };
