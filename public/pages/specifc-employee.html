@@ -70,3 +70,26 @@
     </main>
 </body>
 </html>
+
+<script>
+    const botoesAcao = document.querySelectorAll('.btn-remove');
+
+    const iconeX = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"></path></svg>`;
+    const iconeMais = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"></path></svg>`;
+
+    botoesAcao.forEach(botao => {
+        botao.addEventListener('click', function() {
+            
+            const linha = this.closest('.list-item');
+            
+            linha.classList.toggle('desativado');
+            
+            if (linha.classList.contains('desativado')) {
+                this.innerHTML = iconeMais;
+            } else {
+                this.innerHTML = iconeX;
+            }
+            
+        });
+    });
+</script>

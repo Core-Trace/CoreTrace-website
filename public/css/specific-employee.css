@@ -120,3 +120,22 @@ body {
 .btn-save:hover {
     background-color: #ffffff;
 }
+
+.list-item.desativado {
+    background-color: #333333; 
+    opacity: 0.6; 
+}
+
+.list-item.desativado .item-text,
+.list-item.desativado .item-tag {
+    color: #999999; 
+    text-decoration: line-through; 
+}
+
+.list-item.desativado .btn-remove {
+    color: #999999; 
+}
+
+.list-item.desativado .btn-remove:hover {
+    color: #44ff44; 
+}
