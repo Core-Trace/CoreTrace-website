@@ -79,7 +79,30 @@ function catchServer(idUsuario) {
     return database.executar(instrucaoSQL, parametros);
 }
 
+function revokeAccess(idUsuario, arrayMaquinas) {
+    console.log("ACESSEI O EMPLOYEE MODEL function revokeAccess():", idUsuario, arrayMaquinas);
+    
+    let placeholders = arrayMaquinas.map(() => '?').join(',');
+
+    const instrucaoSQL = `
+        UPDATE acessos_servidor 
+        SET dt_retirada = CURRENT_TIMESTAMP 
+        WHERE usuario = ? 
+        AND servidor IN (
+            SELECT servidor FROM maquina WHERE id_maquina IN (${placeholders})
+        );
+    `;
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSQL);
+    
+    var parametros = [idUsuario, ...arrayMaquinas];
+    
+    return database.executar(instrucaoSQL, parametros);
+}
+
+
 module.exports = {
     searchEmployee,
     catchServer,
+    revokeAccess
 };
