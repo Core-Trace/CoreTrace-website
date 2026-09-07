@@ -4,9 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Monitoramento · vm-ifood-payments</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
 <link rel="stylesheet" href="../css/dashboard.css">
 </head>
@@ -18,12 +15,11 @@
   <section class="screen active" id="mainScreen">
     <div class="topbar">
       <div class="topbar-left">
+        <button class="icon-btn" id="gearMain" aria-label="Configurações">⚙</button>
         <button class="btn btn-cream" id="btnVerMais">Ver mais</button>
-        
       </div>
       <div class="topbar-right">
         <span class="machine-code">Machine Code: UMCumc#2026</span>
-        <button class="icon-btn" id="gearMain" aria-label="Configurações">⚙</button>
       </div>
     </div>
 
@@ -77,10 +73,6 @@
         <div class="kpi-value" id="kpiDisco">25%</div>
       </div>
     </div>
-
-    <div class="footer-row">
-      
-    </div>
   </section>
 
   <!-- TELA VER MAIS DASHBOARD -->
@@ -123,10 +115,6 @@
         <div class="detail-card"><div class="detail-label">Desvio Padrão</div><div class="detail-value" id="dDiscoDesvio">1.1</div></div>
         <div class="detail-card"><div class="detail-label accent-disco">Uso</div><div class="detail-value accent-disco" id="dDiscoUso">25%</div></div>
       </div>
-    </div>
-
-    <div class="footer-row">
-      
     </div>
   </section>
 
@@ -189,6 +177,26 @@ var dadosDisco = {
   last4Weeks: { labels: labelsSemanas, data: [15, 18, 22, 25] }
 };
 
+/* OPCAO PARA LOCKAR EXIO Y E ADICIONAR PORCENTAGEM*/
+
+var opcoesGrafico = {
+  responsive: true,
+  maintainAspectRatio: false,
+  plugins: {
+    legend: { display: false }
+  },
+  scales: {
+    y: {
+      min: 0,
+      max: 100,
+      ticks: {
+        callback: function(value) {
+          return value + '%'; // Adiciona o % ao lado dos números no eixo Y
+        }
+      }
+    }
+  }
+};
 
 /* CRIACAO DE GRAFICOS */
 var chartCpu = new Chart(document.getElementById('chartCpu').getContext('2d'), {
@@ -204,7 +212,7 @@ var chartCpu = new Chart(document.getElementById('chartCpu').getContext('2d'), {
       fill: true
     }]
   },
-  options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } } }
+  options: opcoesGrafico
 });
 
 var chartRam = new Chart(document.getElementById('chartRam').getContext('2d'), {
@@ -220,7 +228,7 @@ var chartRam = new Chart(document.getElementById('chartRam').getContext('2d'), {
       fill: true
     }]
   },
-  options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } } }
+  options: opcoesGrafico
 });
 
 var chartDisco = new Chart(document.getElementById('chartDisco').getContext('2d'), {
@@ -236,7 +244,7 @@ var chartDisco = new Chart(document.getElementById('chartDisco').getContext('2d'
       fill: true
     }]
   },
-  options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } } }
+  options: opcoesGrafico
 });
 
 /* CHECKBOXES QUE MUDA LABELS */
