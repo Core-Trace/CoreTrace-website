@@ -73,18 +73,10 @@ h1, h2, h3, h4, .kpi-value, .detail-value, .machine-code {
   color: #17181c;
 }
 
-.btn-cream:hover {
-  background: #fff;
-}
-
 .btn-ghost {
   background: transparent;
   color: #f5ede4;
   border: 1px solid rgba(255, 255, 255, 0.15);
-}
-
-.btn-ghost:hover {
-  border-color: rgba(255, 255, 255, 0.35);
 }
 
 .icon-btn {
@@ -102,15 +94,33 @@ h1, h2, h3, h4, .kpi-value, .detail-value, .machine-code {
   flex-shrink: 0;
 }
 
-.icon-btn:hover {
-  background: #fff;
-}
-
 .icon-btn.small {
   width: 30px;
   height: 30px;
   font-size: 14px;
   border-radius: 8px;
+}
+
+/* ---------- hover e efeitos de clique ---------- */
+.btn, .icon-btn {
+  transition: all 0.2s ease;
+}
+
+.btn:hover, .icon-btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn:active, .icon-btn:active {
+  transform: translateY(0);
+}
+
+.btn-cream:hover, .icon-btn:hover {
+  background: #ffffff;
+}
+
+.btn-ghost:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.4);
 }
 
 /* ---------- Dashboard principal ---------- */
@@ -179,12 +189,6 @@ h1, h2, h3, h4, .kpi-value, .detail-value, .machine-code {
 .kpi-cpu .kpi-label, .kpi-cpu .kpi-value { color: #e2434b; }
 .kpi-ram .kpi-label, .kpi-ram .kpi-value { color: #f2c14e; }
 .kpi-disco .kpi-label, .kpi-disco .kpi-value { color: #f5ede4; }
-
-.footer-row {
-  display: flex;
-  justify-content: flex-end;
-  margin-top: 8px;
-}
 
 /* ---------- Dashboard detalhes ---------- */
 .detail-section {
@@ -302,7 +306,7 @@ h1, h2, h3, h4, .kpi-value, .detail-value, .machine-code {
   cursor: pointer;
 }
 
-/* ---------- Ajuste para resolucao de celular ---------- */
+/* ---------- Ajuste para resolução de celular ---------- */
 @media (max-width: 760px) {
   body { padding: 20px 16px 40px; }
   .metric-row { flex-direction: column; }
