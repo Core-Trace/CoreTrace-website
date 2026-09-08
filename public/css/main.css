@@ -161,7 +161,7 @@ body.no-scroll {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 20px 48px;
+    padding: 0px 48px;
     background-color: #17181c;
 }
 
@@ -219,7 +219,7 @@ body.no-scroll {
 .nav-link {
     color: #f5ede4;
     text-decoration: none;
-    font-size: 24px;
+    font-size: 16px;
     opacity: 0.85;
     transition: opacity 0.2s ease;
 }
@@ -608,9 +608,9 @@ body.no-scroll {
     box-sizing: border-box;
     p {
         align-self: stretch;
-        color: #F6ECE6;
         font-family: Poppins;
-        font-size: 64px;
+        color: #d94d3a;
+        font-size: 2.5rem;
         font-style: normal;
         font-weight: 700;
         line-height: normal;
