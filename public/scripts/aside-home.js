@@ -1,18 +1,19 @@
 let fullScreen = document.getElementById("fullScreen")
-fullScreen.style.display="none"
+fullScreen.style.display = "none"
 let fullScreenActual = "none"
-function asidePlot(){
-    console.log(fullScreen)
-    if(fullScreenActual == "none"){
-        fullScreenActual = "block"
-        fullScreen.style.display = fullScreenActual
 
+function asidePlot() {
+    if (fullScreenActual == "none") {
+        fullScreenActual = "flex"
+        fullScreen.style.display = fullScreenActual
+        document.body.classList.add("no-scroll")
     }
-    else if(fullScreenActual == "block"){
+    else if (fullScreenActual == "flex") {
         fullScreenActual = "none"
         fullScreen.style.display = fullScreenActual
+        document.body.classList.remove("no-scroll")
     }
-    else{
+    else {
         console.log("Display Alterado.")
     }
 }

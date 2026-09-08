@@ -2,12 +2,6 @@
     margin: 0%;
     padding: 0%;
     border: 0%;
-    font-family: Poppins;
-    font-size: 18px;
-    color: #F6ECE6;
-}
-body{
-    background-color: #161A1D;
 }
 
 main{
@@ -70,12 +64,10 @@ main{
 }
 
 .burgerButton{
-    width: 60px;
-    height: 60px;
+    width:fit-content;
+    height: fit-content;
     flex-shrink: 0;
     aspect-ratio: 1/1;
-    background-color: #161A1D;
-    border: 10px solid#161A1D;
 }
 .burgerButton:hover{
     cursor:pointer
