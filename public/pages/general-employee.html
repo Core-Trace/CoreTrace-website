@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>general-employee</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Jersey+25&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+</head>
+
+<link rel="stylesheet" href="../css/general-employee.css">
+
+<body>
+    <main>
+        <div id="container">
+            <div class="vertical">
+                <div id="search" class="searches">
+                    <input type="search" id="srchName" placeholder="Buscar Nome" onblur="loadEmployee()"
+                        class="genEmpSearch">
+                    <input type="search" id="srchEmail" placeholder="Buscar Email" onblur="loadEmployee()"
+                        class="genEmpSearch">
+                    <input type="search" id="srchPosition" placeholder="Buscar Cargo" onblur="loadEmployee()"
+                        class="genEmpSearch">
+                </div>
+            </div>
+            <div id="sort" class="vertical">
+                <div class="checkBoxesArea">
+                    <div class="checkboxCont">
+                        <input type="checkbox" id="chckEmployee" onchange="loadEmployee()">
+                        <div id="svg1"></div>
+                        <label for="chckEmployee">Funcionário</label>
+                    </div>
+                    <div class="checkboxCont">
+                        <input type="checkbox" id="chckEmail" onchange="loadEmployee()">
+                        <div id="svg2"></div>
+                        <label for="chckEmail">Email</label>
+                    </div>
+                    <div class="checkboxCont">
+                        <input type="checkbox" id="chckPosition" onchange="loadEmployee()">
+                        <div id="svg3"></div>
+                        <label for="chckPosition">Cargo</label>
+                    </div>
+                    <div class="checkboxCont">
+                        <input type="checkbox" id="chckData" onchange="loadEmployee()">
+                        <div id="svg4"></div>
+                        <label for="chckData">Data de Admissão</label>
+                    </div>
+                    <div class="checkboxCont">
+                        <input type="checkbox" id="chckActivities" onchange="loadEmployee()">
+                        <div id="svg5"></div>
+                        <label for="chckActivities">Atividade</label>
+                    </div>
+                </div>
+            </div>
+            <div class="list" id="list">
+                <div class="employeeVerticalBox">
+                    <input type="checkbox" id="user">
+                    <div class="employeeBox">
+                        <div class="employeeFirstInfos">
+                            <span>Username_example_admin</span>
+                            <span>useremail@admin.com</span>
+                            <span>Gerente</span>
+                            <span>dd/mm/yyyy HH:MM:SS</span>
+                            <span>Online</span>
+                        </div>
+                        <div class="employeePermissions">
+                            <div class="epSectors">
+                                <span>Setores:</span>
+                                <div class="epSectorsList">
+                                    <span>Vendas</span>
+                                    <span>Financeiro</span>
+                                    <span>Loja</span>
+                                </div>
+                            </div>
+                            <div class="epServers">
+                                <div class="epServersTitle">
+                                    <span>Máquinas</span>
+                                    <span>Servidores</span>
+                                </div>
+                                <div class="epServersList">
+                                    <div class="machineServer">
+                                        <span>
+                                            UMCumc#2026
+                                        </span>
+                                        <span>
+                                            Vendas
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="chkInfoUser">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <button>
+                Remover Funcionário
+            </button>
+            <button>
+                Alterar Permissões
+            </button>
+        </div>
+    </main>
+</body>
+
+</html>
+
+<script src="../scripts/employeesGeneral.js"></script>
+
+<script>
+    function openList(idUsuario) {
+        console.log("Lista aberta")
+        let chckBox = document.getElementById(`svgUI${idUsuario}`)
+        let chckMark = chckBox.checked;
+        let svgGraphic = document.getElementById(`svgGUI${idUsuario}`)
+        let InfoUser = document.getElementById(`employeePermissions${idUsuario}`)
+        chckMark ? chckBox.checked = false : chckBox.checked = true
+        chckMark ?
+            svgGraphic.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+        <path d="M8.45739 19.5427L16.0001 12L23.5427 19.5427" stroke="#F6ECE6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>`:
+            svgGraphic.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+        <path d="M23.5426 12.4573L15.9999 20L8.45728 12.4573" stroke="#F6ECE6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>`
+        if (chckMark) {
+            InfoUser.style.height = "fit-content"
+            InfoUser.style.padding = "10px"
+            InfoUser.style.gap = "20px"
+        }
+        else {
+            InfoUser.style.height = "0"
+            InfoUser.style.padding = "0"
+            InfoUser.style.gap = "0"
+        }
+    }
+</script>
