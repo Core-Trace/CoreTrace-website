@@ -49,6 +49,7 @@ function cadastrar(req, res) {
     const idPapel = Number(req.body.papelServer);
     const idResponsavel = Number(req.body.cadastradoServer);
     const idEmpresa = Number(req.body.empresaServer);
+    let passKey = gerarPassKey()
 
     if (typeof nome !== "string" || nome.trim() === "") {
         return res.status(400).send("Seu nome está indefinido!");
@@ -72,6 +73,10 @@ function cadastrar(req, res) {
 
     if (!Number.isInteger(idEmpresa) || idEmpresa <= 0) {
         return res.status(400).send("A empresa está inválida!");
+    }
+
+    if(passKey.length != 16){
+        return res.status(400).send("A passKey está incorreta!")
     }
 
     return Promise.all([
@@ -102,14 +107,16 @@ function cadastrar(req, res) {
                 senha,
                 idPapel,
                 idResponsavel,
-                idEmpresa
+                idEmpresa,
+                passKey
             ).then(function (resultadoCadastro) {
                 return res.status(201).json({
                     id: resultadoCadastro.insertId,
                     nome: nome.trim(),
                     email: email.trim(),
                     papel: idPapel,
-                    empresa: idEmpresa
+                    empresa: idEmpresa,
+                    chavePasse: passKey
                 });
             });
         })
@@ -122,6 +129,18 @@ function cadastrar(req, res) {
 
             return res.status(500).send("Houve um erro ao cadastrar o funcionário.");
         });
+}
+
+function gerarPassKey() {
+    console.log("PassKey sendo gerada");
+    let passKey = "";
+    const charsets = "0123456789AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz";
+    for (let i = 0; i < 16; i++) {
+        let randNum = Math.floor(Math.random() * (charsets.length));
+        passKey += charsets[randNum];
+    }
+    console.log(passKey);
+    return passKey;
 }
 
 module.exports = {

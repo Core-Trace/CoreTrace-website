@@ -18,6 +18,7 @@ function entrar(event) {
         senhaServer: senhaVar
     })
         .then(function (usuario) {
+            console.log(usuario )
             sessionStorage.ID_USUARIO = usuario.id;
             sessionStorage.NOME_USUARIO = usuario.nome;
             sessionStorage.EMAIL_USUARIO = usuario.email;
@@ -29,7 +30,7 @@ function entrar(event) {
             if (usuario.papel.tipo === "GESTOR") {
                 window.location = "/pages/cadastro-funcionario.html";
             } else {
-                window.location = "/";
+                window.location = "/pages/loginPass.html";
             }
         })
         .catch(function (erro) {
