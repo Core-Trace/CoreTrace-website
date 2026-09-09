@@ -212,7 +212,7 @@
     clip: rect(0, 0, 0, 0);
 }
 
-/* Para telas menores que de 1920x1080 */ 
+/* Para telas menores que de 1920x1080 */
 @media (max-width: 900px) {
     .employee-page {
         display: block;

@@ -69,7 +69,31 @@ function catchServer(req, res) {
     }
 }
 
+function revokeAccess(req, res) {
+    let idUsuario = req.body.employeeId;
+    let maquinas = req.body.maquinas; 
+
+    if (idUsuario == undefined) {
+        res.status(400).send("ID do funcionário está undefined!");
+    } else if (maquinas == undefined || maquinas.length == 0) {
+        res.status(400).send("Nenhuma máquina foi enviada para revogação!");
+    } else {
+        employeeModel.revokeAccess(idUsuario, maquinas)
+            .then(function (resultado) {
+                res.json(resultado);
+            })
+            .catch(function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao revogar acesso! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            });
+    }
+}
+
+
+
 module.exports = {
     searchEmployee,
     catchServer,
+    revokeAccess,
 };
