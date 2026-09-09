@@ -8,7 +8,7 @@ body {
   background: #17181c;
   color: #f5ede4;
   min-height: 100vh;
-  padding: 28px 32px 60px;
+
 }
 
 input, button {
@@ -22,6 +22,7 @@ h1, h2, h3, h4, .kpi-value, .detail-value, .machine-code {
 .app {
   max-width: 1180px;
   margin: 0 auto;
+  padding: 28px 32px 60px; /* antigo padding no body colocado aqui */
 }
 
 .screen {
@@ -308,7 +309,8 @@ h1, h2, h3, h4, .kpi-value, .detail-value, .machine-code {
 
 /* ---------- Ajuste para resolução de celular ---------- */
 @media (max-width: 760px) {
-  body { padding: 20px 16px 40px; }
+  body { padding: 0; }
+  .app { padding: 20px 16px 40px; }
   .metric-row { flex-direction: column; }
   .chart-card { flex-direction: column; }
   .kpi-card { width: 100%; }
