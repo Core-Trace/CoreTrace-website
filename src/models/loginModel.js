@@ -41,10 +41,10 @@ function validarResponsavel(idResponsavel, idEmpresa) {
     return database.executar(instrucaoSql, [idResponsavel, idEmpresa]);
 }
 
-function cadastrar(nome, email, senha, idPapel, idResponsavel, idEmpresa) {
+function cadastrar(nome, email, senha, idPapel, idResponsavel, idEmpresa, passKey) {
     const instrucaoSql = `
-        INSERT INTO usuarios (nome, email, senha, papel, cadastrado, empresa)
-        VALUES (?, ?, ?, ?, ?, ?);
+        INSERT INTO usuarios (nome, email, senha, papel, cadastrado, empresa, passkey)
+        VALUES (?, ?, ?, ?, ?, ?, ?);
     `;
 
     return database.executar(instrucaoSql, [
@@ -53,7 +53,8 @@ function cadastrar(nome, email, senha, idPapel, idResponsavel, idEmpresa) {
         senha,
         idPapel,
         idResponsavel,
-        idEmpresa
+        idEmpresa,
+        passKey
     ]);
 }
 
