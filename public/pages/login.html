@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
      <link rel="stylesheet" href="../css/login.css">
+    <link rel="stylesheet" href="../css/cadastro-funcionario.css">
+    <link rel="stylesheet" href="../css/main.css">
+
      <link rel="stylesheet" href="../css/main.css">
      <link rel="stylesheet" href="../css/aside-home.css">
      <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -114,13 +117,13 @@
         </header>
 
     <div class="login">
-        <div class="login-card">
+        <div class="login-card form-step active" id="firstStep">
             <h1 class="titulo">Login</h1>
 
             <div class="steps">
-                <div class="dot active"></div>
-                <div class="step-line"></div>
-                <div class="dot inactive"></div>
+                <div class="dot active" id="firstDot"></div>
+                <div class="step-line" id="stepLine"></div>
+                <div class="dot inactive" id="secondDot"></div>
             </div>
 
             <form class="login-form" id="loginForm">
@@ -128,7 +131,30 @@
                 <input type="password" class="input" id="senhaInput" placeholder="Senha" required>
                 <div class="esqueceu">Esqueceu a <a href="#" class="link">senha?</a></div>
                 <p class="form-feedback" id="loginFeedback" role="status" aria-live="polite"></p>
-                <button type="submit" class="btn-next">Próximo</button>
+                <button type="button" id="id_btnext" class="btn-next">Próximo</button>
+            </form>
+        </div>
+
+        <div class="login-card form-step" id="secondStep">
+            <h1 class="titulo">Login</h1>
+
+            <div class="steps">
+                <div class="dot active" id="firstDot"></div>
+                <div class="step-line active" id="stepLine"></div>
+                <div class="dot active" id="secondDot"></div>
+            </div>
+
+            <form class="login-form" id="loginForm" novalidate>
+                <input type="text" class="input" id="passKeyInput" placeholder="Insira uma Passkey" required>
+
+                <label class="termos">
+                    <input type="checkbox" id="termosCheckbox" required>
+                    Concordo com os <a href="#" class="link">Termos de Serviço</a>
+                </label>
+
+                <p class="contato">Entre em <a href="#" class="link">Contato</a></p>
+
+                <button type="button" id="id_btnlogin" class="btn-next">Finalizar</button>
             </form>
         </div>
     </div>
