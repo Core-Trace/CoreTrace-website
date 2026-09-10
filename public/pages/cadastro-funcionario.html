@@ -16,38 +16,15 @@
 
 <body class="employee-page">
     <aside class="employee-sidebar">
-        <a class="employee-logo" href="/" aria-label="Ir para a página inicial">
-            <img src="../assets/icons/Simple-Logo.png" alt="CoreTrace">
-        </a>
+            <a class="employee-logo" href="/" aria-label="Ir para a página inicial">
+                <img src="../assets/icons/Simple-Logo.png" alt="CoreTrace">
+            </a>
 
-        <nav class="sidebar-navigation" >
-            <a class="sidebar-link active" href="#">Cadastrar Funcionário</a>
-            <a class="sidebar-link" href="general-employee.html">Ver Funcionários</a>
+            <nav class="sidebar-navigation" >
+                <a class="sidebar-link" href="cadastro-funcionario.html">Cadastrar Funcionário</a>
+                <a class="sidebar-link active" href="#">Ver Funcionários</a>
 
-            <div class="sidebar-submenu">
-                <div class="sidebar-group">
-                    <div class="sidebar-group-title">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-                        Setor
-                    </div>
-                    <div class="sidebar-group-content">
-                        <div class="sidebar-group">
-                            <div class="sidebar-group-title">
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-                                Servidor
-                            </div>
-                            <div class="sidebar-group-content">
-                                <a href="#" class="sidebar-sub-link">
-                                    <span style="display:inline-block; width: 12px; margin-left: -12px;">&bull;</span>UMCumc#2026
-                                </a>
-                                <a href="#" class="sidebar-sub-link">maquina2</a>
-                                <a href="#" class="sidebar-sub-link">maquina3</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 <div class="sidebar-submenu">
-
                     <div class="sidebar-group">
                         <div class="sidebar-group-title">
                             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
@@ -63,14 +40,15 @@
                                     <a href="#" class="sidebar-sub-link">
                                         <span style="display:inline-block; width: 12px; margin-left: -12px;">&bull;</span>UMCumc#2026
                                     </a>
-                                    <a href="#" class="sidebar-sub-link">maquina2</a>
-                                    <a href="#" class="sidebar-sub-link">maquina3</a>
+                                    <a href="dashboard.html?machinemaquina2" class="sidebar-sub-link">maquina2</a>
+                                    <a href="dashboard.html?machine=maquina3" class="sidebar-sub-link">maquina3</a>
                                 </div>
                             </div>
                         </div>
-                </div>
-        </nav>
-    </aside>
+                    </div>
+                    <div class="sidebar-submenu">
+            </nav>
+        </aside>
 
     <div class="employee-shell">
         <header class="navbar employee-navbar">
@@ -80,6 +58,7 @@
             </div>
 
             <nav class="navbar-right" aria-label="Navegação da conta">
+                <a href="#" class="nav-link">Dashboard</a>
                 <a href="/pages/login.html" class="nav-link" id="logoutLink">Sair</a>
             </nav>
         </header>
