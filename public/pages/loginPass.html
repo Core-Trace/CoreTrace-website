@@ -6,28 +6,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="stylesheet" href="../css/login.css">
+    <link rel="stylesheet" href="../css/main.css">
 </head>
 
 <body>
-    <header class="header">
-        <div class="header-left">
-            <div class="menu-icon">
-                <span></span><span></span><span></span>
+    <header class="navbar">
+            <div class="navbar-left">
+                <div class="burgerButton" onclick="asidePlot()">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 60 60" fill="none">
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                            d="M7.5 40H52.5V45H7.5V40ZM7.5 27.5H52.5V32.5H7.5V27.5ZM7.5 15H52.5V20H7.5V15Z"
+                            fill="#F6ECE6" />
+                    </svg>
+                </div>
+                <canvas class="navbar-logo">
             </div>
-            <div class="logo">
-                <span></span><span></span><span></span><span></span><span></span>
-            </div>
-        </div>
-        <nav class="nav">
-            <svg class="theme-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
 
-            </svg>
-            <a href="./main.html" class="nav-link">Home</a>
-            <a href="#" class="nav-link">Equipe</a>
-            <a href="#" class="nav-link">Links Úteis</a>
-            <a href="#" class="nav-link active">Login</a>
-        </nav>
-    </header>
+            <nav class="navbar-right">
+                <button class="theme-toggle">
+                    <img src="../assets/icons/Mingcute Sun Fill.png">
+                </button>
+                <a href="#" class="nav-link active">Home</a>
+                <a href="#" class="nav-link">Equipe</a>
+                <a href="#footer" class="nav-link">Links Úteis</a>
+                <a href="/pages/login.html" class="nav-link">Login</a>
+            </nav>
+        </header>
 
     <div class="login">
         <div class="login-card">
