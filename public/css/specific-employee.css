@@ -8,14 +8,16 @@
 body {
     background-color: #1a1a1c; 
     color: #ffffff;
-    padding: 2rem;
 }
 
 .specific-content {
+    width: 100%;
     max-width: 800px; 
+    margin-left: 40px;
     display: flex;
     flex-direction: column;
     gap: 24px;
+    padding: 2rem;
 }
 
 .employee-header {

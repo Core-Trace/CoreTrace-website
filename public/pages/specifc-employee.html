@@ -10,86 +10,172 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="../css/specific-employee.css">
+    <link rel="stylesheet" href="../css/aside-dash.css">
+    <link rel="stylesheet" href="../css/main.css">
 </head>
 
-<body>
-    <main class="specific-content">
+<body class="employee-page">
+    <aside class="employee-sidebar">
+        <a class="employee-logo" href="/" aria-label="Ir para a página inicial">
+            <img src="../assets/icons/Simple-Logo.png" alt="CoreTrace">
+        </a>
+
+        <nav class="sidebar-navigation">
+            <a class="sidebar-link active" href="#">Cadastrar Funcionário</a>
+            <a class="sidebar-link" href="#">Ver Funcionários</a>
+            <a class="sidebar-link" href="#">Entrar Em Contato</a>
+            <a class="sidebar-link" href="#">Jira</a>
+            <a class="sidebar-link" href="#">Links</a>
+
+            <div class="sidebar-submenu">
+                <div class="sidebar-group">
+                    <div class="sidebar-group-title">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                        Setor
+                    </div>
+                    <div class="sidebar-group-content">
+                        <div class="sidebar-group">
+                            <div class="sidebar-group-title">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                                Servidor
+                            </div>
+                            <div class="sidebar-group-content">
+                                <a href="#" class="sidebar-sub-link">
+                                    <span
+                                        style="display:inline-block; width: 12px; margin-left: -12px;">&bull;</span>UMCumc#2026
+                                </a>
+                                <a href="#" class="sidebar-sub-link">maquina2</a>
+                                <a href="#" class="sidebar-sub-link">maquina3</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sidebar-group">
+                    <div class="sidebar-group-title">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                        Setor
+                    </div>
+                    <div class="sidebar-group-content">
+                        <div class="sidebar-group">
+                            <div class="sidebar-group-title">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                                Servidor
+                            </div>
+                            <div class="sidebar-group-content">
+                                <a href="#" class="sidebar-sub-link">maquina4</a>
+                                <a href="#" class="sidebar-sub-link">maquina5</a>
+                                <a href="#" class="sidebar-sub-link">maquina6</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </aside>
 
 
-        <section class="info-section">
-            <h2 class="section-title">Setores</h2>
-            <div class="items-list" id="lista-setores">
-            </div>
-            <div class="items-list">
-                <div class="list-item">
-                    <button class="btn-remove">
-                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2">
-                            <path d="M18 6L6 18M6 6l12 12"></path>
-                        </svg>
-                    </button>
-                    <span class="item-text">Vendas</span>
-                </div>
-                <div class="list-item">
-                    <button class="btn-remove">
-                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2">
-                            <path d="M18 6L6 18M6 6l12 12"></path>
-                        </svg>
-                    </button>
-                    <span class="item-text">Financeiro</span>
-                </div>
-                <div class="list-item">
-                    <button class="btn-remove">
-                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2">
-                            <path d="M18 6L6 18M6 6l12 12"></path>
-                        </svg>
-                    </button>
-                    <span class="item-text">Loja</span>
-                </div>
-            </div>
-        </section>
+    <div class="employee-shell">
 
-        <section class="info-section">
-            <h2 class="section-title">Máquinas</h2>
-            <div class="items-list" id="lista-maquinas">
+        <header class="navbar employee-navbar">
+            <div class="logged-user">
+                <strong id="loggedUserName">Usuário</strong>
             </div>
-            <div class="items-list">
-                <div class="list-item machine-item">
-                    <div class="item-left">
+            <nav class="navbar-right" aria-label="Navegação da conta">
+                <a href="#" class="nav-link">Dashboard</a>
+                <a href="/pages/login.html" class="nav-link" id="logoutLink">Sair</a>
+            </nav>
+        </header>
+
+
+        <main class="specific-content">
+
+
+            <section class="info-section">
+                <h2 class="section-title">Setores</h2>
+                <div class="items-list" id="lista-setores">
+                </div>
+                <div class="items-list">
+                    <div class="list-item">
                         <button class="btn-remove">
                             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                 stroke-width="2">
                                 <path d="M18 6L6 18M6 6l12 12"></path>
                             </svg>
                         </button>
-                        <span class="item-text">Máquina 1</span>
+                        <span class="item-text">Vendas</span>
                     </div>
-                    <span class="item-tag">Vendas</span>
-                </div>
-                <div class="list-item machine-item">
-                    <div class="item-left">
+                    <div class="list-item">
                         <button class="btn-remove">
                             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                 stroke-width="2">
                                 <path d="M18 6L6 18M6 6l12 12"></path>
                             </svg>
                         </button>
-                        <span class="item-text">Máquina 2</span>
+                        <span class="item-text">Financeiro</span>
                     </div>
-                    <span class="item-tag">Financeiro</span>
+                    <div class="list-item">
+                        <button class="btn-remove">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M18 6L6 18M6 6l12 12"></path>
+                            </svg>
+                        </button>
+                        <span class="item-text">Loja</span>
+                    </div>
                 </div>
+            </section>
+
+            <section class="info-section">
+                <h2 class="section-title">Máquinas</h2>
+                <div class="items-list" id="lista-maquinas">
+                </div>
+                <div class="items-list">
+                    <div class="list-item machine-item">
+                        <div class="item-left">
+                            <button class="btn-remove">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M18 6L6 18M6 6l12 12"></path>
+                                </svg>
+                            </button>
+                            <span class="item-text">Máquina 1</span>
+                        </div>
+                        <span class="item-tag">Vendas</span>
+                    </div>
+                    <div class="list-item machine-item">
+                        <div class="item-left">
+                            <button class="btn-remove">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M18 6L6 18M6 6l12 12"></path>
+                                </svg>
+                            </button>
+                            <span class="item-text">Máquina 2</span>
+                        </div>
+                        <span class="item-tag">Financeiro</span>
+                    </div>
+                </div>
+            </section>
+
+            <div class="actions-footer">
+                <button class="btn-save">Salvar</button>
             </div>
-        </section>
 
-        <div class="actions-footer">
-            <button class="btn-save">Salvar</button>
-        </div>
-
-
-
-    </main>
+        </main>
+    </div>
 </body>
 
 </html>
