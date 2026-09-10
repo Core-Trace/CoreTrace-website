@@ -3,6 +3,7 @@ const loginModel = require("../models/loginModel");
 function autenticar(req, res) {
     const email = req.body.emailServer;
     const senha = req.body.senhaServer;
+    const passKey = req.body.passKeyServer;
 
     if (typeof email !== "string" || email.trim() === "") {
         return res.status(400).send("Seu email está indefinido!");
@@ -11,8 +12,11 @@ function autenticar(req, res) {
     if (typeof senha !== "string" || senha === "") {
         return res.status(400).send("Sua senha está indefinida!");
     }
+    if(typeof passKey !== "string" || passKey === "") {
+        return res.status(400).send("Sua passkey está indefinida!");
+    }
 
-    return loginModel.autenticar(email.trim(), senha)
+    return loginModel.autenticar(email.trim(), senha, passKey)
         .then(function (resultadoAutenticar) {
             if (resultadoAutenticar.length === 1) {
                 const usuario = resultadoAutenticar[0];

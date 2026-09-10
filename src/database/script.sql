@@ -22,12 +22,17 @@ CREATE TABLE setores (
     nome VARCHAR(80) NOT NULL UNIQUE
 );
 
+ALTER TABLE usuarios ADD passkey CHAR(16) NOT NULL;
+
+select * from usuarios;
+
 -- Usuários do sistema (quem faz login)
 CREATE TABLE usuarios (
     id_usuarios INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(120) NOT NULL,
     email VARCHAR(150) NOT NULL UNIQUE,
     senha VARCHAR(255) NOT NULL,
+    passkey CHAR(16) NOT NULL,
     papel INT NOT NULL,
     cadastrado INT,
     empresa INT NOT NULL,
