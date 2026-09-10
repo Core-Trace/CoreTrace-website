@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/login.css">
     <link rel="stylesheet" href="../css/cadastro-funcionario.css">
+    <link rel="stylesheet" href="../css/aside-dash.css">
 </head>
 
 <body class="employee-page">
@@ -21,7 +22,53 @@
 
         <nav class="sidebar-navigation" >
             <a class="sidebar-link active" href="#">Cadastrar Funcionário</a>
-            <a class="sidebar-link" href="#">Ver Funcionários</a>
+            <a class="sidebar-link" href="general-employee.html">Ver Funcionários</a>
+
+            <div class="sidebar-submenu">
+                <div class="sidebar-group">
+                    <div class="sidebar-group-title">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        Setor
+                    </div>
+                    <div class="sidebar-group-content">
+                        <div class="sidebar-group">
+                            <div class="sidebar-group-title">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                                Servidor
+                            </div>
+                            <div class="sidebar-group-content">
+                                <a href="#" class="sidebar-sub-link">
+                                    <span style="display:inline-block; width: 12px; margin-left: -12px;">&bull;</span>UMCumc#2026
+                                </a>
+                                <a href="#" class="sidebar-sub-link">maquina2</a>
+                                <a href="#" class="sidebar-sub-link">maquina3</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="sidebar-submenu">
+
+                    <div class="sidebar-group">
+                        <div class="sidebar-group-title">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                            Setor
+                        </div>
+                        <div class="sidebar-group-content">
+                            <div class="sidebar-group">
+                                <div class="sidebar-group-title">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                                    Servidor
+                                </div>
+                                <div class="sidebar-group-content">
+                                    <a href="#" class="sidebar-sub-link">
+                                        <span style="display:inline-block; width: 12px; margin-left: -12px;">&bull;</span>UMCumc#2026
+                                    </a>
+                                    <a href="#" class="sidebar-sub-link">maquina2</a>
+                                    <a href="#" class="sidebar-sub-link">maquina3</a>
+                                </div>
+                            </div>
+                        </div>
+                </div>
         </nav>
     </aside>
 
@@ -33,7 +80,6 @@
             </div>
 
             <nav class="navbar-right" aria-label="Navegação da conta">
-                <a href="#" class="nav-link">Dashboard</a>
                 <a href="/pages/login.html" class="nav-link" id="logoutLink">Sair</a>
             </nav>
         </header>
@@ -52,7 +98,7 @@
                     <div class="form-step active" id="firstStep">
                         <label class="visually-hidden" for="employeeName">Nome</label>
                         <input class="input" id="employeeName" name="name" type="text" placeholder="Nome" required>
-
+                        
                         <label class="visually-hidden" for="employeeEmail">Email</label>
                         <input class="input" id="employeeEmail" name="email" type="email" placeholder="Email" required>
 
