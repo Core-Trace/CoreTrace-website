@@ -1,0 +1,126 @@
+/* =========================================================
+   ESTRUTURA DE EQUIPE (ISOLADA DE CONFLITOS DE OUTROS CSS)
+   ========================================================= */
+
+/* 1. Força o container principal a empilhar as seções (cima / baixo) */
+main.equipe-container,
+.equipe-container {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+    padding: 40px 24px 80px 24px !important;
+    box-sizing: border-box !important;
+    align-items: stretch !important;
+}
+
+/* 2. SEÇÃO SUPERIOR: Apenas Texto e Imagem LADO A LADO */
+.banner-equipe {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: flex-start !important;
+    gap: 40px !important;
+    width: 100% !important;
+    margin-bottom: 50px !important;
+}
+
+.banner-sobreNos {
+    flex: 1 !important;
+    max-width: 500px !important;
+}
+
+.banner-sobreNos h2 {
+    font-size: 42px !important;
+    font-weight: 800 !important;
+    color: #ffffff !important;
+    margin: 0 0 20px 0 !important;
+    line-height: 1.1 !important;
+}
+
+.banner-text {
+    font-size: 18px !important;
+    line-height: 1.6 !important;
+    color: #d1d5db !important;
+    margin: 0 !important;
+}
+
+.image-logo {
+    flex: 1 !important;
+    display: flex !important;
+    justify-content: flex-end !important;
+}
+
+.image-logo img {
+    width: 100% !important;
+    max-width: 520px !important;
+    height: auto !important;
+    object-fit: contain !important;
+}
+
+/* 3. SEÇÃO INFERIOR: TIME E AGRADECIMENTOS (ABAIXO DE TUDO) */
+.banner-trabalho-equipe {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 40px !important;
+    width: 100% !important;
+    max-width: 500px !important; /* Alinha perfeitamente com a largura do texto de cima */
+    text-align: left !important;
+}
+
+.secao-time h2,
+.secao-agradecimentos h2 {
+    font-size: 38px !important;
+    font-weight: 800 !important;
+    color: #ffffff !important;
+    margin: 0 0 16px 0 !important;
+}
+
+/* 4. ESTILIZAÇÃO DAS LISTAS */
+.lista-time,
+.lista-agradecimentos {
+    list-style: none !important;
+    padding-left: 0 !important;
+    margin: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 10px !important;
+}
+
+.lista-time li,
+.lista-agradecimentos li {
+    font-size: 18px !important;
+    color: #ffffff !important;
+    display: flex !important;
+    align-items: center !important;
+}
+
+/* Marcador Vermelho para a equipe */
+.lista-time li::before {
+    content: "•" !important;
+    color: #BE3B2A !important;
+    font-size: 24px !important;
+    margin-right: 12px !important;
+    line-height: 1 !important;
+}
+
+/* Marcador Branco para Agradecimentos */
+.lista-agradecimentos li::before {
+    content: "•" !important;
+    color: #ffffff !important;
+    font-size: 24px !important;
+    margin-right: 12px !important;
+    line-height: 1 !important;
+}
+
+.nome-destaque {
+    color: #BE3B2A !important;
+    text-decoration: underline !important;
+    cursor: pointer !important;
+}
+
+.seta {
+    margin: 0 8px !important;
+    color: #ffffff !important;
+}
