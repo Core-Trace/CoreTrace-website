@@ -22,12 +22,17 @@ CREATE TABLE setores (
     nome VARCHAR(80) NOT NULL UNIQUE
 );
 
+ALTER TABLE usuarios ADD passkey CHAR(16) NOT NULL;
+
+select * from usuarios;
+
 -- Usuários do sistema (quem faz login)
 CREATE TABLE usuarios (
     id_usuarios INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(120) NOT NULL,
     email VARCHAR(150) NOT NULL UNIQUE,
     senha VARCHAR(255) NOT NULL,
+    passkey CHAR(16) NOT NULL,
     papel INT NOT NULL,
     cadastrado INT,
     empresa INT NOT NULL,
@@ -138,3 +143,19 @@ VALUES ('Financeiro'),
 SELECT * FROM usuarios;
 
 SELECT * FROM empresa;
+use coretrace;
+DROP VIEW vw_info_user;
+
+CREATE VIEW vw_info_user AS
+SELECT
+            usuarios.id_usuarios AS id,
+            usuarios.nome,
+            usuarios.senha,
+            usuarios.email,
+            usuarios.passkey,
+            usuarios.empresa AS id_empresa,
+            papeis.id_papeis AS id_papel,
+            papeis.nome AS nome_papel,
+            papeis.tipo AS tipo_papel
+        FROM usuarios
+        INNER JOIN papeis ON papeis.id_papeis = usuarios.papel;
