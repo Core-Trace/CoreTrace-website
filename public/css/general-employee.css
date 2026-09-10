@@ -6,13 +6,19 @@
 }
 
 body {
+    width: 100%;
     display: flex;
     flex-direction: column;
     font-family: 'Segoe UI', 'Poppins', Arial, sans-serif;
     background-color: #17181c;
     color: #f5ede4;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 
+main{
+    width: 100%;
+}
 .container{
     display: flex;
     align-self:stretch;
@@ -30,6 +36,8 @@ body {
     border-radius: 20px;
     background: #3C4043;
     span {
+        overflow: scroll;
+        scrollbar-width: none;
         grid-row: span 1;
         grid-column: span 1;
         justify-self: stretch;
@@ -42,6 +50,7 @@ body {
         line-height: normal;
     }
 }
+
 .employeePermissions {
     display: flex;
     flex-direction: column;
@@ -55,7 +64,7 @@ body {
         color: #000;
         text-align: center;
         font-family: Poppins;
-        font-size: 14px;
+        font-size: 16px;
         font-style: normal;
         font-weight: 400;
         line-height: normal;
@@ -191,14 +200,14 @@ body {
     display: flex;
     padding: 0 20px;
     align-items: flex-start;
-    flex: 1 0 0;
+    width: 100%;
     border-radius: 20px;
     background: #3C4043;
     ::placeholder{
     color: #FFF;
     text-align: left;
     font-family: Poppins;
-    font-size: 24px;
+    font-size: 12px;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
@@ -207,7 +216,7 @@ body {
     color: #FFF;
     text-align: left;
     font-family: Poppins;
-    font-size: 24px;
+    font-size: 16px;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
@@ -215,6 +224,7 @@ body {
 
 .searches{
     display: flex;
+    width: 100%;
     padding: 30px 50px;
     align-items: flex-start;
     gap: 30px;
@@ -262,7 +272,7 @@ body {
         color: #F6ECE6;
         text-align: center;
         font-family: Poppins;
-        font-size: 20px;
+        font-size: 16px;
         font-style: normal;
         font-weight: 800;
         line-height: normal;
@@ -290,22 +300,113 @@ svg{
     width: 100%;
     justify-content: right;
     gap: 20px;
-    button{
-    display: flex;
-    width: 300px;
-    height: 64px;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    border-radius: 20px;
-    background: #F6ECE6;
-    color: #000;
-    text-align: center;
-    font-family: Poppins;
-    font-size: 24px;
-    font-style: normal;
-    font-weight: 800;
-    line-height: normal;
+    padding: 0 2.5%;
+    
+    button {
+        background-color: #f5ede4;
+        color: #17181c;
+        padding: 23px 53px;
+        border: none;
+        border-radius: 12px;
+        font-size: 1.375rem;
+        font-weight: 700;
+        cursor: pointer;
+        transition: transform 0.2s ease, opacity 0.2s;
+    }
+
+    button:hover {
+        transform: scale(1.05);
+        opacity: 0.9;
+    }
+}
+    
+@media (max-width: 1080px) {
+    .vertical{
+        padding: 1%;
+    }
+    .checkBoxesArea {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .checkboxCont{
+        padding: 0 2%;
+        width: 30%;
+        align-self: stretch;
+        border-radius: 5px;
+        input{
+            width: 0%;
+            height: 0%;
+        }
+        div{
+            height: fit-content;
+        }
+        label{
+            font-size: 8px;
+            font-weight: 500;
+        }
+    }
+    .searches{
+        flex-wrap: wrap;
+        padding: 1%;
+    }
+
+    .employeeBox{
+        margin:0;
+        padding: 0;
+        .employeeFirstInfos{
+            border-radius: 2px;
+            span{
+                font-size: 8px;
+            }
+        }
+    }
+    .list{
+        padding: 1%;
+        .employeeVerticalBox{
+            flex-direction: row-reverse;
+            justify-content: center;
+            gap: 0%;
+            .employeeBox{
+                padding: 0 1%
+            }
+        }
+    }
+    .employee-navbar{
+        padding: 5%;
+        max-width: 100%;
+        .navbar-right{
+            gap: 40px;
+        }
+        .logged-user{
+            width: 100%;
+            margin-right: 40px;
+        }
+    }
+
+    .footer{
+    button {
+        background-color: #f5ede4;
+        color: #17181c;
+        padding: 1% 1%;
+        border: none;
+        border-radius: 5px;
+        font-size: 12px;
+        font-weight: 50;
+        cursor: pointer;
+        transition: transform 0.2s ease, opacity 0.2s;
+    }
+
+    button:hover {
+        transform: scale(1.05);
+        opacity: 0.9;
+    }
+
+    }
+
+svg{
+    width: 16px;
+    height: 16px;
+    aspect-ratio: 1/1;
 }
 }
