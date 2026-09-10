@@ -20,9 +20,9 @@ function buscarPorEmail(email) {
 
 function validarPapelFuncionario(idPapel) {
     const instrucaoSql = `
-        SELECT id_papel
-        FROM vw_info_user
-        WHERE id_papel = ? AND tipo_papel = 'FUNCIONARIO';
+    SELECT id_papeis
+        FROM vw_papeis
+        WHERE id_papeis = 2 AND tipo = 'FUNCIONARIO';
     `;
 
     return database.executar(instrucaoSql, [idPapel]);
