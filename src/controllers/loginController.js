@@ -49,7 +49,7 @@ function cadastrar(req, res) {
     const idPapel = Number(req.body.papelServer);
     const idResponsavel = Number(req.body.cadastradoServer);
     const idEmpresa = Number(req.body.empresaServer);
-    let passKey = gerarPassKey()
+    const passKey = gerarPassKey()
 
     if (typeof nome !== "string" || nome.trim() === "") {
         return res.status(400).send("Seu nome está indefinido!");
