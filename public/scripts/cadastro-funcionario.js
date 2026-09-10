@@ -86,7 +86,6 @@ function cadastrar(event) {
     }
 
     alternarCarregamento(submitButton, registerLoading, true);
-
     return enviarJson('/user/register', {
         nomeServer: nomeVar,
         emailServer: emailVar,
