@@ -1,287 +1,418 @@
 
-/* Employee list page — content area only. Header/sidebar remain unchanged. */
-.employee-page main {
-    position: relative;
-    min-height: calc(100vh - 80px);
-    padding: 0 20px 82px;
-    box-sizing: border-box;
-}
-
-.employee-page #container {
-    width: 100%;
-    max-width: none;
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-.employee-page .vertical {
+body {
     width: 100%;
-    margin: 0;
-    padding: 0;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Segoe UI', 'Poppins', Arial, sans-serif;
+    background-color: #17181c;
+    color: #f5ede4;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 
-.employee-page #search.searches {
-    display: grid;
+main{
+    width: 100%;
+    justify-content: center;
+}
+.container{
+    width: 100%;
+    display: flex;
+    align-self:stretch;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.employeeFirstInfos {
+    display: inline-grid;
+    row-gap: 10px;
+    column-gap: 10px;
+    align-self: stretch;
+    grid-template-rows: repeat(1, fit-content(100%));
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 16px;
+    grid-auto-flow: row;
+    border-radius: 20px;
+    background: #3C4043;
+    span {
+        overflow: scroll;
+        scrollbar-width: none;
+        grid-row: span 1;
+        grid-column: span 1;
+        justify-self: stretch;
+        color: #F6ECE6;
+        text-align: center;
+        font-family: Poppins;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+    }
+}
+
+.employeePermissions {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    align-self: stretch;
+    border-radius: 20px;
+    background: #FFF;
+    height: 0px;
+    overflow: hidden;
+    span {
+        color: #000;
+        text-align: center;
+        font-family: Poppins;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+    }
+    .epSectors {
+        span {
+            color: #000;
+            text-align: center;
+            font-family: Poppins;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+        }
+        .epSectorsList {
+            display: flex;
+            padding: 0 20px;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            span {
+                align-self: stretch;
+                color: #000;
+                font-family: Poppins;
+                font-size: 14px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: normal;
+            }
+        }
+    }
+    .epServers {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        align-self: stretch;
+        .epServersTitle {
+            display: flex;
+            padding-right: 20px;
+            align-items: center;
+            align-self: stretch;
+            span {
+                color: #BE3B2A;
+                text-align: center;
+                font-family: Poppins;
+                font-size: 14px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: normal;
+                text-align: left;
+            }
+            span:first-child {
+                flex: 1 0 0;
+                color: #000;
+                font-family: Poppins;
+                font-size: 14px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: normal;
+            }
+        }
+        .epServersList {
+            display: flex;
+            padding: 0 20px;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            align-self: stretch;
+            .machineServer {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                align-self: stretch;
+                span {
+                    color: #000;
+                    font-family: Poppins;
+                    font-size: 14px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: normal;
+                }
+                span:first-child {
+                    color: #000;
+                    font-family: Poppins;
+                    font-size: 14px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: normal;
+                }
+            }
+        }
+    }
+}
+.list{
+    display: flex;
+    height: 1080px;
+    min-height: 1080px;
+    padding: 10px 50px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    align-self: stretch;
+    .employeeVerticalBox {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        align-self: stretch;
+        input {
+            display: flex;
+            width: 20px;
+            height: 20px;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border-radius: 5px;
+            background: #F6ECE6;
+        }
+        .employeeBox {
+            display: flex;
+            padding: 0 20px;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 10px;
+            width: 100%;
+        }
+    }
+}
+
+.genEmpSearch{
+    display: flex;
+    padding: 0 20px;
+    align-items: flex-start;
     width: 100%;
-    padding: 12px 0 10px;
-    box-sizing: border-box;
-}
-
-.employee-page #search .genEmpSearch {
-    width: 100%;
-    min-width: 0;
-    height: 32px;
-    margin: 0;
-    padding: 0 12px;
-    border: 0;
-    border-radius: 16px;
-    background: #414549;
-    color: #f6ece6;
-    font: 400 13px 'Poppins', Arial, sans-serif;
-    outline: none;
-    box-sizing: border-box;
-}
-
-.employee-page #search .genEmpSearch::placeholder {
-    color: #f6ece6;
-    opacity: 1;
-}
-
-.employee-page #sort {
-    width: 100%;
-}
-
-.employee-page .checkBoxesArea {
-    display: grid;
-    grid-template-columns: 1.05fr 1.05fr 1fr 1.2fr .95fr;
-    width: 100%;
-    min-width: 0;
-    margin: 0;
-    padding: 0 0 8px;
-    box-sizing: border-box;
-}
-
-.employee-page .checkboxCont {
-    display: grid;
-    grid-template-columns: 18px 24px minmax(0, 1fr);
-    align-items: center;
-    min-width: 0;
-    height: 30px;
-    padding: 0 8px;
-    box-sizing: border-box;
-    color: #f6ece6;
+    border-radius: 20px;
+    background: #3C4043;
+    ::placeholder{
+    color: #FFF;
+    text-align: left;
+    font-family: Poppins;
     font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+
+    }
+    color: #FFF;
+    text-align: left;
+    font-family: Poppins;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
 }
 
-.employee-page .checkboxCont input[type='checkbox'] {
-    width: 13px;
-    height: 13px;
-    margin: 0;
-    accent-color: #c0432c;
-}
-
-.employee-page .checkboxCont > div {
-    width: 24px;
-    height: 24px;
+.searches{
     display: flex;
-    align-items: center;
+    width: 100%;
+    padding: 30px 50px;
+    align-items: flex-start;
+    gap: 30px;
+    align-self: stretch;
+}
+.vertical{
+    display: flex;
+    padding: 0 50px;
     justify-content: center;
+    align-items: flex-start;
+    align-self: stretch;
+    .spaceChecks{
+        display: flex;
+        padding: 30px;
+        align-items: center;
+        gap: 30px;
+        align-self: stretch;
+    }
 }
-
-.employee-page .checkboxCont svg {
-    width: 18px;
-    height: 18px;
+.checkBoxesArea{
+    display: inline-grid;
+    row-gap: 10px;
+    column-gap: 10px;
+    flex: 1 0 0;
+    grid-template-rows: repeat(1,fit-content(100%));
+    grid-template-columns: repeat(3,minmax(0,1fr));
+    grid-auto-flow: row;
 }
-
-.employee-page .checkboxCont label {
-    min-width: 0;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    cursor: pointer;
-}
-
-.employee-page .list {
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-.employee-page .employeeVerticalBox {
-    display: grid;
-    grid-template-columns: 18px minmax(0, 1fr);
-    width: 100%;
-    margin: 0 0 10px;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-.employee-page .employeeVerticalBox > input[type='checkbox'] {
-    width: 13px;
-    height: 13px;
-    margin: 9px 0 0;
-    accent-color: #c0432c;
-}
-
-.employee-page .employeeBox {
-    display: block;
-    width: 100%;
-    min-width: 0;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-.employee-page .employeeFirstInfos {
-    display: grid;
-    grid-template-columns: 1.05fr 1.05fr 1fr 1.2fr .95fr;
-    align-items: center;
-    width: 100%;
-    min-width: 0;
-    min-height: 30px;
-    padding: 0 8px;
-    border-radius: 15px;
-    background: #414549;
-    box-sizing: border-box;
-}
-
-.employee-page .employeeFirstInfos span {
-    min-width: 0;
-    padding: 0 8px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    color: #f6ece6;
-    font: 400 11px 'Poppins', Arial, sans-serif;
-}
-
-.employee-page .employeePermissions {
-    display: grid;
-    grid-template-columns: 1.05fr 1.95fr;
-    width: 100%;
-    height: 0;
-    overflow: hidden;
-    margin: 0;
-    padding: 0;
-    border-radius: 0 0 12px 12px;
-    background: #f6f6f6;
-    color: #252525;
-    box-sizing: border-box;
-    transition: height .15s ease, padding .15s ease;
-}
-
-.employee-page .employeePermissions span {
-    font-size: 11px;
-}
-
-.employee-page .epSectors,
-.employee-page .epServers {
-    min-width: 0;
-}
-
-.employee-page .epSectors {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-}
-
-.employee-page .epSectorsList {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-}
-
-.employee-page .epServersTitle,
-.employee-page .machineServer {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-}
-
-.employee-page .epServersTitle {
-    margin-bottom: 6px;
-}
-
-.employee-page .epServersList {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-}
-
-.employee-page .machineServer span:last-child {
-    text-align: right;
-}
-
-.employee-page .employeeBox > div:last-child {
+.checkboxCont{
     display: flex;
     justify-content: center;
-    width: 100%;
-    height: 0;
-    overflow: visible;
-    margin: 0;
-    padding: 0;
+    align-items: center;
+    gap: 9px;
+    grid-row: span 1;
+    grid-column: span 1;
+    justify-self: stretch;
+    border-radius: 20px;
+    border: 1px solid #F6ECE6;
+    background: #3C4043;
+    input{
+        display: none;
+    }
+    label{
+        flex: 1 0 0;
+        color: #F6ECE6;
+        text-align: center;
+        font-family: Poppins;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+    }
 }
-
-.employee-page .employeeBox > div:last-child input {
-    position: relative;
-    width: 24px;
-    height: 24px;
-    margin: -1px 0 0;
-    opacity: 0;
-    cursor: pointer;
+svg{
+    width: 32px;
+    height: 32px;
+    aspect-ratio: 1/1;
 }
-
-.employee-page .footer {
-    position: absolute;
-    right: 20px;
-    bottom: 30px;
+.openList{
     display: flex;
-    justify-content: flex-end;
-    gap: 14px;
-    width: auto;
-    margin: 0;
-    padding: 0;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    input{
+        display: none;
+    }
 }
 
-.employee-page .footer button {
-    min-width: 150px;
-    height: 42px;
-    padding: 0 18px;
-    border: 0;
-    border-radius: 12px;
-    background: #f6ece6;
-    color: #17181c;
-    font: 600 12px 'Poppins', Arial, sans-serif;
-    cursor: pointer;
+.footer{
+    display: flex;
+    position: sticky;
+    bottom: 0;
+    bottom: 50px;
+    width: 100%;
+    justify-content: right;
+    gap: 20px;
+    padding: 0 2.5%;
+    
+    button {
+        background-color: #f5ede4;
+        color: #17181c;
+        padding: 23px 53px;
+        border: none;
+        border-radius: 12px;
+        font-size: 1.375rem;
+        font-weight: 700;
+        cursor: pointer;
+        transition: transform 0.2s ease, opacity 0.2s;
+    }
+
+    button:hover {
+        transform: scale(1.05);
+        opacity: 0.9;
+    }
 }
+    
+@media (max-width: 1080px) {
+    .vertical{
+        padding: 1%;
+    }
+    .checkBoxesArea {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .checkboxCont{
+        padding: 0 2%;
+        width: 30%;
+        align-self: stretch;
+        border-radius: 5px;
+        input{
+            width: 0%;
+            height: 0%;
+        }
+        div{
+            height: fit-content;
+        }
+        label{
+            font-size: 8px;
+            font-weight: 500;
+        }
+    }
+    .searches{
+        flex-wrap: wrap;
+        padding: 1%;
+    }
 
-.employee-page .footer button:hover {
-    transform: translateY(-1px);
-    opacity: .92;
+    .employeeBox{
+        margin:0;
+        padding: 0;
+        .employeeFirstInfos{
+            border-radius: 2px;
+            span{
+                font-size: 8px;
+            }
+        }
+    }
+    .list{
+        padding: 1%;
+        .employeeVerticalBox{
+            flex-direction: row-reverse;
+            justify-content: center;
+            gap: 0%;
+            .employeeBox{
+                padding: 0 1%
+            }
+        }
+    }
+    .employee-navbar{
+        padding: 5%;
+        max-width: 100%;
+        .navbar-right{
+            gap: 40px;
+        }
+        .logged-user{
+            width: 100%;
+            margin-right: 40px;
+        }
+    }
+
+    .footer{
+    button {
+        background-color: #f5ede4;
+        color: #17181c;
+        padding: 1% 1%;
+        border: none;
+        border-radius: 5px;
+        font-size: 12px;
+        font-weight: 50;
+        cursor: pointer;
+        transition: transform 0.2s ease, opacity 0.2s;
+    }
+
+    button:hover {
+        transform: scale(1.05);
+        opacity: 0.9;
+    }
+
+    }
+
+svg{
+    width: 16px;
+    height: 16px;
+    aspect-ratio: 1/1;
 }
-
-@media (max-width: 900px) {
-    .employee-page main {
-        padding: 0 16px 92px;
-    }
-
-    .employee-page #search.searches,
-    .employee-page .checkBoxesArea,
-    .employee-page .employeeFirstInfos {
-        min-width: 680px;
-    }
-
-    .employee-page #container,
-    .employee-page .list {
-        overflow-x: auto;
-    }
-
-    .employee-page .footer {
-        right: 16px;
-        bottom: 20px;
-    }
 }
