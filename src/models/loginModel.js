@@ -2,7 +2,7 @@ const database = require("../database/config");
 
 function autenticar(email, senha, passKey) {
     const instrucaoSql = `
-        SELECT id, nome, email, id_empresa, id_papel, nome_papel, tipo_papel 
+        SELECT id, nome, email, id_empresa, id_papel, nome_papel, tipo_papel, passkey
         FROM vw_info_user 
         WHERE email = ? AND senha = ? AND passkey = ?;
     `;
