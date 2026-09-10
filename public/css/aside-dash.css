@@ -140,6 +140,9 @@
     text-decoration: none;
     transition: color 0.2s;
 }
+.sidebar-sub-link.active {
+    color: #d94d3a;    
+}
 
 .sidebar-sub-link:hover {
     color: #f6ece6;

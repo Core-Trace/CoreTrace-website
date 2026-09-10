@@ -1,10 +1,91 @@
+.employee-page main {
+    position: relative;
+    min-height: calc(100vh - 80px);
+    padding: 0 20px 82px;
+    box-sizing: border-box;
+}
 
-* {
+.employee-page #container {
+    width: 100%;
+    max-width: none;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+
+.employee-page .vertical {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.employee-page #search.searches {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+    width: 100%;
+    padding: 12px 0 10px;
+    box-sizing: border-box;
+}
+
+.employee-page #search .genEmpSearch {
+    width: 100%;
+    min-width: 0;
+    height: 32px;
+    margin: 0;
+    padding: 0 12px;
+    border: 0;
+    border-radius: 16px;
+    background: #414549;
+    color: #f6ece6;
+    font: 400 13px 'Poppins', Arial, sans-serif;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.employee-page #search .genEmpSearch::placeholder {
+    color: #f6ece6;
+    opacity: 1;
+}
+
+.employee-page #sort {
+    width: 100%;
+}
+
+.employee-page .checkBoxesArea {
+    display: grid;
+    grid-template-columns: 1.05fr 1.05fr 1fr 1.2fr .95fr;
+    width: 100%;
+    min-width: 0;
+    margin: 0;
+    padding: 0 0 8px;
+    box-sizing: border-box;
+}
+
+.employee-page .checkboxCont {
+    display: grid;
+    grid-template-columns: 18px 24px minmax(0, 1fr);
+    align-items: center;
+    min-width: 0;
+    height: 30px;
+    padding: 0 8px;
+    box-sizing: border-box;
+    color: #f6ece6;
+    font-size: 12px;
+}
+
+.employee-page .checkboxCont input[type='checkbox'] {
+    width: 13px;
+    height: 13px;
+    margin: 0;
+    accent-color: #c0432c;
+}
+
+.employee-page .checkboxCont > div {
+    width: 24px;
+    height: 24px;
+=======
 body {
     width: 100%;
     display: flex;
@@ -52,14 +133,80 @@ main{
 }
 
 .employeePermissions {
+
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    align-self: stretch;
-    border-radius: 20px;
-    background: #FFF;
-    height: 0px;
+    align-items: center;
+    justify-content: center;
+}
+
+.employee-page .checkboxCont svg {
+    width: 18px;
+    height: 18px;
+}
+
+.employee-page .checkboxCont label {
+    min-width: 0;
     overflow: hidden;
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+.employee-page .list {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.employee-page .employeeVerticalBox {
+    display: grid;
+    grid-template-columns: 18px minmax(0, 1fr);
+    width: 100%;
+    margin: 0 0 10px;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.employee-page .employeeVerticalBox > input[type='checkbox'] {
+    width: 13px;
+    height: 13px;
+    margin: 9px 0 0;
+    accent-color: #c0432c;
+}
+
+.employee-page .employeeBox {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.employee-page .employeeFirstInfos {
+    display: grid;
+    grid-template-columns: 1.05fr 1.05fr 1fr 1.2fr .95fr;
+    align-items: center;
+    width: 100%;
+    min-width: 0;
+    min-height: 30px;
+    padding: 0 8px;
+    border-radius: 15px;
+    background: #414549;
+    box-sizing: border-box;
+}
+
+.employee-page .employeeFirstInfos span {
+    min-width: 0;
+    padding: 0 8px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: #f6ece6;
+    font: 400 11px 'Poppins', Arial, sans-serif;
+=======
     span {
         color: #000;
         text-align: center;
@@ -160,44 +307,56 @@ main{
             }
         }
     }
-}
-.list{
-    display: flex;
-    height: 1080px;
-    min-height: 1080px;
-    padding: 10px 50px;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 20px;
-    align-self: stretch;
-    .employeeVerticalBox {
-        display: flex;
-        align-items: flex-start;
-        gap: 10px;
-        align-self: stretch;
-        input {
-            display: flex;
-            width: 20px;
-            height: 20px;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            border-radius: 5px;
-            background: #F6ECE6;
-        }
-        .employeeBox {
-            display: flex;
-            padding: 0 20px;
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 10px;
-            width: 100%;
-        }
-    }
+
 }
 
-.genEmpSearch{
+.employee-page .employeePermissions {
+    display: grid;
+    grid-template-columns: 1.05fr 1.95fr;
+    width: 100%;
+    height: 0;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    border-radius: 0 0 12px 12px;
+    background: #f6f6f6;
+    color: #252525;
+    box-sizing: border-box;
+    transition: height .15s ease, padding .15s ease;
+}
+
+.employee-page .employeePermissions span {
+    font-size: 11px;
+}
+
+.employee-page .epSectors,
+.employee-page .epServers {
+    min-width: 0;
+}
+
+.employee-page .epSectors {
     display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.employee-page .epSectorsList {
+    display: flex;
+
+    flex-direction: column;
+    gap: 4px;
+}
+
+.employee-page .epServersTitle,
+.employee-page .machineServer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.employee-page .epServersTitle {
+    margin-bottom: 6px;
+=======
     padding: 0 20px;
     align-items: flex-start;
     width: 100%;
@@ -229,33 +388,29 @@ main{
     align-items: flex-start;
     gap: 30px;
     align-self: stretch;
+
 }
-.vertical{
+
+.employee-page .epServersList {
     display: flex;
-    padding: 0 50px;
-    justify-content: center;
-    align-items: flex-start;
-    align-self: stretch;
-    .spaceChecks{
-        display: flex;
-        padding: 30px;
-        align-items: center;
-        gap: 30px;
-        align-self: stretch;
-    }
+    flex-direction: column;
+    gap: 4px;
 }
-.checkBoxesArea{
-    display: inline-grid;
-    row-gap: 10px;
-    column-gap: 10px;
-    flex: 1 0 0;
-    grid-template-rows: repeat(1,fit-content(100%));
-    grid-template-columns: repeat(5,minmax(0,1fr));
-    grid-auto-flow: row;
+
+.employee-page .machineServer span:last-child {
+    text-align: right;
 }
-.checkboxCont{
+
+.employee-page .employeeBox > div:last-child {
     display: flex;
     justify-content: center;
+
+    width: 100%;
+    height: 0;
+    overflow: visible;
+    margin: 0;
+    padding: 0;
+=======
     align-items: center;
     gap: 9px;
     grid-row: span 1;
@@ -277,22 +432,70 @@ main{
         font-weight: 800;
         line-height: normal;
     }
-}
-svg{
-    width: 32px;
-    height: 32px;
-    aspect-ratio: 1/1;
-}
-.openList{
-    display: flex;
-    width: 100%;
-    align-items: center;
-    justify-content: center;
-    input{
-        display: none;
-    }
+
 }
 
+.employee-page .employeeBox > div:last-child input {
+    position: relative;
+    width: 24px;
+    height: 24px;
+    margin: -1px 0 0;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.employee-page .footer {
+    position: absolute;
+    right: 20px;
+    bottom: 30px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 14px;
+    width: auto;
+    margin: 0;
+    padding: 0;
+}
+
+
+.employee-page .footer button {
+    min-width: 150px;
+    height: 42px;
+    padding: 0 18px;
+    border: 0;
+    border-radius: 12px;
+    background: #f6ece6;
+    color: #17181c;
+    font: 600 12px 'Poppins', Arial, sans-serif;
+    cursor: pointer;
+}
+
+.employee-page .footer button:hover {
+    transform: translateY(-1px);
+    opacity: .92;
+}
+
+@media (max-width: 900px) {
+    .employee-page main {
+        padding: 0 16px 92px;
+    }
+
+    .employee-page #search.searches,
+    .employee-page .checkBoxesArea,
+    .employee-page .employeeFirstInfos {
+        min-width: 680px;
+    }
+
+    .employee-page #container,
+    .employee-page .list {
+        overflow-x: auto;
+    }
+
+    .employee-page .footer {
+        right: 16px;
+        bottom: 20px;
+    }
+}
+=======
 .footer{
     display: flex;
     position: sticky;
@@ -410,3 +613,4 @@ svg{
     aspect-ratio: 1/1;
 }
 }
+
