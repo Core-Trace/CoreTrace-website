@@ -696,6 +696,15 @@ footer {
     background-color: #f5ede4;
     color: #17181c;
     width: 100%;
+    a {
+        color: #17181c;
+    }
+    a{
+        text-decoration: none;
+    }
+    a:hover{
+        text-decoration: underline;
+    }
 }
 
 .div-logo-footer {
