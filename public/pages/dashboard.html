@@ -110,7 +110,7 @@
                     </div>
                     <div class="kpi-card kpi-cpu">
                         <div class="kpi-label">CPU</div>
-                        <div class="kpi-value" id="kpiCpu">68%</div>
+                        <div class="kpi-value" id="kpiCpu"></div>
                     </div>
                 </div>
 
@@ -128,7 +128,7 @@
                     </div>
                     <div class="kpi-card kpi-ram">
                         <div class="kpi-label">RAM</div>
-                        <div class="kpi-value" id="kpiRam">44%</div>
+                        <div class="kpi-value" id="kpiRam"></div>
                     </div>
                 </div>
 
@@ -165,66 +165,30 @@
                 <div class="detail-section" id="detailSectionCpu">
                     <h2 class="detail-title title-cpu">CPU</h2>
                     <div class="detail-grid">
-                        <div class="detail-card">
-                            <div class="detail-label">Threads</div>
-                            <div class="detail-value" id="dCpuThreads">2</div>
-                        </div>
-                        <div class="detail-card">
-                            <div class="detail-label">Frequência</div>
-                            <div class="detail-value" id="dCpuFreq">5GHz</div>
-                        </div>
-                        <div class="detail-card">
-                            <div class="detail-label">Desvio Padrão</div>
-                            <div class="detail-value" id="dCpuDesvio">1.5</div>
-                        </div>
-                        <div class="detail-card">
-                            <div class="detail-label accent-cpu">Uso</div>
-                            <div class="detail-value accent-cpu" id="dCpuUso">68%</div>
-                        </div>
+                        <div class="detail-card"><div class="detail-label">Threads</div><div class="detail-value" id="dCpuThreads">2</div></div>
+                        <div class="detail-card"><div class="detail-label">Frequência</div><div class="detail-value" id="dCpuFreq">5GHz</div></div>
+                        <div class="detail-card"><div class="detail-label">Desvio Padrão</div><div class="detail-value" id="dCpuDesvio">1.5</div></div>
+                        <div class="detail-card"><div class="detail-label accent-cpu">Uso</div><div class="detail-value accent-cpu" id="kpiCpu2"></div></div>
                     </div>
                 </div>
 
                 <div class="detail-section" id="detailSectionRam">
                     <h2 class="detail-title title-ram">RAM</h2>
                     <div class="detail-grid">
-                        <div class="detail-card">
-                            <div class="detail-label">Espaço Atual</div>
-                            <div class="detail-value" id="dRamAtual">0.8G</div>
-                        </div>
-                        <div class="detail-card">
-                            <div class="detail-label">Espaço Total</div>
-                            <div class="detail-value" id="dRamTotal">2GB</div>
-                        </div>
-                        <div class="detail-card">
-                            <div class="detail-label">Desvio Padrão</div>
-                            <div class="detail-value" id="dRamDesvio">0.9</div>
-                        </div>
-                        <div class="detail-card">
-                            <div class="detail-label accent-ram">Uso</div>
-                            <div class="detail-value accent-ram" id="dRamUso">44%</div>
-                        </div>
+                        <div class="detail-card"><div class="detail-label">Espaço Atual</div><div class="detail-value" id="dRamAtual">0.8G</div></div>
+                        <div class="detail-card"><div class="detail-label">Espaço Total</div><div class="detail-value" id="dRamTotal">2GB</div></div>
+                        <div class="detail-card"><div class="detail-label">Desvio Padrão</div><div class="detail-value" id="dRamDesvio">0.9</div></div>
+                        <div class="detail-card"><div class="detail-label accent-ram">Uso</div><div class="detail-value accent-ram" id="kpiRam2"></div></div>
                     </div>
                 </div>
 
                 <div class="detail-section" id="detailSectionDisco">
                     <h2 class="detail-title title-disco">DISCO</h2>
                     <div class="detail-grid">
-                        <div class="detail-card">
-                            <div class="detail-label">Leitura</div>
-                            <div class="detail-value" id="dDiscoLeitura">3.4GB</div>
-                        </div>
-                        <div class="detail-card">
-                            <div class="detail-label">Escrita</div>
-                            <div class="detail-value" id="dDiscoEscrita">1.2GB</div>
-                        </div>
-                        <div class="detail-card">
-                            <div class="detail-label">Desvio Padrão</div>
-                            <div class="detail-value" id="dDiscoDesvio">1.1</div>
-                        </div>
-                        <div class="detail-card">
-                            <div class="detail-label accent-disco">Uso</div>
-                            <div class="detail-value accent-disco" id="dDiscoUso">25%</div>
-                        </div>
+                        <div class="detail-card"><div class="detail-label">Leitura</div><div class="detail-value" id="dDiscoLeitura">3.4GB</div></div>
+                        <div class="detail-card"><div class="detail-label">Escrita</div><div class="detail-value" id="dDiscoEscrita">1.2GB</div></div>
+                        <div class="detail-card"><div class="detail-label">Desvio Padrão</div><div class="detail-value" id="dDiscoDesvio">1.1</div></div>
+                        <div class="detail-card"><div class="detail-label accent-disco">Uso</div><div class="detail-value accent-disco" id="kpiDisco2"></div></div>
                     </div>
                 </div>
             </section>
@@ -269,7 +233,17 @@
         document.getElementById("id_maquina2").classList.add("active")
         document.getElementById('id_machine').innerHTML += machine
 
+        kpiCpu.textContent = "68%"
 
+        kpiRam.textContent = "44%"
+
+        kpiDisco.textContent = "25%"
+
+        kpiCpu2.textContent = "68%"
+
+        kpiRam2.textContent = "44%"
+
+        kpiDisco2.textContent = "25%"
 
         /* DADOS MOCADOS */
         var labels10 = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
@@ -300,9 +274,33 @@
         };
 
         //Troca de dados por maquina
-        if (machine == "maquina3") {
+        if(machine == "maquina3") {
             document.getElementById("id_maquina3").classList.add("active")
             document.getElementById("id_maquina2").classList.remove("active")
+
+            kpiCpu.textContent = "67%" // Variavel cpu mocada
+
+            kpiRam.textContent = "55%"
+            
+            kpiDisco.textContent = "53%"
+
+            kpiCpu2.textContent = "67%"
+
+            kpiRam2.textContent = "55%"
+
+            kpiDisco2.textContent = "53%"
+
+            document.getElementById("dCpuThreads").textContent = "4"
+            document.getElementById("dCpuFreq").textContent = "4.2GHz"
+            document.getElementById("dCpuDesvio").textContent = "2.1"
+
+            document.getElementById("dRamAtual").textContent = "1.4G"
+            document.getElementById("dRamTotal").textContent = "4GB"
+            document.getElementById("dRamDesvio").textContent = "1.3"
+
+            document.getElementById("dDiscoLeitura").textContent = "5.8GB"
+            document.getElementById("dDiscoEscrita").textContent = "2.7GB"
+            document.getElementById("dDiscoDesvio").textContent = "2.4"
 
             dadosCpu = {
                 last10: {
