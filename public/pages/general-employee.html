@@ -15,9 +15,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <link
-
         href="https://fonts.googleapis.com/css2?family=Jersey+25&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-
         rel="stylesheet">
 
     <link rel="stylesheet" href="../css/main.css">
@@ -32,64 +30,71 @@
 
 <body class="employee-page">
 
-        <aside class="employee-sidebar">
+    <aside class="employee-sidebar">
 
-            <a class="employee-logo" href="/" aria-label="Ir para a página inicial">
+        <a class="employee-logo" href="/" aria-label="Ir para a página inicial">
 
-                <img src="../assets/icons/Simple-Logo.png" alt="CoreTrace">
+            <img src="../assets/images/CoreTraceLetteringDarkMode.avif" alt="CoreTrace">
 
-            </a>
+        </a>
 
-            <nav class="sidebar-navigation" >
+        <nav class="sidebar-navigation">
 
-                <a class="sidebar-link" href="cadastro-funcionario.html">Cadastrar Funcionário</a>
+            <a class="sidebar-link" href="cadastro-funcionario.html">Cadastrar Funcionário</a>
 
-                <a class="sidebar-link active" href="#">Ver Funcionários</a>
+            <a class="sidebar-link active" href="#">Ver Funcionários</a>
 
-                <div class="sidebar-submenu">
+            <div class="sidebar-submenu">
 
-                    <div class="sidebar-group">
+                <div class="sidebar-group">
 
-                        <div class="sidebar-group-title">
+                    <div class="sidebar-group-title">
 
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
 
-                            Setor
+                        Setor
 
-                        </div>
+                    </div>
 
-                        <div class="sidebar-group-content">
+                    <div class="sidebar-group-content">
 
-                            <div class="sidebar-group">
+                        <div class="sidebar-group">
 
-                                <div class="sidebar-group-title">
+                            <div class="sidebar-group-title">
 
-                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
 
-                                    Servidor
+                                Servidor
 
-                                </div>
+                            </div>
 
-                                <div class="sidebar-group-content">
+                            <div class="sidebar-group-content">
 
-                                    <a href="#" class="sidebar-sub-link">
+                                <!-- <a href="#" class="sidebar-sub-link">
 
-                                        <span style="display:inline-block; width: 12px; margin-left: -12px;">&bull;</span>UMCumc#2026
+                                    <span
+                                        style="display:inline-block; width: 12px; margin-left: -12px;">&bull;</span>UMCumc#2026
 
-                                    </a>
+                                </a> -->
 
-                                    <a href="dashboard.html?machinemaquina2" class="sidebar-sub-link">maquina2</a>
+                                <a href="dashboard.html?machinemaquina2" class="sidebar-sub-link">maquina2</a>
 
-                                    <a href="dashboard.html?machine=maquina3" class="sidebar-sub-link">maquina3</a>
-
-                                </div>
+                                <a href="dashboard.html?machine=maquina3" class="sidebar-sub-link">maquina3</a>
 
                             </div>
 
                         </div>
 
                     </div>
+
                 </div>
+            </div>
             </div>
         </nav>
     </aside>
@@ -122,15 +127,12 @@
                     <div id="search" class="searches">
 
                         <input type="search" id="srchName" placeholder="Buscar Nome" onblur="loadEmployee()"
-
                             class="genEmpSearch">
 
                         <input type="search" id="srchEmail" placeholder="Buscar Email" onblur="loadEmployee()"
-
                             class="genEmpSearch">
 
                         <input type="search" id="srchPosition" placeholder="Buscar Cargo" onblur="loadEmployee()"
-
                             class="genEmpSearch">
 
                     </div>
@@ -170,26 +172,28 @@
                             <label for="chckPosition">Cargo</label>
 
                         </div>
-
+                        <!--
+                            
                         <div class="checkboxCont">
-
                             <input type="checkbox" id="chckData" onchange="loadEmployee()">
 
                             <div id="svg4"></div>
 
                             <label for="chckData">Data de Admissão</label>
-
+                            
                         </div>
-
+                        
                         <div class="checkboxCont">
 
                             <input type="checkbox" id="chckActivities" onchange="loadEmployee()">
-
+                            
                             <div id="svg5"></div>
-
+                            
                             <label for="chckActivities">Atividade</label>
 
+
                         </div>
+                        -->
 
                     </div>
 
@@ -210,10 +214,11 @@
                                 <span>useremail@admin.com</span>
 
                                 <span>Gerente</span>
-
+                                <!--
                                 <span>dd/mm/yyyy HH:MM:SS</span>
-
+                                
                                 <span>Online</span>
+                                -->
 
                             </div>
 
@@ -281,85 +286,95 @@
 
                 </div>
 
-            </div>
 
-            <div class="footer">
+                <div class="footer">
+                    <!--
+                    <button>
+                        
+                        Remover Funcionário
+                        
+                    </button>
+                    -->
 
-                <button>
+                    <button onclick="AlterarPermissoes()">
 
-                    Remover Funcionário
+                        Alterar Permissões
 
-                </button>
+                    </button>
 
-                <button>
-
-                    Alterar Permissões
-
-                </button>
-
+                </div>
             </div>
 
         </main>
 
     </div>
-<script src="../scripts/employeesGeneral.js"></script>
+    <script src="../scripts/employeesGeneral.js"></script>
 
-<script>
+    <script>
 
-    loggedUserName.textContent = sessionStorage.NOME_USUARIO || 'Usuário';
+        loggedUserName.textContent = sessionStorage.NOME_USUARIO || 'Usuário';
 
-    loggedUserEmail.textContent = sessionStorage.EMAIL_USUARIO || '';
+        loggedUserEmail.textContent = sessionStorage.EMAIL_USUARIO || '';
 
-    function openList(idUsuario) {
+        function openList(idUsuario) {
 
-let chckBox = document.getElementById(`svgUI${idUsuario}`)
+            let chckBox = document.getElementById(`svgUI${idUsuario}`)
 
-let chckMark = chckBox.checked;
+            let chckMark = chckBox.checked;
 
-let svgGraphic = document.getElementById(`svgGUI${idUsuario}`)
+            console.log(chckMark)
 
-        console.log("Lista aberta")
+            let svgGraphic = document.getElementById(`svgGUI${idUsuario}`)
 
-let InfoUser = document.getElementById(`employeePermissions${idUsuario}`)
+            let InfoUser = document.getElementById(`employeePermissions${idUsuario}`)
 
-        chckMark ? chckBox.checked = false : chckBox.checked = true
 
-        chckMark ?
 
-            svgGraphic.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+            if (chckMark) {
 
-        <path d="M8.45739 19.5427L16.0001 12L23.5427 19.5427" stroke="#F6ECE6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                InfoUser.style.height = "fit-content"
+
+                InfoUser.style.padding = "10px"
+
+                InfoUser.style.gap = "20px"
+
+            }
+
+            else {
+
+                InfoUser.style.height = "0"
+
+                InfoUser.style.padding = "0"
+
+                InfoUser.style.gap = "0"
+
+            }
+            chckMark ?
+
+                svgGraphic.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+
+                <path d="M8.45739 19.5427L16.0001 12L23.5427 19.5427" stroke="#F6ECE6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
 
         </svg>`:
 
-            svgGraphic.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+                svgGraphic.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
 
-        <path d="M23.5426 12.4573L15.9999 20L8.45728 12.4573" stroke="#F6ECE6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-
-        </svg>`
-
-        if (chckMark) {
-
-            InfoUser.style.height = "fit-content"
-
-            InfoUser.style.padding = "10px"
-
-            InfoUser.style.gap = "20px"
+            <path d="M23.5426 12.4573L15.9999 20L8.45728 12.4573" stroke="#F6ECE6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            
+            </svg>`
+            if (chckMark) {
+                chckBox.checked = false
+            }
+            else {
+                chckBox.checked = true
+            }
 
         }
-
-        else {
-
-            InfoUser.style.height = "0"
-
-            InfoUser.style.padding = "0"
-
-            InfoUser.style.gap = "0"
-
+        function AlterarPermissoes() {
+            window.location.href = "/pages/specifc-employee.html"
         }
 
-    }
-
-</script>
+    </script>
 </body>
+
 </html>
