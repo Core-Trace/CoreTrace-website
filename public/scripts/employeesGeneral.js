@@ -201,8 +201,6 @@ function employeePlotters(employees, serversFromEmployee) {
                     <span id="${idUsuario}">${employee["nome"]}</span>
                     <span>${employee["email"]}</span>
                     <span id="${employee["tipo_papel"]}">${employee["papel"]}</span>
-                    <span>dd/mm/yyyy HH:MM:SS</span>
-                    <span>Ativo</span>
                 </div>
                 <div class="employeePermissions" id="employeePermissions${idUsuario}">
                 </div>
@@ -270,9 +268,10 @@ function employeePlotters(employees, serversFromEmployee) {
         }
         listContainer.innerHTML+= `
         <div class="openList">
-            <input type="checkbox" id="svgUI${idUsuario}">
+            <input type="checkbox" id="svgUI${idUsuario}" >
             <div onclick=openList(${idUsuario}) id =svgGUI${idUsuario}></div>
         </div>`
-        openList(idUsuario)
-    });
+        openList(idUsuario) 
+    }
+);
 }
