@@ -100,9 +100,24 @@ function revokeAccess(idUsuario, arrayMaquinas) {
     return database.executar(instrucaoSQL, parametros);
 }
 
+function getPapel(idUsuario, emailUsuario){
+    console.log("ACESSEI O EMPLOYEE MODEL function getPapel():", idUsuario, emailUsuario);
+
+    const instrucaoSQL = `
+        SELECT papel 
+        FROM usuarios u 
+        WHERE id_usuarios = ? 
+        AND email = ?;
+        `
+    console.log("Executando a instrução SQL: \n" + instrucaoSQL);
+    var parametros = [idUsuario, emailUsuario]
+    return database.executar(instrucaoSQL,parametros)
+}
+
 
 module.exports = {
     searchEmployee,
     catchServer,
-    revokeAccess
+    revokeAccess,
+    getPapel,
 };
