@@ -90,10 +90,32 @@ function revokeAccess(req, res) {
     }
 }
 
+function getPapel(req, res){
+    let idUsuario = req.body.usuarioId;
+    let emailUsuario = req.body.usuarioEmail;
+    if (idUsuario == undefined) {
+        res.status(400).send("ID do funcionário está undefined!");
+    } else if (emailUsuario == undefined) {
+        res.status(400).send("Email do funcionário está undefined!");
+    }else{
+        employeeModel.getPapel(idUsuario,emailUsuario)
+        .then(function(resultado){
+            res.json(resultado);
+        })
+        .catch(function(erro){
+            console.log(erro);
+            console.log("Houve um erro ao tentar pegar o Papel do Funcionário: ",erro.sqlMessage);
+            res.status(500).json(erro.sqlMessage)
+        })
+    }
+
+}
+
 
 
 module.exports = {
     searchEmployee,
     catchServer,
     revokeAccess,
+    getPapel,
 };
