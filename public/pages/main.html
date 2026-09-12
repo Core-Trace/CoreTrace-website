@@ -75,30 +75,35 @@
             <div class="banner-overlay">
                 <div class="logo-coretrace-banner"></div>
                 <div class="text-banner">
-                    <p><span>Todos os </span> ingredientes <span> para a estabilidade da sua plataforma reunidos em uma solução de </span>APM<span> sob medida.</span></p>
+                    <p><span>Monitoramento que </span> sustenta <span> o seu negócio.</span></p>
                 </div>
-            </div>  
+            </div>
             <div class="banner-image">
-                <img src="../assets/images/Motoboy.png" alt="Motoboy do iFood">
+                <video autoplay muted playsinline class="banner-video">
+                    <source src="../assets/videos/coretrace-banner.webm" type="video/mp4">
+                        Seu navegador não suporta vídeos HTML5.
+                </video>
                 <div class="bannerfade"></div>
             </div>
         </section>
 
-        <!-- Adicionada a classe reveal -->
+        
         <section class="about reveal" id="about">
             <h2 class="about-title">O que fazemos</h2>
-            
+
             <div class="topico-item">
                 <h3 class="topico-titulo"> • Gestão de Infraestruturas de Alta Demanda</h3>
                 <p class="about-text">
-                    Ajudamos empresas parceiras a gerenciar suas máquinas conectadas a servidores próprios no modelo arquitetural do iFood, centralizando o controle e otimizando a gerência de recursos computacionais.
+                    Ajudamos empresas parceiras a gerenciar suas máquinas conectadas a servidores próprios no modelo
+                    arquitetural do iFood, centralizando o controle e otimizando a gerência de recursos computacionais.
                 </p>
             </div>
 
             <div class="topico-item">
                 <h3 class="topico-titulo"> •Centralização via Dashboard e Aplicações Locais</h3>
                 <p class="about-text">
-                    Proporcionamos uma plataforma integrada que consolida os dados operacionais em tempo real, facilitando a tomada de decisão e o monitoramento contínuo da sua infraestrutura.
+                    Proporcionamos uma plataforma integrada que consolida os dados operacionais em tempo real,
+                    facilitando a tomada de decisão e o monitoramento contínuo da sua infraestrutura.
                 </p>
             </div>
         </section>
@@ -109,18 +114,20 @@
 
                 <div class="textos-resolver-container">
                     <h2 class="titulo-resolver">O que pretendemos resolver?</h2>
-                    
+
                     <div class="topico-item">
                         <h3 class="topico-titulo"> • Mitigação de Riscos em Operações Críticas</h3>
                         <p class="descricao-resolver">
-                            Desenvolvido para garantir disponibilidade integral, reduzindo a vulnerabilidade de plataformas de alta demanda contra gargalos de infraestrutura.
+                            Desenvolvido para garantir disponibilidade integral, reduzindo a vulnerabilidade de
+                            plataformas de alta demanda contra gargalos de infraestrutura.
                         </p>
                     </div>
 
                     <div class="topico-item">
                         <h3 class="topico-titulo"> • Prevenção de Efeito Dominó e Indisponibilidade</h3>
                         <p class="descricao-resolver">
-                            Evitamos que falhas operacionais simples, como sobrecarga de CPU em servidores Cloud, evoluam para paradas críticas que travam pedidos e pagamentos.
+                            Evitamos que falhas operacionais simples, como sobrecarga de CPU em servidores Cloud,
+                            evoluam para paradas críticas que travam pedidos e pagamentos.
                         </p>
                     </div>
                 </div>
@@ -199,7 +206,7 @@
         <section class="dashSobreContainer reveal" id="dashSobreContainer">
             <div class="dashInfoText">
                 <p>Sobre a Dashboard</p>
-                
+
                 <div class="dash-grid-topicos">
                     <div class="topico-item">
                         <h3 class="topico-titulo">• Monitoramento Unificado</h3>
@@ -261,27 +268,28 @@
 
     <script src="./../scripts/aside-home.js"></script>
     <script>
-    document.addEventListener("DOMContentLoaded", () => {
-        const elementsToReveal = document.querySelectorAll(".reveal");
+        document.addEventListener("DOMContentLoaded", () => {
+            const elementsToReveal = document.querySelectorAll(".reveal");
 
-        const observerOptions = {
-            root: null,
-            threshold: 0.15
-        };
+            const observerOptions = {
+                root: null,
+                threshold: 0.15
+            };
 
-        const revealOnScroll = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add("active");
-                    observer.unobserve(entry.target);
-                }
+            const revealOnScroll = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("active");
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            elementsToReveal.forEach(element => {
+                revealOnScroll.observe(element);
             });
-        }, observerOptions);
-
-        elementsToReveal.forEach(element => {
-            revealOnScroll.observe(element);
         });
-    });
     </script>
 </body>
+
 </html>
