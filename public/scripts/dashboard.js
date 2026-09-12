@@ -19,7 +19,6 @@ async function getPapel(){
         }
 
         const papel = await response.json()
-        console.log(papel)
         gerarAside(papel)
 }
 let cadastrarFunc = document.getElementById("CadastrarFuncionario")
