@@ -81,9 +81,9 @@ h1, h2, h3, h4, .kpi-value, .detail-value, .machine-code {
 }
 
 .icon-btn {
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
+  width: 42px;
+  height: 42px;
+  border-radius: 15%;
   border: none;
   background: #f5ede4;
   color: #17181c;
@@ -99,7 +99,7 @@ h1, h2, h3, h4, .kpi-value, .detail-value, .machine-code {
   width: 30px;
   height: 30px;
   font-size: 14px;
-  border-radius: 8px;
+  border-radius: 15%;
 }
 
 /* ---------- hover e efeitos de clique ---------- */

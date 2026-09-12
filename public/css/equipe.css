@@ -1,126 +1,99 @@
 /* =========================================================
-   ESTRUTURA DE EQUIPE (ISOLADA DE CONFLITOS DE OUTROS CSS)
+   ESTRUTURA DE EQUIPE (MANTENDO PADRÃO CSS DA MAIN)
    ========================================================= */
 
-/* 1. Força o container principal a empilhar as seções (cima / baixo) */
 main.equipe-container,
 .equipe-container {
-    display: flex !important;
-    flex-direction: column !important;
-    width: 100% !important;
-    max-width: 1200px !important;
-    margin: 0 auto !important;
-    padding: 40px 24px 80px 24px !important;
-    box-sizing: border-box !important;
-    align-items: stretch !important;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 0;
+    padding: 0;
 }
 
-/* 2. SEÇÃO SUPERIOR: Apenas Texto e Imagem LADO A LADO */
+/* 1. SEÇÃO SOBRE */
 .banner-equipe {
-    display: flex !important;
-    flex-direction: row !important;
-    justify-content: space-between !important;
-    align-items: flex-start !important;
-    gap: 40px !important;
-    width: 100% !important;
-    margin-bottom: 50px !important;
+    margin: 8vh 14vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
 }
 
 .banner-sobreNos {
-    flex: 1 !important;
-    max-width: 500px !important;
-}
-
-.banner-sobreNos h2 {
-    font-size: 42px !important;
-    font-weight: 800 !important;
-    color: #ffffff !important;
-    margin: 0 0 20px 0 !important;
-    line-height: 1.1 !important;
-}
-
-.banner-text {
-    font-size: 18px !important;
-    line-height: 1.6 !important;
-    color: #d1d5db !important;
-    margin: 0 !important;
+    width: 50%;
 }
 
 .image-logo {
-    flex: 1 !important;
-    display: flex !important;
-    justify-content: flex-end !important;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .image-logo img {
-    width: 100% !important;
-    max-width: 520px !important;
-    height: auto !important;
-    object-fit: contain !important;
+    width: 100%;
+    max-width: 450px;
+    height: auto;
 }
 
-/* 3. SEÇÃO INFERIOR: TIME E AGRADECIMENTOS (ABAIXO DE TUDO) */
-.banner-trabalho-equipe {
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 40px !important;
-    width: 100% !important;
-    max-width: 500px !important; /* Alinha perfeitamente com a largura do texto de cima */
-    text-align: left !important;
+/* 2. GRID DA EQUIPE (Aproveita a estrutura de cards da Main) */
+.secao-time-container {
+    margin: 8vh 14vw;
 }
 
-.secao-time h2,
-.secao-agradecimentos h2 {
-    font-size: 38px !important;
-    font-weight: 800 !important;
-    color: #ffffff !important;
-    margin: 0 0 16px 0 !important;
+.grid-equipe {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    width: 100%;
 }
 
-/* 4. ESTILIZAÇÃO DAS LISTAS */
-.lista-time,
-.lista-agradecimentos {
-    list-style: none !important;
-    padding-left: 0 !important;
-    margin: 0 !important;
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 10px !important;
+.card-membro {
+    aspect-ratio: auto;
+    padding: 30px 20px;
 }
 
-.lista-time li,
-.lista-agradecimentos li {
-    font-size: 18px !important;
-    color: #ffffff !important;
-    display: flex !important;
-    align-items: center !important;
+.card-membro .card-valor {
+    font-size: 24px;
+    color: #F6ECE6;
 }
 
-/* Marcador Vermelho para a equipe */
-.lista-time li::before {
-    content: "•" !important;
-    color: #BE3B2A !important;
-    font-size: 24px !important;
-    margin-right: 12px !important;
-    line-height: 1 !important;
+.card-membro .card-titulo {
+    color: #c0432c;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
-/* Marcador Branco para Agradecimentos */
-.lista-agradecimentos li::before {
-    content: "•" !important;
-    color: #ffffff !important;
-    font-size: 24px !important;
-    margin-right: 12px !important;
-    line-height: 1 !important;
+/* 3. AGRADECIMENTOS */
+.secao-agradecimentos-container {
+    margin: 8vh 14vw;
 }
 
-.nome-destaque {
-    color: #BE3B2A !important;
-    text-decoration: underline !important;
-    cursor: pointer !important;
+/* RESPONSIVIDADE (Mesmos breakpoints da Main) */
+@media (max-width: 1024px) {
+    .banner-equipe {
+        flex-direction: column;
+        margin: 6vh 5vw;
+    }
+
+    .banner-sobreNos, .image-logo {
+        width: 100%;
+    }
+
+    .secao-time-container, .secao-agradecimentos-container {
+        margin: 6vh 5vw;
+    }
+
+    .grid-equipe {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
-.seta {
-    margin: 0 8px !important;
-    color: #ffffff !important;
+@media (max-width: 600px) {
+    .grid-equipe {
+        grid-template-columns: 1fr;
+    }
 }
