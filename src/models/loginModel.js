@@ -58,10 +58,122 @@ function cadastrar(nome, email, senha, idPapel, idResponsavel, idEmpresa, passKe
     ]);
 }
 
+function getSectors(idEmpresa){
+    const instrucaoSQL = `SELECT id_setores, nome, empresa FROM setores WHERE empresa = ?`
+    return database.executar(instrucaoSQL,[idEmpresa])
+}
+
+function getMachines(setor){
+    const instrucaoSQL = `SELECT 
+    m.id_maquina AS id_maquina, 
+    m.nome AS nome_maquina, 
+    m.codigo AS codigo_maquina, 
+    m.servidor AS servidor,
+    s.nome AS nome_servidor, 
+    s.setor AS setor, 
+    st.nome AS nome_setor 
+    FROM maquina AS m 
+    LEFT JOIN servidores s ON s.id_servidor = m.servidor 
+    LEFT JOIN setores st ON st.id_setores = s.setor WHERE setor = ?`
+    return database.executar(instrucaoSQL,[setor])
+}
+
+function inserirAcessosServidor(idUsuario, idConcedidoPor, acessos) {
+    // acessos: array de objetos { servidor: number, maquina: number|null }
+
+    if (!Array.isArray(acessos) || acessos.length === 0) {
+        return Promise.resolve([]);
+    }
+
+    const instrucaoSQL = `
+        INSERT INTO acessos_servidor (usuario, servidor, concedido_por, maquina)
+        VALUES ?
+    `;
+
+    const valores = acessos.map(function (acesso) {
+        return [idUsuario, acesso.servidor, idConcedidoPor, acesso.maquina ?? null];
+    });
+
+    return database.executar(instrucaoSQL, [valores]);
+}
+
+function criarAcesso(usuario, servidor, maquina, concedidoPor) {
+    const instrucaoSQL = `
+        INSERT INTO acessos_servidor (usuario, servidor, maquina, concedido_por)
+        VALUES (?, ?, ?, ?)
+    `;
+    return database.executar(instrucaoSQL, [usuario, servidor, maquina, concedidoPor]);
+}
+
+function criarAcessosEmLote(usuario, concedidoPor, acessos) {
+    const placeholders = acessos.map(function () {
+        return "(?, ?, ?, ?)";
+    }).join(", ");
+
+    const instrucaoSQL = `
+        INSERT INTO acessos_servidor (usuario, servidor, maquina, concedido_por)
+        VALUES ${placeholders}
+    `;
+
+    const valores = [];
+    acessos.forEach(function (acesso) {
+        valores.push(usuario, acesso.servidor, acesso.maquina, concedidoPor);
+    });
+
+    return database.executar(instrucaoSQL, valores);
+}
+function listarAcessosPorUsuario(usuario) {
+    const instrucaoSQL = `
+        SELECT a.usuario, a.servidor, a.maquina, a.concedido_por, a.dt_acesso, a.dt_retirada,
+               s.nome AS nome_servidor, m.nome AS nome_maquina
+        FROM acessos_servidor a
+        JOIN servidores s ON s.id_servidor = a.servidor
+        JOIN maquina m ON m.id_maquina = a.maquina
+        WHERE a.usuario = ?
+          AND a.dt_retirada IS NULL
+    `;
+    return database.executar(instrucaoSQL, [usuario]);
+}
+
+function buscarAcesso(usuario, servidor, maquina) {
+    const instrucaoSQL = `
+        SELECT usuario, servidor, maquina, concedido_por, dt_acesso, dt_retirada
+        FROM acessos_servidor
+        WHERE usuario = ? AND servidor = ? AND maquina = ?
+    `;
+    return database.executar(instrucaoSQL, [usuario, servidor, maquina]);
+}
+
+function revogarAcesso(usuario, servidor, maquina) {
+    const instrucaoSQL = `
+        UPDATE acessos_servidor
+        SET dt_retirada = CURRENT_TIMESTAMP
+        WHERE usuario = ? AND servidor = ? AND maquina = ?
+          AND dt_retirada IS NULL
+    `;
+    return database.executar(instrucaoSQL, [usuario, servidor, maquina]);
+}
+
+function removerAcesso(usuario, servidor, maquina) {
+    const instrucaoSQL = `
+        DELETE FROM acessos_servidor
+        WHERE usuario = ? AND servidor = ? AND maquina = ?
+    `;
+    return database.executar(instrucaoSQL, [usuario, servidor, maquina]);
+}
 module.exports = {
     autenticar,
     buscarPorEmail,
     validarPapelFuncionario,
     validarResponsavel,
-    cadastrar
+    cadastrar,
+    getSectors,
+    getMachines,
+    inserirAcessosServidor,
+    criarAcesso,
+    criarAcessosEmLote,
+    listarAcessosPorUsuario,
+    buscarAcesso,
+    revogarAcesso,
+    removerAcesso,
 };

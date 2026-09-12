@@ -13,15 +13,20 @@ function searchEmployee(nomeServer, emailServer, posicaoServer, ordemNomeServer,
     // aparecem no HTML: Funcionário (nome), Email, Cargo (posição)
     let colunasOrdenacao = "";
 
-    if (marcadoNomeServer) {
-        colunasOrdenacao += `u.nome ${direcaoNome}, `;
-    }
-    if (marcadoEmailServer) {
-        colunasOrdenacao += `u.email ${direcaoEmail}, `;
-    }
     if (marcadoPosicaoServer) {
-        colunasOrdenacao += `p.nome ${direcaoPosicao}, `;
+        colunasOrdenacao += `p.nivel_papel ${direcaoPosicao}, `;
+    }else{
+        colunasOrdenacao += `p.nivel_papel ${direcaoPosicao}, `;
     }
+    if (marcadoNomeServer) {
+        colunasOrdenacao += `nome ${direcaoNome}, `;
+    }else{
+        if (marcadoEmailServer) {
+            colunasOrdenacao += `email ${direcaoEmail}, `;
+        }else{
+            colunasOrdenacao += `email ${direcaoEmail}, `;
+        }
+        }
 
     if (colunasOrdenacao !== "") {
         colunasOrdenacao = colunasOrdenacao.substring(0, colunasOrdenacao.length - 2);
@@ -61,7 +66,7 @@ function catchServer(idUsuario) {
         u.nome AS nome_usuario,
         st.id_setores AS id_setor,
         st.nome AS nome_setor,
-        sv.id_servidor AS id_servidor, 
+        sv.id_servidor AS id_servidor,
         sv.nome AS nome_servidor,
         m.id_maquina AS id_maquina,
         m.nome AS nome_maquina,
@@ -69,10 +74,10 @@ function catchServer(idUsuario) {
         m.dt_inicio AS dt_inicio_maquina,
         m.dt_fim AS dt_fim_maquina
     FROM acessos_servidor
-    INNER JOIN setores AS st
-    RIGHT JOIN servidores AS sv ON sv.id_servidor = acessos_servidor.servidor AND st.id_setores = sv.setor
-    LEFT JOIN usuarios AS u ON u.id_usuarios = acessos_servidor.usuario
-    LEFT JOIN maquina AS m ON m.servidor = sv.id_servidor
+    INNER JOIN usuarios AS u ON u.id_usuarios = acessos_servidor.usuario
+    INNER JOIN maquina AS m ON m.id_maquina = acessos_servidor.maquina
+    INNER JOIN servidores AS sv ON sv.id_servidor = acessos_servidor.servidor
+    LEFT JOIN setores AS st ON st.id_setores = sv.setor
     WHERE u.id_usuarios = ?;`
     console.log("Executando a instrução SQL: \n" + instrucaoSQL);
     var parametros = [idUsuario]

@@ -78,20 +78,20 @@ function checkHistory() {
     let chckEmployee = document.getElementById("chckEmployee")
     let chckEmail = document.getElementById("chckEmail")
     let chckPosition = document.getElementById("chckPosition")
-    let chckData = document.getElementById("chckData")
-    let chckActivities = document.getElementById("chckActivities")
+    //let chckData = document.getElementById("chckData")
+    //let chckActivities = document.getElementById("chckActivities")
 
     let marcadoEmployee = chckEmployee.checked
     let marcadoEmail = chckEmail.checked
     let marcadoPosition = chckPosition.checked
-    let marcadoData = chckData.checked
-    let marcadoAtividade = chckActivities.checked
+    //let marcadoData = chckData.checked
+    //let marcadoAtividade = chckActivities.checked
 
     svg1=document.getElementById("svg1")
     svg2=document.getElementById("svg2")
     svg3=document.getElementById("svg3")
-    svg4=document.getElementById("svg4")
-    svg5=document.getElementById("svg5")    
+    //svg4=document.getElementById("svg4")
+    //svg5=document.getElementById("svg5")    
 
     marcadoEmployee ?
     svg1.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
@@ -117,7 +117,7 @@ function checkHistory() {
         <path d="M23.5426 12.4573L15.9999 20L8.45728 12.4573" stroke="#F6ECE6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>`
 
-    marcadoData ? 
+    /*marcadoData ? 
     svg4.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
         <path d="M8.45739 19.5427L16.0001 12L23.5427 19.5427" stroke="#F6ECE6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>` : 
@@ -132,7 +132,7 @@ function checkHistory() {
     svg5.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
         <path d="M23.5426 12.4573L15.9999 20L8.45728 12.4573" stroke="#F6ECE6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>`
-
+    */
     let allChecks = {
         "chckEmployee": marcadoEmployee ? "DESC" : "ASC",
         "chckEmail": marcadoEmail ? "DESC" : "ASC",

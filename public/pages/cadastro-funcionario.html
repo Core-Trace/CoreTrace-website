@@ -16,39 +16,45 @@
 
 <body class="employee-page">
     <aside class="employee-sidebar">
-            <a class="employee-logo" href="/" aria-label="Ir para a página inicial">
-                <img src="../assets/images/CoreTraceLetteringDarkMode.avif" alt="CoreTrace">
-            </a>
+        <a class="employee-logo" href="/" aria-label="Ir para a página inicial">
+            <img src="../assets/images/CoreTraceLetteringDarkMode.avif" alt="CoreTrace">
+        </a>
 
-            <nav class="sidebar-navigation" >
-                <a class="sidebar-link active" href="#">Cadastrar Funcionário</a>
-                <a class="sidebar-link " href="general-employee.html">Ver Funcionários</a>
+        <nav class="sidebar-navigation">
+            <a class="sidebar-link active" href="#">Cadastrar Funcionário</a>
+            <a class="sidebar-link " href="general-employee.html">Ver Funcionários</a>
 
-                <div class="sidebar-submenu">
-                    <div class="sidebar-group">
-                        <div class="sidebar-group-title">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-                            Setor
-                        </div>
-                        <div class="sidebar-group-content">
-                            <div class="sidebar-group">
-                                <div class="sidebar-group-title">
-                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-                                    Servidor
-                                </div>
-                                <div class="sidebar-group-content">
-                                    <!-- <a href="#" class="sidebar-sub-link">
+            <div class="sidebar-submenu">
+                <div class="sidebar-group">
+                    <div class="sidebar-group-title">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                        Setor
+                    </div>
+                    <div class="sidebar-group-content">
+                        <div class="sidebar-group">
+                            <div class="sidebar-group-title">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                                Servidor
+                            </div>
+                            <div class="sidebar-group-content">
+                                <!-- <a href="#" class="sidebar-sub-link">
                                         <span style="display:inline-block; width: 12px; margin-left: -12px;">&bull;</span>UMCumc#2026
                                     </a> -->
-                                    <a href="dashboard.html?machinemaquina2" class="sidebar-sub-link">maquina2</a>
-                                    <a href="dashboard.html?machine=maquina3" class="sidebar-sub-link">maquina3</a>
-                                </div>
+                                <a href="dashboard.html?machinemaquina2" class="sidebar-sub-link">maquina2</a>
+                                <a href="dashboard.html?machine=maquina3" class="sidebar-sub-link">maquina3</a>
                             </div>
                         </div>
                     </div>
-                    <div class="sidebar-submenu">
-            </nav>
-        </aside>
+                </div>
+                <div class="sidebar-submenu">
+        </nav>
+    </aside>
 
     <div class="employee-shell">
         <header class="navbar employee-navbar">
@@ -77,12 +83,13 @@
                     <div class="form-step active" id="firstStep">
                         <label class="visually-hidden" for="employeeName">Nome</label>
                         <input class="input" id="employeeName" name="name" type="text" placeholder="Nome" required>
-                        
+
                         <label class="visually-hidden" for="employeeEmail">Email</label>
                         <input class="input" id="employeeEmail" name="email" type="email" placeholder="Email" required>
 
                         <label class="visually-hidden" for="employeePassword">Senha</label>
-                        <input class="input" id="employeePassword" name="password" type="password" placeholder="Senha" minlength="6" required>
+                        <input class="input" id="employeePassword" name="password" type="password" placeholder="Senha"
+                            minlength="6" required>
 
                         <label class="visually-hidden" for="employeeRole">Cargo</label>
                         <select class="input employee-select" id="employeeRole" name="role" required>
@@ -100,30 +107,34 @@
                             <legend>Informe os setores que o usuário terá acesso</legend>
                             <div class="selection-box">
                                 <span class="selection-title">Setores</span>
-                                <label><input class="sector-checkbox" type="checkbox" name="sectors" value="vendas"> Vendas</label>
-                                <label><input class="sector-checkbox" type="checkbox" name="sectors" value="financeiro"> Financeiro</label>
-                                <label><input class="sector-checkbox" type="checkbox" name="sectors" value="loja"> Loja</label>
+                                <div class="selection-box" id="setoresSelectionBox">
+                                    <label><input class="sector-checkbox" type="checkbox" name="sectors" value="vendas">
+                                        Vendas</label>
+                                    <label><input class="sector-checkbox" type="checkbox" name="sectors"
+                                            value="financeiro">
+                                        Financeiro</label>
+                                    <label><input class="sector-checkbox" type="checkbox" name="sectors" value="loja">
+                                        Loja</label>
+                                </div>
                             </div>
                             <label class="select-all">
                                 Selecionar Tudo
-                                <input id="selectAllSectors" type="checkbox">
+                                <input id="selectAllSectorsid" type="checkbox" onchange="selectAllSectors()">
                             </label>
                         </fieldset>
 
                         <fieldset class="access-group">
                             <legend>Informe as máquinas que o usuário terá acesso</legend>
-                            <div class="selection-box machines-box">
+                            <div class="selection-box machines-box" id="maquinasSelectionBox">
                                 <span class="selection-title">Máquinas</span>
                                 <!-- TODO: Pegar pcs do bd -->
-                                <label><span><input class="machine-checkbox" type="checkbox" name="machines" value="UMCumc#2026"> UMCumc#2026</span><span>Vendas</span></label>
-                                <label><span><input class="machine-checkbox" type="checkbox" name="machines" value="maquina2"> maquina2</span><span>Vendas</span></label>
-                                <label><span><input class="machine-checkbox" type="checkbox" name="machines" value="maquina3"> maquina3</span><span>Vendas</span></label>
-                                <label><span><input class="machine-checkbox" type="checkbox" name="machines" value="maquina7"> maquina7</span><span>Loja</span></label>
-                                <label><span><input class="machine-checkbox" type="checkbox" name="machines" value="maquina8"> maquina8</span><span>Loja</span></label>
+                                <div id="machineSelectionBox" class="selection-box machines">
+                                    <span>Nenhuma Máquina Encontrada</span>
+                                </div>
                             </div>
                             <label class="select-all">
                                 Selecionar Tudo
-                                <input id="selectAllMachines" type="checkbox">
+                                <input id="selectAllMachinesid" type="checkbox" onchange="selectAllMachines()">
                             </label>
                         </fieldset>
 
@@ -136,7 +147,8 @@
 
                         <div class="employee-action">
                             <button class="btn-next" type="submit">Finalizar</button>
-                            <img class="loading-indicator" id="registerLoading" src="../assets/images/loading.gif" alt="Cadastrando funcionário" hidden>
+                            <img class="loading-indicator" id="registerLoading" src="../assets/images/loading.gif"
+                                alt="Cadastrando funcionário" hidden>
                         </div>
                     </div>
                 </form>

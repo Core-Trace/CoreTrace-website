@@ -147,7 +147,126 @@ function gerarPassKey() {
     return passKey;
 }
 
+function getSectors(req,res){
+    let empresaId = req.body.idEmpresa
+    if(!empresaId){
+        return res.status(400).send("A empresa está inválida!");
+    }
+    else{
+        loginModel.getSectors(empresaId).then(function (resultado) {
+                res.json(resultado);
+            })
+            .catch(function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao puxar servidores! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            });
+    } 
+        
+}
+function getMachines(req,res){
+    const setor = req.body.setor
+    if(setor<=0 || setor == null){
+        return res.status(400).send("O setor está inválido!");
+    }
+    else{loginModel.getMachines(setor).then(function (resultado) {
+                res.json(resultado);
+            })
+            .catch(function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao puxar máquinas! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            });
+    }
+}
+
+function criarAcessos(req, res) {
+    const usuario = Number(req.body.usuario);
+    const concedidoPor = Number(req.body.concedidoPor);
+    const acessos = req.body.acessos; // [{ servidor, maquina }, ...]
+
+    if (!Number.isInteger(usuario) || usuario <= 0) {
+        return res.status(400).send("O usuário informado é inválido!");
+    }
+
+    if (!Number.isInteger(concedidoPor) || concedidoPor <= 0) {
+        return res.status(400).send("O responsável pela concessão é inválido!");
+    }
+
+    if (!Array.isArray(acessos) || acessos.length === 0) {
+        return res.status(400).send("É necessário informar ao menos um acesso (servidor e máquina).");
+    }
+
+    const acessoInvalido = acessos.some(function (acesso) {
+        return !Number.isInteger(Number(acesso.servidor)) || !Number.isInteger(Number(acesso.maquina))
+            || Number(acesso.servidor) <= 0 || Number(acesso.maquina) <= 0;
+    });
+
+    if (acessoInvalido) {
+        return res.status(400).send("Todo acesso precisa de um servidor e uma máquina válidos.");
+    }
+
+    return loginModel.criarAcessosEmLote(usuario, concedidoPor, acessos)
+        .then(function () {
+            return res.status(201).json({ mensagem: "Acessos cadastrados com sucesso!" });
+        })
+        .catch(function (erro) {
+            console.error("Erro ao criar acessos:", erro);
+
+            if (erro.code === "ER_DUP_ENTRY") {
+                return res.status(409).json({ mensagem: "Um ou mais acessos já existem para esse usuário." });
+            }
+
+            return res.status(500).json({ mensagem: "Houve um erro ao cadastrar os acessos." });
+        });
+}
+
+function listarAcessos(req, res) {
+    const usuario = Number(req.params.usuario);
+
+    if (!Number.isInteger(usuario) || usuario <= 0) {
+        return res.status(400).send("O usuário informado é inválido!");
+    }
+
+    return loginModel.listarAcessosPorUsuario(usuario)
+        .then(function (acessos) {
+            return res.json(acessos);
+        })
+        .catch(function (erro) {
+            console.error("Erro ao listar acessos:", erro);
+            return res.status(500).send("Houve um erro ao listar os acessos.");
+        });
+}
+
+function revogarAcesso(req, res) {
+    const usuario = Number(req.body.usuario);
+    const servidor = Number(req.body.servidor);
+    const maquina = Number(req.body.maquina);
+
+    if (!Number.isInteger(usuario) || !Number.isInteger(servidor) || !Number.isInteger(maquina)
+        || usuario <= 0 || servidor <= 0 || maquina <= 0) {
+        return res.status(400).send("Usuário, servidor e máquina precisam ser válidos.");
+    }
+
+    return loginModel.revogarAcesso(usuario, servidor, maquina)
+        .then(function (resultado) {
+            if (resultado.affectedRows === 0) {
+                return res.status(404).send("Acesso não encontrado ou já revogado.");
+            }
+            return res.status(200).send("Acesso revogado com sucesso!");
+        })
+        .catch(function (erro) {
+            console.error("Erro ao revogar acesso:", erro);
+            return res.status(500).send("Houve um erro ao revogar o acesso.");
+        });
+}
+
 module.exports = {
     autenticar,
-    cadastrar
+    cadastrar,
+    getSectors,
+    getMachines,
+    criarAcessos,
+    listarAcessos,
+    revogarAcesso,
 };
