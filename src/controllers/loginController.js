@@ -164,6 +164,23 @@ function getSectors(req,res){
     } 
         
 }
+function getSectorsUser(req,res){
+    let usuarioId = req.params.id
+    if(!usuarioId){
+        return res.status(400).send("O usuário está inválido!");
+    }
+    else{
+        loginModel.getSectorsUser(usuarioId).then(function (resultado) {
+                res.json(resultado);    
+        })
+        .catch(function (erro) {
+            console.log(erro);
+            console.log("Houve um erro ao puxar servidores! Erro: ", erro.sqlMessage);
+            res.status(500).json(erro.sqlMessage);
+        });
+    }
+}
+
 function getMachines(req,res){
     const setor = req.body.setor
     if(setor<=0 || setor == null){
@@ -269,4 +286,5 @@ module.exports = {
     criarAcessos,
     listarAcessos,
     revogarAcesso,
+    getSectorsUser
 };
