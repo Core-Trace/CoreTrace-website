@@ -12,15 +12,41 @@ function gerarAside(papel) {
 var bolinhas = ['<span style="color:#f5ede4 ; font-size: 30px; width: 100%; align-items: right"> •</span>','<span style="color: red; font-size: 30px; width: 100%; align-items: right">•</span>', '<span style="color: yellow; font-size: 30px; width: 100%; align-items: right">•</span>', '<span style="color: yellow; font-size: 30px; width: 100%; align-items: right">•</span>',
 	'<span style="color: #f5ede4; font-size: 30px; width: 100%; align-items: right">•</span>', '<span style="color: red; font-size: 30px; width: 100%; align-items: right">•</span>'];
 	
-	async function carregarMenuServidores() {
-		const menu = document.getElementById("menuServidores");
-		const Title = document.getElementById("sectorsTitleAsideChckBox") 
-		try {
-			const dados = await enviarJson("/employee/catchServer/", {
-				employeeId: sessionStorage.ID_USUARIO,
-			});
-			
-			menu.innerHTML = `<input type="checkbox" id="asideSectorsFirstChckBox" style= "display:none">`;
+let statusChckBoxSectors = JSON.parse(
+	sessionStorage.getItem("statusChckBoxSectors") || "[]"
+);
+
+let statusChckBoxServers = JSON.parse(
+	sessionStorage.getItem("statusChckBoxServers") || "[]"
+);
+
+function salvarStatus() {
+	sessionStorage.setItem(
+		"statusChckBoxSectors",
+		JSON.stringify(statusChckBoxSectors)
+	);
+
+	sessionStorage.setItem(
+		"statusChckBoxServers",
+		JSON.stringify(statusChckBoxServers)
+	);
+}
+
+async function carregarMenuServidores() {
+	const menu = document.getElementById("menuServidores");
+
+	try {
+		const dados = await enviarJson("/employee/catchServer/", {
+			employeeId: sessionStorage.ID_USUARIO,
+		});
+
+		menu.innerHTML = `
+			<input 
+				type="checkbox" 
+				id="asideSectorsFirstChckBox" 
+				style="display:none"
+			>
+		`;
 
 		const setores = {};
 
@@ -41,119 +67,270 @@ var bolinhas = ['<span style="color:#f5ede4 ; font-size: 30px; width: 100%; alig
 				};
 			}
 
-			setores[item.id_setor].servidores[item.id_servidor].maquinas.push(item);
+			setores[item.id_setor]
+				.servidores[item.id_servidor]
+				.maquinas
+				.push(item);
 		});
 
 		Object.values(setores).forEach((setor) => {
-			console.log(setor)
+			console.log(setor);
+
 			const setorDiv = document.createElement("div");
 			setorDiv.classList.add("sidebar-group");
 
+			const setorEstaAberto =
+				statusChckBoxSectors.includes(setor.id_setor);
+
 			const setorTitulo = document.createElement("div");
 			setorTitulo.classList.add("sidebar-group-title");
-			
+
 			setorTitulo.innerHTML = `
-			<svg width="14" height="14" viewBox="0 0 24 24"
-                    fill="none" stroke="currentColor"
-                    stroke-width="3"
-                    stroke-linecap="round"
-                    stroke-linejoin="round">
-                    <polyline points="9 6 15 12 9 18" id=chckSideBarSector-${setor.id_setor}></polyline>
-					</svg>
-					${setor.nome}
-					`;
+				<svg 
+					width="14" 
+					height="14" 
+					viewBox="0 0 24 24"
+					fill="none" 
+					stroke="currentColor"
+					stroke-width="3"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				>
+					<polyline 
+						points="${
+							setorEstaAberto
+								? "6 9 12 15 18 9"
+								: "9 6 15 12 9 18"
+						}" 
+						id="chckSideBarSector-${setor.id_setor}"
+					></polyline>
+				</svg>
+
+				${setor.nome}
+			`;
 
 			const servidoresDiv = document.createElement("div");
-			servidoresDiv.id = `serverFrom${setor.id_setor}`
+
+			servidoresDiv.id = `serverFrom${setor.id_setor}`;
 			servidoresDiv.classList.add("sidebar-group-content");
-			servidoresDiv.style.display="none"
-			setorTitulo.onclick = function(){
-				chckBoxAsideStatus = document.getElementById(`chckSideBarSector-${setor.id_setor}`)
-				chckBoxAsideStatus.checked?chckBoxAsideStatus.checked=false:chckBoxAsideStatus.checked=true;
-				asideServerFrom = document.getElementById(`serverFrom${setor.id_setor}`)
-				chckBoxAsideStatus.checked?asideServerFrom.style.display="flex":asideServerFrom.style.display="none"
-				svg=document.getElementById(`chckSideBarSector-${setor.id_setor}`)
-				if(chckBoxAsideStatus.checked){
-						asideServerFrom.style.display="flex"
-						svg.setAttribute("points", "6 9 12 15 18 9");
-					}
-					else{
-						asideServerFrom.style.display="none"
-						svg.setAttribute("points", "9 6 15 12 9 18");
-					}
-			}
-			
-			Object.values(setor.servidores).forEach((servidor) => {
-				console.log(servidor)
-				const servidorDiv = document.createElement(`div`);
-				servidorDiv.classList.add("sidebar-group");
 
-				const servidorTitulo = document.createElement("div");
-				servidorTitulo.classList.add("sidebar-group-title");
+			servidoresDiv.style.display =
+				setorEstaAberto ? "flex" : "none";
 
-				servidorTitulo.innerHTML = `
-                    <svg
-						width="14" height="14" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor"
-                        stroke-width="3"
-                        stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <polyline points="9 6 15 12 9 18" id="svgAsideFromServer-${servidor.id_servidor}"></polyline>
-                    </svg>
-					<input type=checkbox id=chckSideBarServer-${servidor.id_servidor} style="display:none">
-                    ${servidor.nome} 
-                `;
+			setorTitulo.onclick = function () {
+				const idSetor = setor.id_setor;
 
-				const maquinasDiv = document.createElement(`div`);
-				maquinasDiv.id = `machsFrom${servidor.id_servidor}`
-				maquinasDiv.style.display="none"
-				maquinasDiv.classList.add("sidebar-group-content");
-				servidorTitulo.onclick = function(){
-					chckBoxAsideStatus = document.getElementById(`chckSideBarServer-${servidor.id_servidor}`)
-					chckBoxAsideStatus.checked?chckBoxAsideStatus.checked=false:chckBoxAsideStatus.checked=true;
-					asideServerFrom = document.getElementById(`machsFrom${servidor.id_servidor}`)
-					svg = document.getElementById(`svgAsideFromServer-${servidor.id_servidor}`)
-					if(chckBoxAsideStatus.checked){
-						asideServerFrom.style.display="flex"
-						svg.setAttribute("points", "6 9 12 15 18 9");
-					}
-					else{
-						asideServerFrom.style.display="none"
-						svg.setAttribute("points", "9 6 15 12 9 18");
-					}
+				const estaAberto =
+					statusChckBoxSectors.includes(idSetor);
+
+				const asideServerFrom =
+					document.getElementById(
+						`serverFrom${idSetor}`
+					);
+
+				const svg =
+					document.getElementById(
+						`chckSideBarSector-${idSetor}`
+					);
+
+				if (estaAberto) {
+					statusChckBoxSectors =
+						statusChckBoxSectors.filter(
+							(id) => id != idSetor
+						);
+
+					asideServerFrom.style.display = "none";
+
+					svg.setAttribute(
+						"points",
+						"9 6 15 12 9 18"
+					);
+				} else {
+					statusChckBoxSectors.push(idSetor);
+
+					asideServerFrom.style.display = "flex";
+
+					svg.setAttribute(
+						"points",
+						"6 9 12 15 18 9"
+					);
 				}
 
-				const machineAtual = new URLSearchParams(window.location.search).get(
-					"machine",
+				salvarStatus();
+			};
+
+			Object.values(setor.servidores).forEach((servidor) => {
+				console.log(servidor);
+
+				const servidorDiv = document.createElement("div");
+				servidorDiv.classList.add("sidebar-group");
+
+				const servidorEstaAberto =
+					statusChckBoxServers.includes(
+						servidor.id_servidor
+					);
+
+				const servidorTitulo =
+					document.createElement("div");
+
+				servidorTitulo.classList.add(
+					"sidebar-group-title"
 				);
 
-				for (let i = 0; i < servidor.maquinas.length; i++) {
-					const maquina = servidor.maquinas[i];
-					const maquinaLink = document.createElement("a");
+				servidorTitulo.innerHTML = `
+					<svg
+						width="14" 
+						height="14" 
+						viewBox="0 0 24 24"
+						fill="none" 
+						stroke="currentColor"
+						stroke-width="3"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+					>
+						<polyline 
+							points="${
+								servidorEstaAberto
+									? "6 9 12 15 18 9"
+									: "9 6 15 12 9 18"
+							}" 
+							id="svgAsideFromServer-${servidor.id_servidor}"
+						></polyline>
+					</svg>
 
-					maquinaLink.classList.add("sidebar-sub-link");
-					maquinaLink.textContent = maquina.nome_maquina;
-					maquinaLink.innerHTML += bolinhas[maquina.id_maquina - 1];
-					maquinaLink.href = `dashboard.html?machine=${maquina.id_maquina}`;
+					${servidor.nome}
+				`;
 
-					if (machineAtual == maquina.id_maquina) {
-						maquinaLink.classList.add("active");
+				const maquinasDiv =
+					document.createElement("div");
 
-						const idMachine = document.getElementById("id_machine");
+				maquinasDiv.id =
+					`machsFrom${servidor.id_servidor}`;
+
+				maquinasDiv.classList.add(
+					"sidebar-group-content"
+				);
+
+				maquinasDiv.style.display =
+					servidorEstaAberto
+						? "flex"
+						: "none";
+
+				servidorTitulo.onclick = function () {
+					const idServidor =
+						servidor.id_servidor;
+
+					const estaAberto =
+						statusChckBoxServers.includes(
+							idServidor
+						);
+
+					const asideServerFrom =
+						document.getElementById(
+							`machsFrom${idServidor}`
+						);
+
+					const svg =
+						document.getElementById(
+							`svgAsideFromServer-${idServidor}`
+						);
+
+					if (estaAberto) {
+						statusChckBoxServers =
+							statusChckBoxServers.filter(
+								(id) => id != idServidor
+							);
+
+						asideServerFrom.style.display =
+							"none";
+
+						svg.setAttribute(
+							"points",
+							"9 6 15 12 9 18"
+						);
+					} else {
+						statusChckBoxServers.push(
+							idServidor
+						);
+
+						asideServerFrom.style.display =
+							"flex";
+
+						svg.setAttribute(
+							"points",
+							"6 9 12 15 18 9"
+						);
+					}
+
+					salvarStatus();
+				};
+
+				const machineAtual =
+					new URLSearchParams(
+						window.location.search
+					).get("machine");
+
+				for (
+					let i = 0;
+					i < servidor.maquinas.length;
+					i++
+				) {
+					const maquina =
+						servidor.maquinas[i];
+
+					const maquinaLink =
+						document.createElement("a");
+
+					maquinaLink.classList.add(
+						"sidebar-sub-link"
+					);
+
+					maquinaLink.textContent =
+						maquina.nome_maquina;
+
+					maquinaLink.innerHTML +=
+						bolinhas[
+							maquina.id_maquina - 1
+						];
+
+					maquinaLink.href =
+						`dashboard.html?machine=${maquina.id_maquina}`;
+
+					if (
+						machineAtual ==
+						maquina.id_maquina
+					) {
+						maquinaLink.classList.add(
+							"active"
+						);
+
+						const idMachine =
+							document.getElementById(
+								"id_machine"
+							);
+
 						if (idMachine) {
-							
-							idMachine.textContent = maquina.nome_maquina;
-							
+							idMachine.textContent =
+								maquina.nome_maquina;
 						}
 					}
 
-					maquinasDiv.appendChild(maquinaLink);
+					maquinasDiv.appendChild(
+						maquinaLink
+					);
 				}
 
-				servidorDiv.appendChild(servidorTitulo);
-				servidorDiv.appendChild(maquinasDiv);
+				servidorDiv.appendChild(
+					servidorTitulo
+				);
 
-				servidoresDiv.appendChild(servidorDiv);
+				servidorDiv.appendChild(
+					maquinasDiv
+				);
+
+				servidoresDiv.appendChild(
+					servidorDiv
+				);
 			});
 
 			setorDiv.appendChild(setorTitulo);
@@ -162,7 +339,10 @@ var bolinhas = ['<span style="color:#f5ede4 ; font-size: 30px; width: 100%; alig
 			menu.appendChild(setorDiv);
 		});
 	} catch (erro) {
-		console.error("Erro ao carregar servidores:", erro);
+		console.error(
+			"Erro ao carregar servidores:",
+			erro
+		);
 	}
 }
 
