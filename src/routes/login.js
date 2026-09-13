@@ -17,6 +17,7 @@ router.post("/getSectors", function(req,res){
 router.post("/getMachines", function(req,res){
     loginController.getMachines(req,res)
 });
+
 router.post("/acessos", function(req, res){
     loginController.criarAcessos(req, res);
 });
