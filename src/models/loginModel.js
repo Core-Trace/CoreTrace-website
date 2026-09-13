@@ -63,6 +63,7 @@ function getSectors(idEmpresa){
     return database.executar(instrucaoSQL,[idEmpresa])
 }
 
+
 function getMachines(setor){
     const instrucaoSQL = `SELECT 
     m.id_maquina AS id_maquina, 
@@ -176,4 +177,5 @@ module.exports = {
     buscarAcesso,
     revogarAcesso,
     removerAcesso,
+    
 };

@@ -16,44 +16,32 @@
 
 <body class="employee-page">
     <aside class="employee-sidebar">
+
         <a class="employee-logo" href="/" aria-label="Ir para a página inicial">
-            <img src="../assets/images/CoreTraceLetteringDarkMode.avif" alt="CoreTrace">
-        </a>
+            <img src="../assets/images/CoreTraceLetteringDarkMode.avif" alt="CoreTrace"></a>
+            
+                      
+            <a class="sidebar-link active" id="CadastrarFuncionario" href="cadastro-funcionario.html">Cadastrar Funcionário </a>
+            <a class="sidebar-link " id="VerFuncionarios" href="general-employee.html">Ver Funcionários</a>
+            <nav class="sidebar-navigation">
+                <a class="sidebar-link active" id="CadastrarFuncionario" href="cadastro-funcionario.html">Cadastrar Funcionário </a>
+                <a class="sidebar-link " id="VerFuncionarios" href="general-employee.html">Ver Funcionários</a>
+                
+                <div class="sidebar-submenu">
+                    <div class="sidebar-group">
+                        <div class="sidebar-group-title">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
 
-        <nav class="sidebar-navigation">
-            <a class="sidebar-link active" href="#">Cadastrar Funcionário</a>
-            <a class="sidebar-link " href="general-employee.html">Ver Funcionários</a>
-
-            <div class="sidebar-submenu">
-                <div class="sidebar-group">
-                    <div class="sidebar-group-title">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-                            <polyline points="6 9 12 15 18 9"></polyline>
-                        </svg>
-                        Setor
-                    </div>
-                    <div class="sidebar-group-content">
-                        <div class="sidebar-group">
-                            <div class="sidebar-group-title">
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-                                    <polyline points="6 9 12 15 18 9"></polyline>
-                                </svg>
-                                Servidor
-                            </div>
-                            <div class="sidebar-group-content">
-                                <!-- <a href="#" class="sidebar-sub-link">
-                                        <span style="display:inline-block; width: 12px; margin-left: -12px;">&bull;</span>UMCumc#2026
-                                    </a> -->
-                                <a href="dashboard.html?machinemaquina2" class="sidebar-sub-link">maquina2</a>
-                                <a href="dashboard.html?machine=maquina3" class="sidebar-sub-link">maquina3</a>
-                            </div>
+                            Servidores
                         </div>
+                        <div id="menuServidores" class="sidebar-group-content"
+                        ></div>
                     </div>
                 </div>
-                <div class="sidebar-submenu">
-        </nav>
+            </nav>
     </aside>
 
     <div class="employee-shell">
@@ -157,6 +145,7 @@
     </div>
 
     <script src="../scripts/api.js"></script>
+    <script src="../scripts/dashboard.js"></script>
     <script src="../scripts/cadastro-funcionario.js"></script>
 </body>
 

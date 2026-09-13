@@ -164,6 +164,8 @@ function getSectors(req,res){
     } 
         
 }
+
+
 function getMachines(req,res){
     const setor = req.body.setor
     if(setor<=0 || setor == null){
@@ -269,4 +271,5 @@ module.exports = {
     criarAcessos,
     listarAcessos,
     revogarAcesso,
+    getSectorsUser
 };
