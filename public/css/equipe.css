@@ -75,7 +75,7 @@ main.equipe-container,
 /* RESPONSIVIDADE (Mesmos breakpoints da Main) */
 @media (max-width: 1024px) {
     .banner-equipe {
-        flex-direction: column;
+        flex-direction: column-reverse;
         margin: 6vh 5vw;
     }
 
