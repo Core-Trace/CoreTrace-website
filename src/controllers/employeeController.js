@@ -117,5 +117,5 @@ module.exports = {
     searchEmployee,
     catchServer,
     revokeAccess,
-    getPapel,
+    getPapel
 };

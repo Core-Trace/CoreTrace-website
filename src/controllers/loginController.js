@@ -270,6 +270,5 @@ module.exports = {
     getMachines,
     criarAcessos,
     listarAcessos,
-    revogarAcesso,
-    getSectorsUser
+    revogarAcesso
 };
