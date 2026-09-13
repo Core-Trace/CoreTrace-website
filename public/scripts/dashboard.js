@@ -1,15 +1,13 @@
-let cadastrarFunc = document.getElementById("CadastrarFuncionario");
-let verFunc = document.getElementById("VerFuncionarios");
+let cadastrarFunc = document.querySelector("#CadastrarFuncionario");
+let verFunc = document.querySelector("#VerFuncionarios");
 
 function gerarAside(papel) {
-	console.log(papel[0]["papel"]);
-	if (papel[0]["papel"] != 1) {
+	console.log(papel);
+	if (papel != 1) {
 		cadastrarFunc.style.display = "none";
 		verFunc.style.display = "none";
 	}
 }
-gerarAside(sessionStorage.ID_PAPEL);
-
 
 async function carregarMenuServidores() {
 	const menu = document.getElementById("menuServidores");
@@ -85,21 +83,30 @@ async function carregarMenuServidores() {
 				const maquinasDiv = document.createElement("div");
 				maquinasDiv.classList.add("sidebar-group-content");
 
-				servidor.maquinas.forEach((maquina) => {
+				const machineAtual = new URLSearchParams(window.location.search).get(
+					"machine",
+				);
+
+				for (let i = 0; i < servidor.maquinas.length; i++) {
+					const maquina = servidor.maquinas[i];
 					const maquinaLink = document.createElement("a");
-                    
+
 					maquinaLink.classList.add("sidebar-sub-link");
 					maquinaLink.textContent = maquina.nome_maquina;
 					maquinaLink.href = `dashboard.html?machine=${maquina.id_maquina}`;
 
-					const machineAtual = new URLSearchParams(window.location.search).get("machine");
-
 					if (machineAtual == maquina.id_maquina) {
 						maquinaLink.classList.add("active");
+
+						const idMachine = document.getElementById("id_machine");
+
+						if (idMachine) {
+							idMachine.textContent = maquina.nome_maquina;
+						}
 					}
 
 					maquinasDiv.appendChild(maquinaLink);
-				});
+				}
 
 				servidorDiv.appendChild(servidorTitulo);
 				servidorDiv.appendChild(maquinasDiv);
@@ -117,4 +124,5 @@ async function carregarMenuServidores() {
 	}
 }
 
+gerarAside(sessionStorage.getItem("ID_PAPEL"));
 carregarMenuServidores();
