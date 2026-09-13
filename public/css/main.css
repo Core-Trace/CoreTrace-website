@@ -261,11 +261,10 @@ body.no-scroll {
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    /* min-height: calc(100vh - 91px); Subtrai a altura do navbar */
+    min-height: 500px;
     max-height: 900px;
     background: rgba(22, 26, 29, 0.20);
-    flex-wrap: wrap;
-    gap: 24px;
+    overflow: hidden;
 }
 .banner-image {
     position: relative;
@@ -280,9 +279,7 @@ body.no-scroll {
     height: 100%;
     object-fit: cover;
     display: block;
-    vertical-align: bottom; 
 }
-
 .bannerfade {
     position: absolute;
     inset: 0;
@@ -291,19 +288,17 @@ body.no-scroll {
     background: linear-gradient(270deg, rgba(22, 26, 29, 0.00) 0%, #161A1D 100%);
     pointer-events: none;
 }
-
 .banner-overlay {
     position: relative;
     display: flex;
     width: 100%;
     max-width: 500px;
-    height: auto;
-    flex: 1 1 380px;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
     gap: 16px;
-    margin-left: 14vw; /* Alinha o texto do banner com o restante sem alterar a estrutura da imagem */
+    margin-left: 14vw;
+    z-index: 2;
 }
 
 .logo-coretrace-banner {
@@ -796,5 +791,46 @@ footer a:hover {
         width: 130px; /* Tamanho ajustado para mobile */
         height: 65px;  /* Altura proporcional para não estourar para cima */
         margin: 0 auto;
+    }
+}
+
+@media (max-width: 1024px) {
+    .banner {
+        height: auto;
+        min-height: 350px;
+        justify-content: center; /* Centraliza o conteúdo textual quando o vídeo some */
+        padding: 60px 5vw;
+    }
+
+    /* Oculta o vídeo e seu container no mobile/tablet */
+    .banner-image {
+        display: none !important;
+    }
+
+    .banner-overlay {
+        margin-left: 0; /* Remove a margem lateral desktop */
+        max-width: 100%;
+        align-items: center; /* Centraliza o texto e a logo no mobile */
+        text-align: center;
+    }
+
+    .text-banner p {
+        text-align: center;
+    }
+
+    .about, .pretendemos-resolver-section, .nossos-servicos-container, .dashSobreContainer {
+        margin: 6vh 5vw;
+    }
+
+    .pretendemos-resolver-container, .dashSobreContainer {
+        flex-direction: column;
+    }
+
+    .cards-grid, .textos-resolver-container, .metade {
+        width: 100%;
+    }
+
+    .servicos-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
 }
