@@ -9,6 +9,9 @@ function gerarAside(papel) {
 	}
 }
 
+var bolinhas = ['<span style="color:#f5ede4 ; font-size: 30px; width: 100%; align-items: right"> •</span>','<span style="color: red; font-size: 30px; width: 100%; align-items: right">•</span>', '<span style="color: yellow; font-size: 30px; width: 100%; align-items: right">•</span>', '<span style="color: yellow; font-size: 30px; width: 100%; align-items: right">•</span>',
+	 '<span style="color: #f5ede4; font-size: 30px; width: 100%; align-items: right">•</span>', '<span style="color: red; font-size: 30px; width: 100%; align-items: right">•</span>'];
+
 async function carregarMenuServidores() {
 	const menu = document.getElementById("menuServidores");
 
@@ -77,7 +80,7 @@ async function carregarMenuServidores() {
                         stroke-linejoin="round">
                         <polyline points="6 9 12 15 18 9"></polyline>
                     </svg>
-                    ${servidor.nome}
+                    ${servidor.nome} 
                 `;
 
 				const maquinasDiv = document.createElement("div");
@@ -92,16 +95,19 @@ async function carregarMenuServidores() {
 					const maquinaLink = document.createElement("a");
 
 					maquinaLink.classList.add("sidebar-sub-link");
+					
 					maquinaLink.textContent = maquina.nome_maquina;
+					maquinaLink.innerHTML += bolinhas[maquina.id_maquina - 1];
 					maquinaLink.href = `dashboard.html?machine=${maquina.id_maquina}`;
 
 					if (machineAtual == maquina.id_maquina) {
 						maquinaLink.classList.add("active");
 
 						const idMachine = document.getElementById("id_machine");
-
 						if (idMachine) {
+							
 							idMachine.textContent = maquina.nome_maquina;
+							
 						}
 					}
 
