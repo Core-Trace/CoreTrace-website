@@ -10,19 +10,17 @@ function gerarAside(papel) {
 }
 
 var bolinhas = ['<span style="color:#f5ede4 ; font-size: 30px; width: 100%; align-items: right"> •</span>','<span style="color: red; font-size: 30px; width: 100%; align-items: right">•</span>', '<span style="color: yellow; font-size: 30px; width: 100%; align-items: right">•</span>', '<span style="color: yellow; font-size: 30px; width: 100%; align-items: right">•</span>',
-	 '<span style="color: #f5ede4; font-size: 30px; width: 100%; align-items: right">•</span>', '<span style="color: red; font-size: 30px; width: 100%; align-items: right">•</span>'];
-
-async function carregarMenuServidores() {
-	const menu = document.getElementById("menuServidores");
-
-	try {
-		const dados = await enviarJson("/employee/catchServer/", {
-			employeeId: sessionStorage.ID_USUARIO,
-		});
-
-		console.log("Servidores:", dados);
-
-		menu.innerHTML = "";
+	'<span style="color: #f5ede4; font-size: 30px; width: 100%; align-items: right">•</span>', '<span style="color: red; font-size: 30px; width: 100%; align-items: right">•</span>'];
+	
+	async function carregarMenuServidores() {
+		const menu = document.getElementById("menuServidores");
+		const Title = document.getElementById("sectorsTitleAsideChckBox") 
+		try {
+			const dados = await enviarJson("/employee/catchServer/", {
+				employeeId: sessionStorage.ID_USUARIO,
+			});
+			
+			menu.innerHTML = `<input type="checkbox" id="asideSectorsFirstChckBox" style= "display:none">`;
 
 		const setores = {};
 
@@ -31,6 +29,7 @@ async function carregarMenuServidores() {
 				setores[item.id_setor] = {
 					nome: item.nome_setor,
 					servidores: {},
+					id_setor: item.id_setor
 				};
 			}
 
@@ -38,6 +37,7 @@ async function carregarMenuServidores() {
 				setores[item.id_setor].servidores[item.id_servidor] = {
 					nome: item.nome_servidor,
 					maquinas: [],
+					id_servidor: item.id_servidor
 				};
 			}
 
@@ -45,46 +45,83 @@ async function carregarMenuServidores() {
 		});
 
 		Object.values(setores).forEach((setor) => {
+			console.log(setor)
 			const setorDiv = document.createElement("div");
 			setorDiv.classList.add("sidebar-group");
 
 			const setorTitulo = document.createElement("div");
 			setorTitulo.classList.add("sidebar-group-title");
-
+			
 			setorTitulo.innerHTML = `
-                <svg width="14" height="14" viewBox="0 0 24 24"
+			<svg width="14" height="14" viewBox="0 0 24 24"
                     fill="none" stroke="currentColor"
                     stroke-width="3"
                     stroke-linecap="round"
                     stroke-linejoin="round">
-                    <polyline points="6 9 12 15 18 9"></polyline>
-                </svg>
-                ${setor.nome}
-            `;
+                    <polyline points="9 6 15 12 9 18" id=chckSideBarSector-${setor.id_setor}></polyline>
+					</svg>
+					${setor.nome}
+					`;
 
 			const servidoresDiv = document.createElement("div");
+			servidoresDiv.id = `serverFrom${setor.id_setor}`
 			servidoresDiv.classList.add("sidebar-group-content");
-
+			servidoresDiv.style.display="none"
+			setorTitulo.onclick = function(){
+				chckBoxAsideStatus = document.getElementById(`chckSideBarSector-${setor.id_setor}`)
+				chckBoxAsideStatus.checked?chckBoxAsideStatus.checked=false:chckBoxAsideStatus.checked=true;
+				asideServerFrom = document.getElementById(`serverFrom${setor.id_setor}`)
+				chckBoxAsideStatus.checked?asideServerFrom.style.display="flex":asideServerFrom.style.display="none"
+				svg=document.getElementById(`chckSideBarSector-${setor.id_setor}`)
+				if(chckBoxAsideStatus.checked){
+						asideServerFrom.style.display="flex"
+						svg.setAttribute("points", "6 9 12 15 18 9");
+					}
+					else{
+						asideServerFrom.style.display="none"
+						svg.setAttribute("points", "9 6 15 12 9 18");
+					}
+			}
+			
 			Object.values(setor.servidores).forEach((servidor) => {
-				const servidorDiv = document.createElement("div");
+				console.log(servidor)
+				const servidorDiv = document.createElement(`div`);
 				servidorDiv.classList.add("sidebar-group");
 
 				const servidorTitulo = document.createElement("div");
 				servidorTitulo.classList.add("sidebar-group-title");
 
 				servidorTitulo.innerHTML = `
-                    <svg width="14" height="14" viewBox="0 0 24 24"
+                    <svg
+						width="14" height="14" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor"
                         stroke-width="3"
                         stroke-linecap="round"
                         stroke-linejoin="round">
-                        <polyline points="6 9 12 15 18 9"></polyline>
+                        <polyline points="9 6 15 12 9 18" id="svgAsideFromServer-${servidor.id_servidor}"></polyline>
                     </svg>
+					<input type=checkbox id=chckSideBarServer-${servidor.id_servidor} style="display:none">
                     ${servidor.nome} 
                 `;
 
-				const maquinasDiv = document.createElement("div");
+				const maquinasDiv = document.createElement(`div`);
+				maquinasDiv.id = `machsFrom${servidor.id_servidor}`
+				maquinasDiv.style.display="none"
 				maquinasDiv.classList.add("sidebar-group-content");
+				servidorTitulo.onclick = function(){
+					chckBoxAsideStatus = document.getElementById(`chckSideBarServer-${servidor.id_servidor}`)
+					chckBoxAsideStatus.checked?chckBoxAsideStatus.checked=false:chckBoxAsideStatus.checked=true;
+					asideServerFrom = document.getElementById(`machsFrom${servidor.id_servidor}`)
+					svg = document.getElementById(`svgAsideFromServer-${servidor.id_servidor}`)
+					if(chckBoxAsideStatus.checked){
+						asideServerFrom.style.display="flex"
+						svg.setAttribute("points", "6 9 12 15 18 9");
+					}
+					else{
+						asideServerFrom.style.display="none"
+						svg.setAttribute("points", "9 6 15 12 9 18");
+					}
+				}
 
 				const machineAtual = new URLSearchParams(window.location.search).get(
 					"machine",
@@ -95,7 +132,6 @@ async function carregarMenuServidores() {
 					const maquinaLink = document.createElement("a");
 
 					maquinaLink.classList.add("sidebar-sub-link");
-					
 					maquinaLink.textContent = maquina.nome_maquina;
 					maquinaLink.innerHTML += bolinhas[maquina.id_maquina - 1];
 					maquinaLink.href = `dashboard.html?machine=${maquina.id_maquina}`;
