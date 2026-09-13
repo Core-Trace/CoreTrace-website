@@ -63,13 +63,6 @@ function getSectors(idEmpresa){
     return database.executar(instrucaoSQL,[idEmpresa])
 }
 
-function getSectorsUser(idUsuario){
-    const intrucaoSQL = `SELECT *
-    FROM vw_setores_usuario
-    WHERE id_usuario = ?;` 
-
-    return database.executar(intrucaoSQL,[idUsuario])
-}
 
 function getMachines(setor){
     const instrucaoSQL = `SELECT 
@@ -184,5 +177,5 @@ module.exports = {
     buscarAcesso,
     revogarAcesso,
     removerAcesso,
-    getSectorsUser
+    
 };
