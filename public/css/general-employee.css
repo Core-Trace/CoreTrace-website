@@ -168,7 +168,7 @@ main{
 }
 .list{
     display: flex;
-    height: 1080px;
+    height: fit-content;
     min-height: 1080px;
     padding: 10px 50px;
     flex-direction: column;
@@ -282,10 +282,18 @@ main{
         font-weight: 800;
         line-height: normal;
     }
+    div{
+        display: flex;
+        justify-content: center;
+        svg{
+            width: 100%;
+            height: 100%;
+        }
+    }    
 }
 svg{
-    width: 32px;
-    height: 32px;
+    width: 16px;
+    height: 16px;
     aspect-ratio: 1/1;
 }
 .openList{
@@ -300,29 +308,28 @@ svg{
 
 .footer{
     display: flex;
-    position: sticky;
-    bottom: 0;
-    bottom: 50px;
-    width: 100%;
-    justify-content: right;
-    gap: 20px;
-    padding: 0 2.5%;
-    
+    position: fixed; 
+    bottom: 30px;    
+    right: 30px;     
+    z-index: 999;    
+    padding: 0;
+    width: auto;     
     button {
         background-color: #f5ede4;
         color: #17181c;
-        padding: 23px 53px;
+        padding: 16px 32px;
         border: none;
         border-radius: 12px;
-        font-size: 1.375rem;
+        font-size: 1.125rem;
         font-weight: 700;
         cursor: pointer;
-        transition: transform 0.2s ease, opacity 0.2s;
+        
+        transition: transform 0.2s ease, opacity 0.2s, background-color 0.2s;
     }
 
     button:hover {
         transform: scale(1.05);
-        opacity: 0.9;
+        opacity: 0.95;
     }
 }
     
@@ -415,4 +422,17 @@ svg{
     height: 16px;
     aspect-ratio: 1/1;
 }
+}
+@media (max-width: 1080px) {
+    .footer {
+        bottom: 15px;
+        right: 15px;
+    }
+
+    .footer button {
+        padding: 10px 20px;
+        border-radius: 8px;
+        font-size: 14px;
+        font-weight: 600;
+    }
 }

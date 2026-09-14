@@ -5,5 +5,6 @@ var employeeController = require("../controllers/employeeController");
 router.post("/search", employeeController.searchEmployee);
 router.post("/catchServer", employeeController.catchServer);
 router.post("/revokeAccess", employeeController.revokeAccess);
+router.post("/getPapel",employeeController.getPapel);
 
 module.exports = router;

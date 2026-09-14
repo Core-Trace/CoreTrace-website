@@ -8,11 +8,18 @@
 body {
     background-color: #1a1a1c; 
     color: #ffffff;
-    padding: 2rem;
+    height: fit-content;
+}
+
+main{
+    padding: 5%;
+    width: 100%;
+    align-items: stretch;
+    justify-items: center;
 }
 
 .specific-content {
-    max-width: 800px; 
+    width: 800px; 
     display: flex;
     flex-direction: column;
     gap: 24px;
@@ -141,9 +148,9 @@ body {
 }
 
 
-@media (max-width: 600px) {
-    body {
-        padding: 1rem; 
+@media (max-width: 1080px) {
+    .specific-content{
+        width:100%
     }
 
     .employee-name {
