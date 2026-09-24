@@ -14,8 +14,8 @@ const HOST_APP = process.env.APP_HOST;
 const app = express();
 
 const indexRouter = require("./src/routes/index");
-const loginRouter = require("./src/routes/login");
 const employeeRouter = require("./src/routes/employees");
+const servidorRouter = require("./src/routes/servidor");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -23,9 +23,8 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use(cors());
 app.use("/", indexRouter);
-app.use("/user", loginRouter);
 app.use("/employee", employeeRouter)
-
+app.use("/servidor", servidorRouter);
 
 app.listen(PORTA_APP, function () {
 	console.log(
