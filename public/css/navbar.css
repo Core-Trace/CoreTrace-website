@@ -1,0 +1,139 @@
+.cabecalho {
+    background-color: var(--cor-fundo);
+    border-bottom: 1px solid var(--cor-cinza);
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    min-height: 80px;
+}
+
+.navbar-logo {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.navbar-logo img {
+    width: 220px;
+    height: auto;
+}
+
+.navbar-links {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    align-self: stretch;
+
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.navbar-links li {
+    display: flex;
+}
+
+.navbar-links a {
+    display: flex;
+    align-items: center;
+
+    padding-block: 16px;
+    border-bottom: 2px solid transparent;
+
+    color: var(--cor-texto);
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+
+    transition: color 0.2s, border-color 0.2s;
+}
+
+.navbar-links a:hover {
+    color: var(--cor-primaria);
+}
+
+.navbar-links a[aria-current="page"] {
+    border-bottom-color: var(--cor-texto);
+}
+
+.navbar-acoes {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-left: auto;
+}
+
+.navbar-acoes a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 44px;
+    padding: 10px 24px;
+    border: 1px solid var(--cor-preto);
+    border-radius: 999px;
+
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.navbar-login {
+    background-color: transparent;
+    color: var(--cor-preto);
+}
+
+.navbar-login:hover {
+    background-color: var(--cor-preto);
+    color: var(--cor-branco);
+}
+
+.navbar-cadastro {
+    background-color: var(--cor-preto);
+    color: var(--cor-branco);
+}
+
+.navbar-cadastro:hover {
+    background-color: var(--cor-cinza);
+}
+
+@media (max-width: 900px) {
+    .navbar {
+        flex-wrap: wrap;
+        gap: 16px;
+        padding-block: 16px;
+    }
+
+    .navbar-logo img {
+        width: 160px;
+    }
+
+    .navbar-links {
+        order: 3;
+        justify-content: center;
+        width: 100%;
+        gap: 24px;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar {
+        justify-content: center;
+    }
+
+    .navbar-acoes {
+        justify-content: center;
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .navbar-links {
+        gap: 16px;
+    }
+}
