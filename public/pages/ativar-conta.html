@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ativar conta</title>
+</head>
+
+<body>
+
+    <h1>Ativar conta</h1>
+
+    <label for="senha">Defina sua senha:</label>
+
+    <input
+        type="password"
+        id="senha"
+        placeholder="Digite sua senha"
+    >
+
+    <button onclick="ativarConta()">
+        Ativar conta
+    </button>
+
+    <p id="mensagem"></p>
+
+    <script>
+        async function ativarConta() {
+
+            const parametros = new URLSearchParams(window.location.search);
+
+            const token = parametros.get("token");
+
+            const senha = document.getElementById("senha").value;
+
+            const resposta = await fetch("/ativar-conta", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    token: token,
+                    senha: senha
+                })
+            });
+
+            const dados = await resposta.json();
+
+            document.getElementById("mensagem").innerText = dados.mensagem;
+        }
+    </script>
+
+</body>
+
+</html>
