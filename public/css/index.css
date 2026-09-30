@@ -351,6 +351,37 @@
     color: #fff;
 }
 
+.link-seta {
+    display: inline-grid;
+    width: 11px;
+    height: 11px;
+}
+
+.link-seta img {
+    grid-area: 1 / 1;
+    width: 11px;
+    height: 11px;
+    transition: opacity 0.2s ease;
+}
+
+.link-seta-branca {
+    opacity: 0;
+}
+
+.solucao-link:hover .link-seta-vermelha,
+.cliente-link:hover .link-seta-vermelha,
+.funcionalidade-link:hover .link-seta-vermelha,
+.contato-final-botao-secundario:hover .link-seta-vermelha {
+    opacity: 0;
+}
+
+.solucao-link:hover .link-seta-branca,
+.cliente-link:hover .link-seta-branca,
+.funcionalidade-link:hover .link-seta-branca,
+.contato-final-botao-secundario:hover .link-seta-branca {
+    opacity: 1;
+}
+
 @media (max-width: 900px) {
     .solucoes-container {
         width: calc(100% - 48px);

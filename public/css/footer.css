@@ -56,19 +56,13 @@
 .rodape-marca {
     display: inline-flex;
     align-items: center;
-    gap: 4px;
-    color: #fff;
-    font-size: 14px;
-    font-weight: 700;
-    letter-spacing: 0.02em;
     text-decoration: none;
 }
 
 .rodape-marca img {
     display: block;
-    width: 18px;
-    height: 18px;
-    object-fit: contain;
+    width: auto;
+    height: 22px;
 }
 
 .rodape-base p {
