@@ -115,16 +115,6 @@
     color: var(--cor-branco);
 }
 
-.cabecalho .navbar-cadastro {
-    min-width: 116px;
-    background-color: var(--cor-preto);
-    color: var(--cor-branco);
-}
-
-.cabecalho .navbar-cadastro:hover {
-    background-color: var(--cor-cinza);
-}
-
 .cabecalho a:focus-visible {
     outline: 2px solid var(--cor-primaria);
     outline-offset: 2px;
@@ -169,9 +159,6 @@
         min-width: 60px;
     }
 
-    .cabecalho .navbar-cadastro {
-        min-width: 100px;
-    }
 }
 
 @media (max-width: 360px) {
