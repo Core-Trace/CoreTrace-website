@@ -1,0 +1,90 @@
+.rodape {
+    padding: clamp(36px, 4.5vw, 64px) 0 20px;
+    background-color: #111012;
+    color: #f7f7f2;
+}
+
+.rodape-container {
+    width: 74%;
+    max-width: 1120px;
+    margin-inline: auto;
+}
+
+.rodape-links {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(130px, 1fr));
+    max-width: 620px;
+    gap: clamp(32px, 6vw, 104px);
+}
+
+.rodape-coluna {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+}
+
+.rodape-coluna h2 {
+    margin-bottom: 6px;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.rodape-coluna a {
+    color: #dedadd;
+    font-size: 12px;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.rodape-coluna a:hover {
+    color: #fff;
+}
+
+.rodape-base {
+    display: flex;
+    align-items: center;
+    gap: 48px;
+    margin-top: clamp(28px, 4vw, 56px);
+    padding-top: 14px;
+    border-top: 1px solid #777277;
+}
+
+.rodape-marca {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.rodape-marca img {
+    display: block;
+    width: auto;
+    height: 22px;
+}
+
+.rodape-base p {
+    color: #dedadd;
+    font-size: 11px;
+}
+
+@media (max-width: 900px) {
+    .rodape-container {
+        width: calc(100% - 48px);
+    }
+}
+
+@media (max-width: 600px) {
+    .rodape-links {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 36px 24px;
+    }
+
+    .rodape-base {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+}
