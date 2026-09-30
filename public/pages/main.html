@@ -6,14 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CoreTrace</title>
 
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/navbar.css">
     <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/aside-home.css">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Jersey+25&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-        rel="stylesheet">
+    <link rel="stylesheet" href="../css/fonts.css">
 </head>
 
 <body>
@@ -48,26 +45,32 @@
         </div>
     </div>
     <div class="page-wrapper">
-        <header class="navbar">
-            <div class="navbar-left">
-                <div class="burgerButton" onclick="asidePlot()">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 60 60" fill="none">
-                        <path fill-rule="evenodd" clip-rule="evenodd"
-                            d="M7.5 40H52.5V45H7.5V40ZM7.5 27.5H52.5V32.5H7.5V27.5ZM7.5 15H52.5V20H7.5V15Z"
-                            fill="#F6ECE6" />
-                    </svg>
-                </div>
-                <canvas class="navbar-logo"></canvas>
-            </div>
+        <header class="cabecalho">
+            <nav class="navbar" aria-label="Navegação principal">
+                <a class="navbar-logo" href="/" aria-label="CoreTrace — início">
+                    <img src="../assets/images/CoreTraceBlackLogo.png" alt="CoreTrace" width="581" height="154">
+                </a>
 
-            <nav class="navbar-right">
-                <button class="theme-toggle">
-                    <img src="../assets/icons/Mingcute Sun Fill.png" alt="Tema">
-                </button>
-                <a href="#" class="nav-link active">Home</a>
-                <a href="/pages/equipe.html" class="nav-link">Equipe</a>
-                <a href="#footer" class="nav-link">Links Úteis</a>
-                <a href="/pages/login.html" class="nav-link">Login</a>
+                <ul class="navbar-links">
+                    <li>
+                        <a href="/" aria-current="page">Página inicial</a>
+                    </li>
+
+                    <li>
+                        <a href="#sobre">Sobre nós</a>
+                    </li>
+
+                    <li>
+                        <a href="#contato">Contato</a>
+                    </li>
+                </ul>
+
+                <div class="navbar-acoes">
+                    <a class="navbar-login" href="/pages/login.html">
+                        Login
+                    </a>
+
+                </div>
             </nav>
         </header>
 
@@ -81,13 +84,13 @@
             <div class="banner-image">
                 <video autoplay muted playsinline class="banner-video">
                     <source src="../assets/videos/coretrace-banner.webm" type="video/mp4">
-                        Seu navegador não suporta vídeos HTML5.
+                    Seu navegador não suporta vídeos HTML5.
                 </video>
                 <div class="bannerfade"></div>
             </div>
         </section>
 
-        
+
         <section class="about reveal" id="about">
             <h2 class="about-title">O que fazemos</h2>
 
@@ -116,7 +119,7 @@
                     <h2 class="titulo-resolver">O que pretendemos resolver?</h2>
 
                     <div class="topico-item">
-                        <h3 class="topico-titulo">  Mitigação de Riscos em Operações Críticas</h3>
+                        <h3 class="topico-titulo"> Mitigação de Riscos em Operações Críticas</h3>
                         <p class="descricao-resolver">
                             Desenvolvido para garantir disponibilidade integral, reduzindo a vulnerabilidade de
                             plataformas de alta demanda contra gargalos de infraestrutura.
@@ -124,7 +127,7 @@
                     </div>
 
                     <div class="topico-item">
-                        <h3 class="topico-titulo">  Prevenção de Efeito Dominó e Indisponibilidade</h3>
+                        <h3 class="topico-titulo"> Prevenção de Efeito Dominó e Indisponibilidade</h3>
                         <p class="descricao-resolver">
                             Evitamos que falhas operacionais simples, como sobrecarga de CPU em servidores Cloud,
                             evoluam para paradas críticas que travam pedidos e pagamentos.

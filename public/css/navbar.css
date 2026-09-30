@@ -1,139 +1,168 @@
 .cabecalho {
     background-color: var(--cor-fundo);
-    border-bottom: 1px solid var(--cor-cinza);
+    color: var(--cor-texto);
+    border-top: 3px solid #292929;
+    border-bottom: 1px solid #b2b2ae;
+    font-family: var(--fonte-principal);
 }
 
-.navbar {
+.cabecalho .navbar {
     display: flex;
     align-items: center;
-    gap: 40px;
-    min-height: 80px;
+    gap: 8px;
+    width: 100%;
+    min-height: 56px;
+    padding: 0 24px;
 }
 
-.navbar-logo {
+.cabecalho .navbar-logo {
     display: flex;
     align-items: center;
     flex-shrink: 0;
+    width: 160px;
+    height: auto;
+    min-height: 56px;
+    margin: 0;
 }
 
-.navbar-logo img {
-    width: 220px;
+.cabecalho .navbar-logo img {
+    display: block;
+    width: 100%;
     height: auto;
 }
 
-.navbar-links {
+.cabecalho .navbar-links {
     display: flex;
-    align-items: center;
-    gap: 32px;
+    align-items: stretch;
     align-self: stretch;
-
     margin: 0;
     padding: 0;
     list-style: none;
 }
 
-.navbar-links li {
+.cabecalho .navbar-links li {
     display: flex;
 }
 
-.navbar-links a {
+.cabecalho .navbar-links a {
+    position: relative;
     display: flex;
     align-items: center;
-
-    padding-block: 16px;
-    border-bottom: 2px solid transparent;
-
+    justify-content: center;
+    min-height: 56px;
+    padding: 0 18px;
     color: var(--cor-texto);
-    font-size: 14px;
-    font-weight: 600;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1.5;
     text-decoration: none;
-
-    transition: color 0.2s, border-color 0.2s;
+    white-space: nowrap;
+    transition: color 0.2s;
 }
 
-.navbar-links a:hover {
+.cabecalho .navbar-links a::after {
+    position: absolute;
+    right: 0;
+    bottom: -1px;
+    left: 0;
+    height: 2px;
+    background-color: transparent;
+    content: "";
+    transition: background-color 0.2s;
+}
+
+.cabecalho .navbar-links a:hover {
     color: var(--cor-primaria);
 }
 
-.navbar-links a[aria-current="page"] {
-    border-bottom-color: var(--cor-texto);
+.cabecalho .navbar-links a[aria-current="page"]::after {
+    background-color: #92928e;
 }
 
-.navbar-acoes {
+.cabecalho .navbar-acoes {
     display: flex;
     align-items: center;
-    gap: 16px;
+    flex-shrink: 0;
+    gap: 12px;
     margin-left: auto;
 }
 
-.navbar-acoes a {
+.cabecalho .navbar-acoes a {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-
-    min-height: 44px;
-    padding: 10px 24px;
+    min-height: 36px;
+    padding: 6px 18px;
     border: 1px solid var(--cor-preto);
     border-radius: 999px;
-
-    font-size: 14px;
-    font-weight: 600;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 1.5;
     text-align: center;
     text-decoration: none;
-
+    white-space: nowrap;
     transition: background-color 0.2s, color 0.2s;
 }
 
-.navbar-login {
+.cabecalho .navbar-login {
+    min-width: 70px;
     background-color: transparent;
     color: var(--cor-preto);
 }
 
-.navbar-login:hover {
+.cabecalho .navbar-login:hover {
     background-color: var(--cor-preto);
     color: var(--cor-branco);
 }
 
-.navbar-cadastro {
-    background-color: var(--cor-preto);
-    color: var(--cor-branco);
+.cabecalho a:focus-visible {
+    outline: 2px solid var(--cor-primaria);
+    outline-offset: 2px;
 }
 
-.navbar-cadastro:hover {
-    background-color: var(--cor-cinza);
-}
-
-@media (max-width: 900px) {
-    .navbar {
+@media (max-width: 800px) {
+    .cabecalho .navbar {
         flex-wrap: wrap;
-        gap: 16px;
-        padding-block: 16px;
+        column-gap: 8px;
+        row-gap: 0;
+        padding: 4px 12px 0;
     }
 
-    .navbar-logo img {
-        width: 160px;
+    .cabecalho .navbar-logo {
+        width: 128px;
+        min-height: 44px;
     }
 
-    .navbar-links {
+    .cabecalho .navbar-links {
         order: 3;
         justify-content: center;
         width: 100%;
-        gap: 24px;
     }
+
+    .cabecalho .navbar-links a {
+        min-height: 44px;
+        padding: 0 12px;
+        font-size: 12px;
+    }
+
+    .cabecalho .navbar-acoes {
+        gap: 8px;
+    }
+
+    .cabecalho .navbar-acoes a {
+        min-height: 44px;
+        padding: 6px 10px;
+        font-size: 12px;
+    }
+
+    .cabecalho .navbar-login {
+        min-width: 60px;
+    }
+
 }
 
-@media (max-width: 480px) {
-    .navbar {
-        justify-content: center;
-    }
-
-    .navbar-acoes {
-        justify-content: center;
-        width: 100%;
-        margin-left: 0;
-    }
-
-    .navbar-links {
-        gap: 16px;
+@media (max-width: 360px) {
+    .cabecalho .navbar-logo {
+        width: 104px;
     }
 }
