@@ -1,7 +1,7 @@
 .container-principal{
     width: 100%;
     height: 250vh;
-    background-color: rgb(189, 181, 181);
+    background-color: #F7F7F2;
     padding-left: 7%;
     padding-right: 7%;
 }
@@ -10,15 +10,116 @@
     display: flex;
     width: 100%;
     height: 35%;
-    background-color: cyan;
+    background-color: #F7F7F2;
 }
 
 .container-entre-em-contato-esquerda{
+    padding-left: 2vh;
+    align-items: start;
+    padding-top: 5%;
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    height: 100%;
+    
+}
+
+.traço{
+    color: #CC0301;
+    font-size: 7vh;
+}
+
+.vermelho{
+    color: #CC0301;
+}
+
+.botao-contato {
+    margin-top: 5%;
+    width: 30vh;
+    height: 7%;
+    border: none;
+    border-radius: 30px;
+    background-color: #CC0301;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5%;
+    font-size: 1.6vh;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.seta {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background-color: white;
+    color: #CC1501;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8vh;
+    font-weight: bold;
+}
+
+.container-entre-em-contato-direita{
+    align-items: end;
     display: flex;
     width: 50%;
     height: 100%;
-    background-color: black;
+    justify-content: center;
+    align-items: center;
 }
+
+.imagem-servidor{
+    border-radius: 4%;
+    aspect-ratio: 1 / 1;
+    width: 80vh;
+    object-fit: cover;
+}
+
+@media (max-width: 1024px) {
+
+    .container-entre-em-contato {
+        display: flex;
+        flex-direction: column;
+        height: auto;
+    }
+
+    .container-entre-em-contato-esquerda {
+        padding-left: 0;
+        width: 100%;
+        height: auto;
+        text-align: center;
+        align-items: center;
+    }
+
+    .container-entre-em-contato-direita {
+        width: 100%;
+        height: auto;
+    }
+
+    .imagem-servidor {
+        width: 90%;
+        height: auto;
+        aspect-ratio: 2 / 1;
+        object-fit: cover;
+        border-radius: 2%;
+    }
+
+    .botao-contato {
+        width: 50%;
+        aspect-ratio: 5 / 1;
+        height: auto;
+        margin-bottom: 5%;
+    }
+
+    .container-estamos-prontos-para-ouvir {
+        margin-top: 5%;
+    }
+}
+
 
 
 
