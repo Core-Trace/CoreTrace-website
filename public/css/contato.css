@@ -1,19 +1,18 @@
-.container-principal{
+.container-principal {
     width: 100%;
     height: 250vh;
     background-color: #F7F7F2;
-    padding-left: 7%;
-    padding-right: 7%;
 }
 
-.container-entre-em-contato{
+.container-entre-em-contato {
     display: flex;
-    width: 100%;
+    width: 86%;
+    margin-left: 7%;
     height: 35%;
     background-color: #F7F7F2;
 }
 
-.container-entre-em-contato-esquerda{
+.container-entre-em-contato-esquerda {
     padding-left: 2vh;
     align-items: start;
     padding-top: 5%;
@@ -21,15 +20,14 @@
     flex-direction: column;
     width: 50%;
     height: 100%;
-    
 }
 
-.traço{
+.traço {
     color: #CC0301;
     font-size: 7vh;
 }
 
-.vermelho{
+.vermelho {
     color: #CC0301;
 }
 
@@ -63,7 +61,7 @@
     font-weight: bold;
 }
 
-.container-entre-em-contato-direita{
+.container-entre-em-contato-direita {
     align-items: end;
     display: flex;
     width: 50%;
@@ -72,7 +70,7 @@
     align-items: center;
 }
 
-.imagem-servidor{
+.imagem-servidor {
     border-radius: 4%;
     aspect-ratio: 1 / 1;
     width: 80vh;
@@ -118,40 +116,133 @@
     .container-estamos-prontos-para-ouvir {
         margin-top: 5%;
     }
+
+    .container-estamos-prontos-para-ouvir-superior {
+        flex-direction: column;
+    }
+
+    .container-fale-conosco {
+        width: 100%;
+        height: 100%;
+        padding-left: 0;
+        align-items: center;
+        text-align: center;
+    }
+
+    .container-enviar-email {
+        width: 100%;
+        height: 100%;
+    }
+
+    .container-fale-conosco {
+        padding-left: 0;
+        align-items: center;
+        text-align: center;
+    }
+
+    .container-fale-conosco {
+        width: 40%;
+        height: 100%;
+        background-color: #141115;
+        padding-left: 2vh;
+        align-items: start;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .container-fale-conosco {
+        width: 100%;
+        padding-left: 0;
+        align-items: center;
+        text-align: center;
+    }
+
+    .container-fale-conosco p {
+        align-self: center;
+    }
 }
 
 
 
 
-.container-estamos-prontos-para-ouvir{
+.container-estamos-prontos-para-ouvir {
     width: 100%;
     height: 30%;
-    background-color: rgb(49, 29, 29);
+    background-color: #141115;
 }
 
-.container-estamos-prontos-para-ouvir-superior{
+.container-estamos-prontos-para-ouvir-centrado {
+    width: 86%;
+    margin-left: 7%;
+    height: 100%;
+}
+
+.container-estamos-prontos-para-ouvir-superior {
     display: flex;
     width: 100%;
-    height: 65%;
-    background-color: aquamarine;
+    height: 70%;
+    background-color: #141115;
 }
 
-.container-estamos-prontos-para-ouvir-inferior{
+.container-estamos-prontos-para-ouvir-inferior {
     display: flex;
     width: 100%;
-    height: 35%;
-    background-color: orange;
+    height: 30%;
+    background-color: #141115;
+}
+
+.container-fale-conosco {
+    width: 40%;
+    height: 100%;
+    background-color: #141115;
+    padding-left: 2vh;
+    align-items: start;
+    display: flex;
+    flex-direction: column;
+}
+
+.container-enviar-email {
+    width: 60%;
+    height: 100%;
+}
+
+
+@media (max-width: 1200px) {
+
+    .container-estamos-prontos-para-ouvir {
+        height: auto;
+    }
+
+    .container-estamos-prontos-para-ouvir-superior {
+        flex-direction: column;
+        height: 100vh;
+    }
+
+    .container-fale-conosco {
+        width: 100%;
+        height: 100%;
+    }
+
+    .container-enviar-email {
+        width: 100%;
+        height: 100%;
+    }
+
+    .container-estamos-prontos-para-ouvir-inferior {
+        height: 30vh;
+    }
 }
 
 
 
-.container-mais-que-tecnologia{
-    width: 100%;
+.container-mais-que-tecnologia {
+    width: 86%;
+    margin-left: 7%;
     height: 35%;
     background-color: blueviolet;
 }
 
-.container-nosso-diferencial{
+.container-nosso-diferencial {
     display: flex;
     width: 100%;
     height: 60%;
