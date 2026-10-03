@@ -5,9 +5,8 @@
 }
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: #fafaf7;
-    color: #181518;
+    font-family: var(--fonte-principal);
+
 }
 
 .menu {
@@ -22,7 +21,7 @@ body {
     flex-direction: column;
     transition: width 0.3s;
     overflow: hidden;
-    z-index: 10;
+
 }
 
 .logo {
@@ -83,7 +82,7 @@ body {
     background-color: #fff0ed;
     color: #e60000;
 }
-status {
+.status {
     margin-top: auto;
     min-height: 70px;
     border-top: 1px solid #eeeeee;
@@ -107,13 +106,13 @@ status {
 }
 
 .texto-status span {
-    font-size: 10px;
+    font-size: 13px;
     color: #252225;
 }
 
 .texto-status small {
     margin-top: 4px;
-    font-size: 8px;
+    font-size: 10px;
     color: #777777;
 }
 
@@ -186,5 +185,56 @@ status {
     display: flex;
     flex-direction: column;
 }
+.principal {
+    min-height: calc(100vh - 78px);
+    padding-top: 120px;
+}
+
+.sem-servidor {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.imagem-espera {
+    width: 150px;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.aviso {
+    color: #ca0303;
+    font-size: 15px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.sem-servidor h1 {
+    font-size: 26px;
+    font-weight: 700;
+    color: #181518;
+    margin-bottom: 10px;
+}
+
+.descricao {
+    width: 470px;
+    text-align: center;
+    font-size: 14px;
+    color: #888888;
+}
+
+.botao-criar {
+    height: 40px;
+    margin-top: 20px;
+    padding: 0 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #181518;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
 
 
