@@ -77,6 +77,211 @@
     object-fit: cover;
 }
 
+
+
+
+.container-estamos-prontos-para-ouvir {
+    width: 100%;
+    height: 30%;
+    background-color: #141115;
+}
+
+.container-estamos-prontos-para-ouvir-centrado {
+    width: 86%;
+    margin-left: 7%;
+    height: 100%;
+}
+
+.container-estamos-prontos-para-ouvir-superior {
+    display: flex;
+    width: 100%;
+    height: 70%;
+    background-color: #141115;
+}
+
+.container-estamos-prontos-para-ouvir-inferior {
+    display: flex;
+    width: 100%;
+    height: 30%;
+    background-color: #141115;
+}
+
+.container-fale-conosco {
+    width: 40%;
+    height: 100%;
+    background-color: #141115;
+    padding-left: 2vh;
+    align-items: start;
+    display: flex;
+    flex-direction: column;
+}
+
+.container-enviar-email {
+    display: flex;
+    width: 60%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.container-email{
+    flex-direction: column;
+    justify-content: center;
+    display: flex;
+    height: 90%;
+    width: 90%;
+    background-color: #1E1A1F;
+    border-radius: 25px;
+    margin-top: 8%;
+}
+
+.caixa-input{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    padding: 0 15px;
+    background-color: #383036;
+    border: 1px solid #3d383e;
+    border-radius: 8px;
+    color: #F7F7F2;
+}
+
+.divisao-email-1{
+    display: flex;
+    width: 100%;
+    height: 15%;
+    background-color: #1E1A1F;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.divisao-email-2{
+    display: flex;
+    width: 100%;
+    height: 15%;
+    background-color: #1E1A1F;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.divisao-email-3{
+    display: flex;
+    width: 100%;
+    height: 35%;
+    background-color: #1E1A1F;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.divisao-email-4{
+    display: flex;
+    width: 20%;
+    height: 15%;
+    background-color: #1E1A1F;
+    margin-left: 5%;
+    justify-content: center;
+    align-items: center;
+}
+
+.campo-input {
+    display: flex;
+    align-items: center;
+    width: 40%;
+    height: 65%;
+    background-color: #29252a;
+    border: 1px solid #332e34;
+    border-radius: 8px;
+}
+
+.campo-input-2 {
+    display: flex;
+    align-items: center;
+    width: 90%;
+    height: 65%;
+    background-color: #29252a;
+    border: 1px solid #332e34;
+    border-radius: 8px;
+}
+
+.campo-input-3 {
+    display: flex;
+    justify-content: start;
+    width: 90%;
+    height: 82%;
+    background-color: #29252a;
+    border: 1px solid #332e34;
+    border-radius: 8px;
+}
+
+.caixa-input-3{
+    display: flex;
+    align-items: start;
+    width: 100%;
+    height: 100%;
+    padding: 0 15px;
+    background-color: #332e34;
+    border: 1px solid #3d383e;
+    border-radius: 8px;
+    color: #F7F7F2;
+    padding-top: 2%;
+}
+
+.caixa-input:focus {
+    background-color: #403940;
+    border-color: #F7F7F2;
+    outline: none;
+}
+
+.botao-enviar{
+    background-color: #CC0301;
+    color: #F7F7F2;
+    height: 70%;
+    width: 100%;
+    border-radius: 50px;
+    border: 0;
+    font-weight: bold;
+}
+
+.botao-enviar:active{
+    background-color: #b40401;
+}
+
+.botao-contato:active{
+    background-color: #b40401;
+}
+
+
+
+
+
+
+
+
+
+
+
+.container-mais-que-tecnologia {
+    width: 86%;
+    margin-left: 7%;
+    height: 35%;
+    background-color: blueviolet;
+}
+
+.container-nosso-diferencial {
+    display: flex;
+    width: 100%;
+    height: 60%;
+    background-color: blanchedalmond;
+}
+
+
+
+
+
+
+
+
 @media (max-width: 1024px) {
 
     .container-entre-em-contato {
@@ -163,50 +368,6 @@
 }
 
 
-
-
-.container-estamos-prontos-para-ouvir {
-    width: 100%;
-    height: 30%;
-    background-color: #141115;
-}
-
-.container-estamos-prontos-para-ouvir-centrado {
-    width: 86%;
-    margin-left: 7%;
-    height: 100%;
-}
-
-.container-estamos-prontos-para-ouvir-superior {
-    display: flex;
-    width: 100%;
-    height: 70%;
-    background-color: #141115;
-}
-
-.container-estamos-prontos-para-ouvir-inferior {
-    display: flex;
-    width: 100%;
-    height: 30%;
-    background-color: #141115;
-}
-
-.container-fale-conosco {
-    width: 40%;
-    height: 100%;
-    background-color: #141115;
-    padding-left: 2vh;
-    align-items: start;
-    display: flex;
-    flex-direction: column;
-}
-
-.container-enviar-email {
-    width: 60%;
-    height: 100%;
-}
-
-
 @media (max-width: 1200px) {
 
     .container-estamos-prontos-para-ouvir {
@@ -231,20 +392,14 @@
     .container-estamos-prontos-para-ouvir-inferior {
         height: 30vh;
     }
-}
 
+    .container-enviar-email{
+        width: 100%;
+    }
 
-
-.container-mais-que-tecnologia {
-    width: 86%;
-    margin-left: 7%;
-    height: 35%;
-    background-color: blueviolet;
-}
-
-.container-nosso-diferencial {
-    display: flex;
-    width: 100%;
-    height: 60%;
-    background-color: blanchedalmond;
+    .container-email{
+        width: 100%;
+        height: 100%;
+        margin-top: 0;
+    }
 }
