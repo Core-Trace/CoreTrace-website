@@ -36,7 +36,7 @@
     width: 30vh;
     height: 7%;
     border: none;
-    border-radius: 30px;
+    border-radius: 3vh;
     background-color: #CC0301;
     color: white;
     display: flex;
@@ -49,8 +49,8 @@
 }
 
 .seta {
-    width: 25px;
-    height: 25px;
+    width: 2.5vh;
+    height: 2.5vh;
     border-radius: 50%;
     background-color: white;
     color: #CC1501;
@@ -71,7 +71,7 @@
 }
 
 .imagem-servidor {
-    border-radius: 4%;
+    border-radius: 15px;
     aspect-ratio: 1 / 1;
     width: 80vh;
     object-fit: cover;
@@ -121,7 +121,7 @@
     width: 60%;
     height: 100%;
     align-items: center;
-    justify-content: center;
+    justify-content: end;
 }
 
 .container-email{
@@ -152,7 +152,7 @@
     width: 100%;
     height: 15%;
     background-color: #1E1A1F;
-    justify-content: space-around;
+    justify-content: space-evenly;
     align-items: center;
 }
 
@@ -187,7 +187,7 @@
 .campo-input {
     display: flex;
     align-items: center;
-    width: 40%;
+    width: 42.5%;
     height: 65%;
     background-color: #29252a;
     border: 1px solid #332e34;
@@ -227,10 +227,15 @@
     padding-top: 2%;
 }
 
-.caixa-input:focus {
+.caixa-input:focus, .caixa-input-3:focus {
     background-color: #403940;
     border-color: #F7F7F2;
     outline: none;
+}
+
+.caixa-input::placeholder,
+.caixa-input-3::placeholder {
+    font-size: 1.5vh;
 }
 
 .botao-enviar{
@@ -238,9 +243,10 @@
     color: #F7F7F2;
     height: 70%;
     width: 100%;
-    border-radius: 50px;
+    border-radius: 5vh;
     border: 0;
     font-weight: bold;
+    font-size: 1.5vh;
 }
 
 .botao-enviar:active{
@@ -308,7 +314,6 @@
         height: auto;
         aspect-ratio: 2 / 1;
         object-fit: cover;
-        border-radius: 2%;
     }
 
     .botao-contato {
@@ -364,6 +369,18 @@
 
     .container-fale-conosco p {
         align-self: center;
+    }
+
+    .divisao-email-1{
+        display: flex;
+        flex-direction: column;
+        height: 30%;
+        border-radius: 25px;
+    }
+
+    .campo-input{
+        width: 90%;
+        height: 32.5%;
     }
 }
 
