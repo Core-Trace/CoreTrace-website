@@ -205,4 +205,59 @@ body {
     display: flex;
     flex-direction: column;
 }
+.principal {
+    height: 90.74vh;
+    padding-top: 13.89vh;
+    overflow: hidden;
+}
+
+.sem-servidor {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.imagem-espera {
+    margin-top: -5.79vh;
+    width: 9.77vw;
+    height: auto;
+    margin-bottom: 0.58vh;
+}
+
+.aviso {
+    color: #ca0303;
+    font-size: 0.98vw;
+    font-weight: bold;
+    margin-bottom: 0.58vh;
+}
+
+.sem-servidor h1 {
+    font-size: 1.82vw;
+    font-weight: bold;
+    color: #181518;
+    margin-bottom: 1.16vh;
+}
+
+.descricao {
+    width: 30.6vw;
+    text-align: center;
+    font-size: 0.91vw;
+    color: #888888;
+}
+.botao-criar {
+    height: 4.63vh;
+    margin-top: 2.31vh;
+    padding: 0 1.3vw;
+    border: none;
+    border-radius: 0.33vw;
+    background-color: #181518;
+    color: #ffffff;
+    font-size: 0.78vw;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.botao-criar:hover {
+    background-color: #302d30;
+}
 
