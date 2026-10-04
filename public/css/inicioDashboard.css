@@ -260,4 +260,81 @@ body {
 .botao-criar:hover {
     background-color: #302d30;
 }
+.passos {
+    width: 53.40vw;
+    margin: 6.37vh auto 0;
+}
+
+.titulo-passos {
+    margin-bottom: 1.20vh;
+    font-size: 0.80vw;
+    color: #777777;
+}
+
+.lista-passos {
+    display: flex;
+    gap: 1.15vw;
+}
+
+.card {
+    width: calc(33.33% - 0.78vw);
+    min-height: 12.95vh;
+    background-color: #ffffff;
+    border: 0.07vw solid #777777;
+    border-radius: 0.35vw;
+    padding: 1.3vw;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.80vw;
+}
+
+.imagem-card {
+    width: 3.25vw;
+    height: 5.80vh;
+    border-radius: 50%;
+    background-color: #f3f1ee;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.imagem-card img {
+    width: 1.65vw;
+    height: 2.90vh;
+}
+
+.texto-card {
+    position: relative;
+    width: 100%;
+}
+
+.numero {
+    position: absolute;
+    top: -0.46vh;
+    right: 0;
+    width: 1.45vw;
+    height: 2.55vh;
+    border-radius: 50%;
+    background-color: #efede8;
+    color: #e60000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.80vw;
+    font-weight: bold;
+}
+
+.texto-card h3 {
+    margin-top: 0.50vh;
+    margin-bottom: 0.75vh;
+    font-size: 0.90vw;
+    color: #252225;
+}
+
+.texto-card p {
+    max-width: 9.45vw;
+    font-size: 0.70vw;
+    line-height: 1.5;
+    color: #777777;
+}
 
