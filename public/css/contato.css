@@ -38,7 +38,7 @@
     border: none;
     border-radius: 3vh;
     background-color: #CC0301;
-    color: white;
+    color: #F7F7F2;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -52,7 +52,7 @@
     width: 2.5vh;
     height: 2.5vh;
     border-radius: 50%;
-    background-color: white;
+    background-color: #F7F7F2;
     color: #CC1501;
     display: flex;
     align-items: center;
@@ -99,13 +99,6 @@
     background-color: #141115;
 }
 
-.container-estamos-prontos-para-ouvir-inferior {
-    display: flex;
-    width: 100%;
-    height: 30%;
-    background-color: #141115;
-}
-
 .container-fale-conosco {
     width: 40%;
     height: 100%;
@@ -124,7 +117,7 @@
     justify-content: end;
 }
 
-.container-email{
+.container-email {
     flex-direction: column;
     justify-content: center;
     display: flex;
@@ -135,7 +128,7 @@
     margin-top: 8%;
 }
 
-.caixa-input{
+.caixa-input {
     display: flex;
     align-items: center;
     width: 100%;
@@ -147,7 +140,7 @@
     color: #F7F7F2;
 }
 
-.divisao-email-1{
+.divisao-email-1 {
     display: flex;
     width: 100%;
     height: 15%;
@@ -156,7 +149,7 @@
     align-items: center;
 }
 
-.divisao-email-2{
+.divisao-email-2 {
     display: flex;
     width: 100%;
     height: 15%;
@@ -165,7 +158,7 @@
     align-items: center;
 }
 
-.divisao-email-3{
+.divisao-email-3 {
     display: flex;
     width: 100%;
     height: 35%;
@@ -174,7 +167,7 @@
     align-items: center;
 }
 
-.divisao-email-4{
+.divisao-email-4 {
     display: flex;
     width: 20%;
     height: 15%;
@@ -214,7 +207,7 @@
     border-radius: 8px;
 }
 
-.caixa-input-3{
+.caixa-input-3 {
     display: flex;
     align-items: start;
     width: 100%;
@@ -227,7 +220,8 @@
     padding-top: 2%;
 }
 
-.caixa-input:focus, .caixa-input-3:focus {
+.caixa-input:focus,
+.caixa-input-3:focus {
     background-color: #403940;
     border-color: #F7F7F2;
     outline: none;
@@ -238,7 +232,7 @@
     font-size: 1.5vh;
 }
 
-.botao-enviar{
+.botao-enviar {
     background-color: #CC0301;
     color: #F7F7F2;
     height: 70%;
@@ -249,16 +243,75 @@
     font-size: 1.5vh;
 }
 
-.botao-enviar:active{
+.botao-enviar:active {
     background-color: #b40401;
 }
 
-.botao-contato:active{
+.botao-contato:active {
     background-color: #b40401;
 }
 
+.container-estamos-prontos-para-ouvir-inferior {
+    display: flex;
+    width: 100%;
+    height: 30%;
+    background-color: #141115;
+    justify-content: space-around;
+    align-items: center;
+}
 
+.contatos {
+    display: flex;
+    width: 23%;
+    height: 50%;
+    background-color: #1E1A1F;
+    border-radius: 16px;
+}
 
+.imagem-contato{
+    width: 30%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    background-size: 40%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.descricao-contato {
+    display: flex;
+    width: 70%;
+    height: 100%;
+    justify-content: center;
+    flex-direction: column;
+    color: #F7F7F2;
+    font-size: 1.4vh;
+    overflow: hidden;
+}
+
+.botoes-sociais {
+    display: flex;
+    gap: 5%;
+    width: 100%;
+    height: 30%;
+}
+
+.botao-rede {
+    width: auto;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    flex-shrink: 1;
+}
+
+.botao-rede img {
+    max-width: 100%;
+    max-height: 100%;
+    min-height: 100%;
+    object-fit: contain;
+}
 
 
 
@@ -268,25 +321,199 @@
 
 
 .container-mais-que-tecnologia {
-    width: 86%;
-    margin-left: 7%;
+    display: flex;
+    width: 100%;
     height: 35%;
-    background-color: blueviolet;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    background-color: #F7F7F2;
+
+    /* Garante que o círculo fique contido e posicionado no elemento */
+    position: relative;
+    overflow: hidden;
+}
+
+/* Círculo do canto superior esquerdo */
+.container-mais-que-tecnologia::before {
+    content: '';
+    position: absolute;
+    top: -20vh;
+    left: -12vw;
+    width: 45vh;
+    height: 45vh;
+    border-radius: 50%;
+    background-color: rgba(204, 3, 1, 0.06);
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Círculo do canto inferior direito */
+.container-mais-que-tecnologia::after {
+    content: '';
+    position: absolute;
+    bottom: -20vh;
+    right: -12vw;
+    width: 45vh;
+    height: 45vh;
+    border-radius: 50%;
+    background-color: rgba(204, 3, 1, 0.06);
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Mantém os textos e caixas por cima dos círculos */
+.container-nosso-diferencial,
+.container-boxes-coretrace {
+    position: relative;
+    z-index: 2;
 }
 
 .container-nosso-diferencial {
     display: flex;
-    width: 100%;
+    width: 86%;
     height: 60%;
-    background-color: blanchedalmond;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.container-boxes-coretrace{
+    display: flex;
+    width: 86%;
+    height: 40%;
+    justify-content: space-around;
+}
+
+.botao-escolher-coretrace{
+    margin-top: 2%;
+    width: 25%;
+    height: 10%;
+    border: none;
+    border-radius: 3vh;
+    background-color: #141115;
+    color: #F7F7F2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5%;
+    font-weight: bold;
+    font-size: 1.4vh;
+    cursor: pointer;
+    word-wrap: break-word;
+}
+
+.caixa-beneficios{
+    display: flex;
+    height: 70%;
+    width: 23%;
+    background-color: #1E1A1F;
+    border-radius: 16px;
+    border-left: 5px solid #CC0301;
+    align-items: end;
+}
+
+.texto-beneficios{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 80%;
+    justify-content: center;
+    margin-left: 10%;
+    color: #F7F7F2;
+    font-size: 1.4vh;
+}
+
+.imagens-boxes{
+    width: 25%;
+    margin-bottom: 10%;
 }
 
 
 
+@media (max-width: 1200px) {
 
+    .container-estamos-prontos-para-ouvir {
+        height: auto;
+    }
 
+    .container-estamos-prontos-para-ouvir-superior {
+        flex-direction: column;
+        height: 100vh;
+    }
 
+    .container-fale-conosco {
+        width: 100%;
+        height: 100%;
+    }
 
+    .container-enviar-email {
+        width: 100%;
+        height: 100%;
+    }
+
+    .container-estamos-prontos-para-ouvir-inferior {
+        height: auto;
+        min-height: 70vh;
+    }
+
+    .container-enviar-email {
+        width: 100%;
+    }
+
+    .container-email {
+        width: 100%;
+        height: 100%;
+        margin-top: 0;
+    }
+
+    .container-estamos-prontos-para-ouvir-inferior {
+        flex-direction: column;
+        width: 100%;
+        height: auto;
+        padding-top: 5%;
+        padding-bottom: 5%;
+        box-sizing: border-box;
+    }
+
+    .contatos {
+        width: 50%;
+        height: 12vh;
+    }
+    
+    .botoes-sociais{
+        width: 100%;
+        height: 50%;
+    }
+
+    .botao-rede{
+        width: 25%;
+    }
+    
+    .container-mais-que-tecnologia{
+        height: 75%;
+    }
+
+    .container-nosso-diferencial{
+        height: 40%;
+    }
+
+    .container-boxes-coretrace{
+        height: 60%;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 10%;
+    }
+
+    .caixa-beneficios{
+        height: 20%;
+        width: 50vh;
+    }
+
+    .imagens-boxes{
+        width: 15%;
+    }
+}
 
 @media (max-width: 1024px) {
 
@@ -371,52 +598,15 @@
         align-self: center;
     }
 
-    .divisao-email-1{
+    .divisao-email-1 {
         display: flex;
         flex-direction: column;
         height: 30%;
         border-radius: 25px;
     }
 
-    .campo-input{
+    .campo-input {
         width: 90%;
         height: 32.5%;
-    }
-}
-
-
-@media (max-width: 1200px) {
-
-    .container-estamos-prontos-para-ouvir {
-        height: auto;
-    }
-
-    .container-estamos-prontos-para-ouvir-superior {
-        flex-direction: column;
-        height: 100vh;
-    }
-
-    .container-fale-conosco {
-        width: 100%;
-        height: 100%;
-    }
-
-    .container-enviar-email {
-        width: 100%;
-        height: 100%;
-    }
-
-    .container-estamos-prontos-para-ouvir-inferior {
-        height: 30vh;
-    }
-
-    .container-enviar-email{
-        width: 100%;
-    }
-
-    .container-email{
-        width: 100%;
-        height: 100%;
-        margin-top: 0;
     }
 }
