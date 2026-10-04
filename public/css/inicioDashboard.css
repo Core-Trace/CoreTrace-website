@@ -28,6 +28,9 @@ body {
     transition: width 0.3s;
     overflow: hidden;
 }
+.menu{
+    z-index: 10;
+}
 
 .logo {
     height: 9.26vh;
@@ -126,7 +129,70 @@ body {
     margin-left: 15vw;
     overflow: hidden;
 }
+.botao-menu {
+    position: fixed;
+    top: 2vh;
+    left: 1vw;
+    z-index: 20;
+    border: none;
+    background-color: transparent;
+    font-size: 1.5vw;
+    cursor: pointer;
+}
 
+.menu {
+    width: 15vw;
+}
+
+.conteudo {
+    width: 85vw;
+    margin-left: 15vw;
+    transition: 0.3s;
+}
+
+.menu.fechado {
+    width: 4vw;
+}
+
+.menu.fechado .logo-completo {
+    display: none;
+}
+
+.menu.fechado .logo-pequeno {
+    display: block;
+}
+
+.menu.fechado .titulo-menu {
+    display: none;
+}
+
+.menu.fechado .item-menu span {
+    display: none;
+}
+
+.menu.fechado .texto-status {
+    display: none;
+}
+
+.menu.fechado .item-menu {
+    justify-content: center;
+    padding: 0;
+}
+
+.menu.fechado .grupo {
+    padding-left: 0.6vw;
+    padding-right: 0.6vw;
+}
+
+.menu.fechado .status {
+    justify-content: center;
+    padding: 0;
+}
+
+.menu.fechado + .conteudo {
+    width: 96vw;
+    margin-left: 4vw;
+}
 .cabecalho {
     height: 9.50vh;
     background-color: #ffffff;
@@ -341,25 +407,91 @@ body {
 
     .menu {
         display: flex;
-        width: 55vw;
+        width: 80vw;
         height: 100vh;
         position: fixed;
         top: 0;
-        left: -55vw;
-        transition: 0.3s;
-        z-index: 10;
-    }
-
-    .menu.aberto {
         left: 0;
+        z-index: 10;
+        transition: 0.3s;
+        background-color: #ffffff;
     }
 
-    .conteudo {
+    .menu.fechado {
+        width: 80vw;
+        left: -80vw;
+    }
+
+    .logo {
+        height: 10vh;
+        padding: 0 5vw;
+    }
+
+    .logo-completo {
+        display: block;
+        width: 35vw;
+    }
+
+    .logo-pequeno {
+        display: none;
+    }
+
+    .grupo {
+        padding: 2vh 5vw;
+    }
+
+    .titulo-menu {
+        display: block;
+        font-size: 3vw;
+        margin-bottom: 1vh;
+    }
+
+    .item-menu {
+        height: 6vh;
+        gap: 4vw;
+        padding: 0 3vw;
+        font-size: 3.5vw;
+        border-radius: 2vw;
+    }
+
+    .item-menu img {
+        width: 5vw;
+        height: 5vw;
+    }
+
+    .item-menu span {
+        display: block;
+    }
+
+    .status {
+        min-height: 9vh;
+        padding: 2vh 5vw;
+        gap: 3vw;
+    }
+
+    .bolinha {
+        width: 2.5vw;
+        height: 2.5vw;
+    }
+
+    .texto-status {
+        display: flex;
+    }
+
+    .texto-status span {
+        font-size: 3vw;
+    }
+
+    .texto-status small {
+        font-size: 2.3vw;
+    }
+
+    .conteudo,
+    .menu.fechado + .conteudo {
         width: 100vw;
         height: 100vh;
         margin-left: 0;
     }
-
 
     .cabecalho {
         display: none;
@@ -370,11 +502,15 @@ body {
         position: fixed;
         top: 2vh;
         left: 4vw;
-        z-index: 9;
+        z-index: 20;
         border: none;
         background-color: transparent;
         font-size: 6vw;
         cursor: pointer;
+    }
+
+    .menu:not(.fechado) + .conteudo .botao-menu {
+        left: 70vw;
     }
 
     .principal {
@@ -476,4 +612,3 @@ body {
         font-size: 2.1vw;
     }
 }
-
