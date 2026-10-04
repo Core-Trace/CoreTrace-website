@@ -165,4 +165,44 @@ body {
 .pesquisa input::placeholder {
     color: #636262;
 }
+.usuario {
+    display: flex;
+    align-items: center;
+    gap: 0.98vw;
+}
+
+.foto-usuario {
+    width: 2.8vw;
+    height: 5.5vh;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.nome-usuario {
+    font-size: 0.90vw;
+    font-weight: bold;
+}
+
+.cargo-usuario {
+    margin-top: 0.25vh;
+    font-size: 0.80vw;
+    color: #777777;
+}
+
+.seta-usuario {
+    margin-left: 0.25vw;
+    font-size: 0.75vw;
+    color: #777777;
+}
+
+.foto-usuario img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.dados-usuario {
+    display: flex;
+    flex-direction: column;
+}
 
