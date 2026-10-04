@@ -1,0 +1,48 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+body {
+    font-family: var(--fonte-principal);
+}
+
+.menu {
+    width: 15vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #ffffff;
+    border-right: 0.07vw solid #eeeeee;
+    display: flex;
+    flex-direction: column;
+    transition: width 0.3s;
+    overflow: hidden;
+}
+
+.logo {
+    height: 9.26vh;
+    display: flex;
+    align-items: center;
+    padding: 0 1.3vw;
+    cursor: pointer;
+}
+
+.logo-completo {
+    width: 10.74vw;
+    height: auto;
+}
+.logo-pequeno {
+    width: 1.95vw;
+    height: auto;
+    display: none;
+}
