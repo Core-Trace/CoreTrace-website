@@ -20,20 +20,35 @@
                 <img src="../assets/images/CoreTraceBlackLogo.png" alt="CoreTrace" width="581" height="154">
             </a>
 
-            <ul class="navbar-links">
-                <li>
-                    <a href="./index.html" aria-current="page">Página inicial</a>
-                </li>
-                <li>
-                    <a href="#sobre">Sobre nós</a>
-                </li>
-                <li>
-                    <a href="#contato">Contato</a>
-                </li>
-            </ul>
+            <button class="navbar-toggle" type="button" aria-expanded="false" aria-controls="menu-principal"
+                aria-label="Abrir menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
 
-            <div class="navbar-acoes">
-                <a class="navbar-login" href="./login.html">Login</a>
+            <div class="navbar-menu" id="menu-principal">
+                <div class="navbar-menu-cabecalho">
+                    <a class="navbar-side-logo" href="./index.html" aria-label="CoreTrace — início">
+                        <img src="../assets/images/CoreTraceBlackLogo.png" alt="CoreTrace" width="581" height="154">
+                    </a>
+                </div>
+
+                <ul class="navbar-links">
+                    <li>
+                        <a href="./index.html" aria-current="page">Página inicial</a>
+                    </li>
+                    <li>
+                        <a href="#sobre">Sobre nós</a>
+                    </li>
+                    <li>
+                        <a href="#contato">Contato</a>
+                    </li>
+                </ul>
+
+                <div class="navbar-acoes">
+                    <a class="navbar-login" href="./login.html">Login</a>
+                </div>
             </div>
         </nav>
     </header>
@@ -402,6 +417,7 @@
             </div>
         </div>
     </footer>
+    <script src="../scripts/navbar.js"></script>
 </body>
 
 </html>
