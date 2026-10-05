@@ -1,0 +1,346 @@
+/*----- Base -----*/
+
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* Garante que o scroll só apareça quando houver conteúdo real excedente */
+    overflow-x: hidden;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Segoe UI', 'Poppins', Arial, sans-serif;
+    background-color: #17181c;
+    color: #f5ede4;
+}
+
+main {
+    display: flex;
+    min-height: 100%;
+    height: fit-content;
+}
+
+/* Estado inicial dos elementos que terão a animação */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    will-change: opacity, transform;
+}
+
+/* Classe aplicada quando o elemento entra na tela */
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/*----- Layout -----*/
+.page-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-height: 100vh; /* Ocupa a altura da tela perfeitamente */
+    overflow-x: hidden;
+}
+
+/*----- aside -----*/
+.fullScreen {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    overflow: hidden;
+}
+
+.asideStylish {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 440px;
+    max-width: 85vw;
+    height: 100%;
+    background-color: #17181c;
+    padding: 32px 40px;
+    box-sizing: border-box;
+    overflow-y: auto;
+}
+
+.asideTop {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0;
+    margin-bottom: 40px;
+}
+
+.asideCoreTraceLogo {
+    display: flex;
+    align-items: center;
+}
+
+.lsCoreTrace {
+    height: 44px;
+    width: auto;
+}
+
+.burgerButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    background: none;
+    border: none;
+}
+
+.burgerButton svg {
+    width: 40px;
+    height: 40px;
+}
+
+.asideScrollable {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    flex: 1;
+    overflow-y: auto;
+}
+
+.scrollableAsideTopics {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.scrollableAsideTopics .title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #f5ede4;
+    margin-bottom: 4px;
+}
+
+.scrollableAsideTopics .clickable {
+    color: #f5ede4;
+    text-decoration: none;
+    font-size: 1.1rem;
+    opacity: 0.85;
+    transition: opacity 0.2s ease;
+}
+
+.scrollableAsideTopics .clickable:hover {
+    opacity: 1;
+}
+
+.socialMedias {
+    display: flex;
+    gap: 16px;
+    margin-top: 4px;
+}
+
+.mediaLogo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.mediaLogo:hover {
+    transform: translateY(-2px);
+}
+
+.asideBottom {
+    flex-shrink: 0;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(245, 237, 228, 0.15);
+}
+
+.footerDesktopAside .copyRight {
+    font-size: 0.9rem;
+    color: #f5ede4;
+    opacity: 0.7;
+}
+
+body.no-scroll {
+    overflow: hidden;
+    height: 100%;
+}
+
+/* -----  margin topicos -----*/
+
+.topico-titulo{
+    font-size: 1.675rem;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.about-title {
+    font-size: 40px;
+    font-weight: 800;
+    color: #c0432c;
+    margin-bottom: 20px;
+}
+
+.about-text {
+    font-family: 'Poppins', sans-serif;
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 1.7;
+    color: #f5ede4;
+    opacity: 0.9;
+    text-align: justify;
+    max-width: 100%;
+    margin-bottom: 40px;
+}
+
+.card-estatistica {
+    aspect-ratio: 1;
+    display: flex;
+    padding: 16px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    border-radius: 20px;
+    background: #222629;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card-estatistica:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.card-titulo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-self: stretch;
+    color: #F6ECE6;
+    text-align: center;
+    font-family: Poppins;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.card-valor {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #c0432c;
+    text-align: center;
+    font-family: Poppins;
+    font-size: 40px;
+    font-weight: 700;
+}
+
+/* Footer */
+
+footer {
+    margin-top: auto; /* Empurra o footer para o final caso a página tenha pouco conteúdo */
+    padding: 60px 14vw 40px 14vw;
+    background-color: #f5ede4;
+    color: #17181c;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+footer a {
+    color: #17181c;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+.div-logo-footer {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    margin-bottom: 4vh;
+}
+
+.logo-text-white {
+    height: 45px;
+    width: auto;
+}
+
+.div-textos-footer {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 30px;
+    width: 100%;
+}
+
+.topics-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5vh;
+    font-size: 0.95rem;
+}
+
+.bold-text-footer {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 1vh;
+    margin-top: 1vh;
+}
+
+.div-coretrace-baixa {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    margin-top: 6vh;
+    font-size: 0.95rem;
+    font-weight: 700;
+    padding-top: 3vh;
+    border-top: 1px solid rgba(23, 24, 28, 0.1);
+}
+
+@media (max-width: 730px) {
+    /* Garante alinhamento relativo e altura automática sem cortar no topo */
+    .navbar {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 10px 5vw;
+        position: relative;
+        min-height: 70px; /* Garante espaço suficiente */
+    }
+
+    /* Esconde os links da direita no celular */
+    .navbar-right {
+        display: none !important;
+    }
+
+    /* Posiciona o botão do hambúrguer fixado à esquerda sem afetar o fluxo central */
+    .navbar-left {
+        position: absolute;
+        left: 5vw;
+        top: 50%;
+        transform: translateY(-50%); /* Centraliza verticalmente o botão */
+    }
+
+    /* Reduz a logo para caber no celular e a centraliza perfeitamente */
+    .navbar-logo {
+        width: 130px; /* Tamanho ajustado para mobile */
+        height: 65px;  /* Altura proporcional para não estourar para cima */
+        margin: 0 auto;
+    }
+}

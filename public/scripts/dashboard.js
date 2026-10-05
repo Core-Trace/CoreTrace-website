@@ -1,9 +1,8 @@
 let cadastrarFunc = document.querySelector("#CadastrarFuncionario");
 let verFunc = document.querySelector("#VerFuncionarios");
 
-function gerarAside(papel) {
-	console.log(papel);
-	if (papel != 1) {
+function gerarAside(nivelAcesso) {
+	if (nivelAcesso != 1) {
 		cadastrarFunc.style.display = "none";
 		verFunc.style.display = "none";
 	}
@@ -346,5 +345,5 @@ async function carregarMenuServidores() {
 	}
 }
 
-gerarAside(sessionStorage.getItem("ID_PAPEL"));
+gerarAside(sessionStorage.ID_NIVEL_ACESSO);
 carregarMenuServidores();

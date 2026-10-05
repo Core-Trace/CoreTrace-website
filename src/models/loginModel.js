@@ -1,13 +1,13 @@
 const database = require("../database/config");
 
-function autenticar(email, senha, passKey) {
+function autenticar(email, senha) {
     const instrucaoSql = `
-        SELECT id, nome, email, id_empresa, id_papel, nome_papel, tipo_papel, passkey
+        SELECT id, nome, email, id_empresa, id_papel, nome_papel, tipo_papel
         FROM vw_info_user 
-        WHERE email = ? AND senha = ? AND passkey = ?;
+        WHERE email = ? AND senha = ?;
     `;
 
-    return database.executar(instrucaoSql, [email, senha, passKey]);
+    return database.executar(instrucaoSql, [email, senha]);
 }
 
 function buscarPorEmail(email) {
