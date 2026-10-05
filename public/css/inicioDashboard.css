@@ -231,6 +231,11 @@ body {
 .pesquisa input::placeholder {
     color: #636262;
 }
+.notificacao{
+        width: 1.3vw;
+    height: 3.5vh;
+    overflow: hidden;
+}
 .usuario {
     display: flex;
     align-items: center;
@@ -238,8 +243,8 @@ body {
 }
 
 .foto-usuario {
-    width: 2.8vw;
-    height: 5.5vh;
+    width: 3.2vw;
+    height: 7.8vh;
     border-radius: 50%;
     overflow: hidden;
 }
