@@ -3,9 +3,8 @@ const dotenv = require("dotenv")
 
 dotenv.config()
 
-const resend = new Resend(process.env.Resend)
-
 async function enviarConvite(nome, email, token) {
+    const resend = new Resend(process.env.Resend)
 
     const linkAtivacao = `http://localhost:3333/pages/ativar-conta.html?token=${token}`
 
