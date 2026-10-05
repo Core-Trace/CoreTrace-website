@@ -170,10 +170,6 @@ body.menu-aberto {
         transition: background-color 0.2s;
     }
 
-    .cabecalho .navbar-toggle:hover {
-        background-color: rgba(20, 17, 21, 0.08);
-    }
-
     .cabecalho .navbar-toggle span {
         display: block;
         width: 22px;
