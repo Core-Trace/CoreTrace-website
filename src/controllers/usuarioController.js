@@ -41,11 +41,11 @@ function cadastrar(req, res) {
     return usuarioModel.cadastrar(nome.trim(), email.trim(), senha, cpf, telefone, empresa, nivelAcesso)
         .then(function (resultado) {
             return res.status(201).json({
-                idusuario: resultado.insertId,
+                id_usuario: resultado.insertId,
                 nome: nome.trim(),
                 email: email.trim(),
-                fkEmpresa: empresa,
-                fkNivel_acesso: nivelAcesso,
+                fk_empresa: empresa,
+                fk_nivel_acesso: nivelAcesso,
                 status: "ATIVO"
             });
         })

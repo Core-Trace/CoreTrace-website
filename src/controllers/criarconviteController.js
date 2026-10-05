@@ -45,7 +45,7 @@ function criarConvite(req, res) {
                 })
                 .then(function () {
                     return res.status(201).json({
-                        idusuario: resultado.insertId,
+                        id_usuario: resultado.insertId,
                         mensagem: "Usuário cadastrado! Convite enviado por email para definir a senha."
                     });
                 })

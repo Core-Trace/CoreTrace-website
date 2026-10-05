@@ -67,8 +67,8 @@ nas tabelas `empresa` e `nivel_acesso`. O cadastro cria o usuário com status `A
 }
 ```
 
-O login aceita usuários ativos e retorna `idusuario`, `nome`, `email`,
-`fkEmpresa`, `fkNivel_acesso` e `status`.
+O login aceita usuários ativos e retorna `id_usuario`, `nome`, `email`,
+`fk_empresa`, `fk_nivel_acesso` e `status`.
 
 ### Página de teste: cadastro com convite por email
 

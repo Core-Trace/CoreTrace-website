@@ -45,11 +45,11 @@ loginForm.addEventListener("submit", function (event) {
         })
         .then(function (usuario) {
             sessionStorage.clear();
-            sessionStorage.ID_USUARIO = usuario.idusuario;
+            sessionStorage.ID_USUARIO = usuario.id_usuario;
             sessionStorage.NOME_USUARIO = usuario.nome;
             sessionStorage.EMAIL_USUARIO = usuario.email;
-            sessionStorage.ID_EMPRESA = usuario.fkEmpresa;
-            sessionStorage.ID_NIVEL_ACESSO = usuario.fkNivel_acesso;
+            sessionStorage.ID_EMPRESA = usuario.fk_empresa;
+            sessionStorage.ID_NIVEL_ACESSO = usuario.fk_nivel_acesso;
             sessionStorage.STATUS_USUARIO = usuario.status;
 
             window.location.href = "/pages/dashboard.html";
