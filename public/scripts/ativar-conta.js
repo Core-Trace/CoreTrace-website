@@ -24,28 +24,34 @@ function updateInvitation(user) {
     descriptionElement.textContent = `Olá, ${firstName}! Você foi convidado para acessar a CoreTrace. Defina uma senha para concluir a ativação da sua conta.`;
 }
 
-async function loadInvitation() {
+function loadInvitation() {
     if (!token) {
         setFeedback("Este link de ativação é inválido ou está incompleto.");
         submitButton.disabled = true;
         return;
     }
 
-    try {
-        const response = await fetch(`/ativar-conta?token=${encodeURIComponent(token)}`);
-        if (!response.ok) throw new Error("Convite não encontrado");
-
-        const data = await response.json();
-        if (!data.usuario) throw new Error("Convite não encontrado");
-        updateInvitation(data.usuario);
-    } catch (error) {
-        setFeedback("Não foi possível validar este convite. Solicite um novo link ao administrador.");
-        submitButton.disabled = true;
-    }
+    return fetch(`/ativar-conta?token=${encodeURIComponent(token)}`)
+        .then(function (response) {
+            if (!response.ok) throw new Error("Convite não encontrado");
+            return response.json();
+        })
+        .then(function (data) {
+            if (!data.usuario) throw new Error("Convite não encontrado");
+            updateInvitation(data.usuario);
+            submitButton.disabled = false;
+        })
+        .catch(function () {
+            setFeedback("Não foi possível validar este convite. Solicite um novo link ao administrador.");
+            submitButton.disabled = true;
+        });
 }
 
-form.addEventListener("submit", async (event) => {
+form.addEventListener("submit", function (event) {
     event.preventDefault();
+
+    if (submitButton.disabled) return;
+
     setFeedback("");
 
     if (!passwordInput.value || !confirmPasswordInput.value) {
@@ -53,8 +59,8 @@ form.addEventListener("submit", async (event) => {
         return;
     }
 
-    if (passwordInput.value.length < 6) {
-        setFeedback("A senha deve ter pelo menos 6 caracteres.");
+    if (passwordInput.value.trim() === "" || passwordInput.value.length < 6 || passwordInput.value.length > 45) {
+        setFeedback("A senha deve ter entre 6 e 45 caracteres.");
         return;
     }
 
@@ -67,24 +73,29 @@ form.addEventListener("submit", async (event) => {
     submitButton.disabled = true;
     submitLabel.textContent = "Ativando conta...";
 
-    try {
-        const response = await fetch("/ativar-conta", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ token, senha: passwordInput.value })
+    return fetch("/ativar-conta", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ token, senha: passwordInput.value })
+    })
+        .then(function (response) {
+            return response.json().then(function (data) {
+                if (!response.ok) throw new Error(data.mensagem || "Não foi possível ativar a conta.");
+                return data;
+            });
+        })
+        .then(function () {
+            form.reset();
+            setFeedback("Conta ativada com sucesso. Você já pode acessar a CoreTrace.", true);
+            submitLabel.textContent = "Conta ativada";
+        })
+        .catch(function (error) {
+            setFeedback(error instanceof TypeError
+                ? "Não foi possível conectar ao servidor. Tente novamente."
+                : error.message);
+            submitButton.disabled = false;
+            submitLabel.textContent = "Ativar conta";
         });
-        const data = await response.json();
-
-        if (!response.ok) throw new Error(data.mensagem || "Não foi possível ativar a conta.");
-
-        form.reset();
-        setFeedback("Conta ativada com sucesso. Você já pode acessar a CoreTrace.", true);
-        submitLabel.textContent = "Conta ativada";
-    } catch (error) {
-        setFeedback(error.message || "Não foi possível ativar a conta. Tente novamente.");
-        submitButton.disabled = false;
-        submitLabel.textContent = "Ativar conta";
-    }
 });
 
 loadInvitation();

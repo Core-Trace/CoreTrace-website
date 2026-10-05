@@ -53,14 +53,13 @@
             <div class="activation-content">
                 <p class="activation-eyebrow">Ative sua conta</p>
                 <h1 id="activation-title">Você está quase lá.</h1>
-                <p class="activation-description" id="activationDescription">Olá, Marcelo! Você foi convidado para acessar a
-                    CoreTrace. Defina uma senha para concluir a ativação da sua conta.</p>
+                <p class="activation-description" id="activationDescription">Validando seu convite para acessar a CoreTrace.</p>
 
                 <div class="invited-user" aria-label="Dados do convite">
                     <img class="invited-user-icon" src="../assets/icons/usuario.svg" alt="" aria-hidden="true">
                     <div class="invited-user-data">
-                        <strong class="invited-user-name" id="invitedUserName">Marcelo Silva</strong>
-                        <span class="invited-user-email" id="invitedUserEmail">marcelo@empresa.com</span>
+                        <strong class="invited-user-name" id="invitedUserName">Carregando convite...</strong>
+                        <span class="invited-user-email" id="invitedUserEmail"></span>
                     </div>
                 </div>
 
@@ -69,17 +68,17 @@
                         <label class="visually-hidden" for="passwordInput">Nova senha</label>
                         <img class="activation-field-icon" src="../assets/icons/cadeado.svg" alt="" aria-hidden="true">
                         <input type="password" id="passwordInput" name="password" placeholder="Nova senha"
-                            autocomplete="new-password" minlength="6" required>
+                            autocomplete="new-password" minlength="6" maxlength="45" required>
                     </div>
 
                     <div class="activation-field">
                         <label class="visually-hidden" for="confirmPasswordInput">Confirmar nova senha</label>
                         <img class="activation-field-icon" src="../assets/icons/cadeado.svg" alt="" aria-hidden="true">
                         <input type="password" id="confirmPasswordInput" name="confirmPassword"
-                            placeholder="Confirmar nova senha" autocomplete="new-password" minlength="6" required>
+                            placeholder="Confirmar nova senha" autocomplete="new-password" minlength="6" maxlength="45" required>
                     </div>
 
-                    <button class="activation-submit" id="activationSubmit" type="submit">
+                    <button class="activation-submit" id="activationSubmit" type="submit" disabled>
                         <span id="submitLabel">Ativar conta</span>
                     </button>
 
