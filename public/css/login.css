@@ -158,6 +158,18 @@
     background: #ae0301;
 }
 
+.login-form__submit:disabled {
+    cursor: wait;
+    opacity: 0.7;
+}
+
+.login-form__feedback {
+    margin: 0;
+    color: var(--login-red);
+    font-size: 14px;
+    line-height: 1.5;
+}
+
 .login-visually-hidden {
     position: absolute;
     width: 1px;

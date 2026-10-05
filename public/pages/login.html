@@ -79,17 +79,18 @@
                         <label class="login-visually-hidden" for="email">E-mail</label>
                         <img src="../assets/icons/email.svg" alt="" width="17" height="14">
                         <input id="email" name="email" type="email" placeholder="E-mail" autocomplete="username"
-                            autocapitalize="none" spellcheck="false">
+                            autocapitalize="none" spellcheck="false" required>
                     </div>
 
                     <div class="login-form__control">
                         <label class="login-visually-hidden" for="senha">Senha</label>
                         <img src="../assets/icons/cadeado.svg" alt="" width="16" height="17">
                         <input id="senha" name="senha" type="password" placeholder="Senha"
-                            autocomplete="current-password">
+                            autocomplete="current-password" required>
                     </div>
 
-                    <button class="login-form__submit" type="button">Entrar</button>
+                    <button class="login-form__submit" type="submit">Entrar</button>
+                    <p class="login-form__feedback" id="loginFeedback" role="status" aria-live="polite" hidden></p>
                 </form>
             </div>
         </section>
