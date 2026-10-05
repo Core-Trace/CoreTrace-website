@@ -17,7 +17,6 @@
 -- Servidor 2: 789
 
 
-
 DROP DATABASE IF EXISTS coretrace;
 
 CREATE DATABASE coretrace;
@@ -90,6 +89,7 @@ CREATE TABLE perfil_servidor (
     id_perfil_servidor INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(100) NOT NULL,
     descricao VARCHAR(255),
+    token_perfil_servidor VARCHAR(255) UNIQUE NOT NULL,
     fk_empresa INT NOT NULL,
 
     FOREIGN KEY (fk_empresa)
@@ -111,7 +111,7 @@ CREATE TABLE servidores (
     id_servidor INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(45) NOT NULL,
     status VARCHAR(45),
-    token_servidor VARCHAR(255) UNIQUE,
+    endereco_mac VARCHAR(17) UNIQUE NOT NULL,
     fk_perfil_servidor INT NOT NULL,
 
     FOREIGN KEY (fk_perfil_servidor)
@@ -194,19 +194,20 @@ VALUES
 (3, 5);
 
 INSERT INTO perfil_servidor
-(nome, descricao, fk_empresa)
+(nome, descricao, token_perfil_servidor, fk_empresa)
 VALUES
 (
     'Produção',
     'Perfil dos servidores do ambiente de produção',
+    '321',
     1
 );
 
 INSERT INTO servidores
-(nome, status, token_servidor, fk_perfil_servidor)
+(nome, endereco_mac, status, fk_perfil_servidor)
 VALUES
-('Servidor Produção 01', 'ATIVO', '456', 1),
-('Servidor Produção 02', 'ATIVO', '789', 1);
+('Servidor Produção 01', 'AA:BB:CC:DD:EE:01', 'ATIVO', 1),
+('Servidor Produção 02', 'AA:BB:CC:DD:EE:02', 'ATIVO', 1);
 
 INSERT INTO container
 (nome, status, fk_servidor)
@@ -515,3 +516,23 @@ INSERT INTO usuario_perfil_servidor
 (fk_usuario, fk_perfil_servidor)
 VALUES
 (1, 1);
+SELECT * FROM usuario;
+SELECT DISTINCT
+    comp.nome,
+    comp.nome_coluna,
+    comp.funcao_psutil,
+    comp.argumento_nome,
+    comp.argumento_valor,
+    comp.atributo_retorno,
+    comp.indice_retorno,
+    comp.unidade,
+    cp.limite_atencao,
+    cp.limite_critico
+FROM servidores s
+JOIN perfil_servidor ps
+    ON ps.id_perfil_servidor = s.fk_perfil_servidor
+JOIN componentes_perfil cp
+    ON cp.fk_perfil_servidor = ps.id_perfil_servidor
+JOIN componentes comp
+    ON comp.id_componente = cp.fk_componente
+WHERE s.endereco_mac = 'AA:BB:CC:DD:EE:01';
