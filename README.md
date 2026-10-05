@@ -70,6 +70,29 @@ nas tabelas `empresa` e `nivel_acesso`. O cadastro cria o usuário com status `A
 O login aceita usuários ativos e retorna `id_usuario`, `nome`, `email`,
 `fk_empresa`, `fk_nivel_acesso` e `status`.
 
+### Download do agente
+
+Após o login, o botão **Baixar agente** no dashboard envia
+`sessionStorage.ID_EMPRESA` e o perfil de servidor `1` (fixo para teste) para
+`POST /agente/download`:
+
+```json
+{
+  "id_empresa": 1,
+  "id_perfil_servidor": 1
+}
+```
+
+A rota consulta `empresa.token_instalacao` e `perfil_servidor.token_perfil_servidor`,
+verificando se o perfil pertence à empresa. O [Archiver](https://www.archiverjs.com/docs/quickstart/)
+gera `agente.zip` com a pasta `agente` e seu `config.json` preenchido com esses tokens.
+O arquivo de configuração original permanece como modelo para os próximos downloads.
+Caches Python e `node_modules` ficam fora do ZIP.
+
+O banco deve conter a coluna `perfil_servidor.token_perfil_servidor`, conforme
+`src/database/script.sql`. Para uma instalação anterior que ainda não tem essa coluna,
+`src/database/atualizar_token_perfil_servidor.sql` adiciona os tokens preservando os registros.
+
 ### Página de teste: cadastro com convite por email
 
 Com `npm start`, abra `http://localhost:3333/pages/cadastro-teste.html`
