@@ -3,22 +3,17 @@ import csv
 import time
 import os
 import json
-import uuid # para pegar o endereço mac da máquina
-import requests # add pra comunicação com a api
-import socket # add pra pegar o nome do pc
+import requests
 from datetime import datetime
 
 
 # Configurar as variáveis de ambiente pra API pra cahamar commais facilidade posteriormente
 API_BASE_URL = "http://localhost:3333"
+API_FILTRO_URL = "http://localhost:3334"
 
 
-# Token de instalação ou token do perfil do servidor, que será salvo no arquivo de configuração
+# Token de instalação e token do perfil do servidor ficam salvos no arquivo de configuração
 ARQUIVO_CONFIG = "config.json"
-
-
-NOME_MAQUINA = socket.gethostname()
-NOME_USUARIO = os.environ.get('USER')
 
 
 def obter_endereco_mac():
@@ -29,7 +24,7 @@ def obter_endereco_mac():
 
             # family é o tipo de endereço, p.AF_LINK é o tipo de endereço MAC
             if endereco.family == p.AF_LINK:
-                if endereco.address != "00:00:00:00:00:00":
+                if endereco.address and endereco.address != "00:00:00:00:00:00":
                     return endereco.address.upper()
 
     return None
@@ -41,41 +36,55 @@ def carregar_config():
         print(f"Arquivo de configuração '{ARQUIVO_CONFIG}' não encontrado.")
         exit()
 
-    with open(ARQUIVO_CONFIG, 'r', encoding='utf-8') as arquivo:
-        return json.load(arquivo)
+    try:
+        with open(ARQUIVO_CONFIG, "r", encoding="utf-8") as arquivo:
+            return json.load(arquivo)
+
+    except json.JSONDecodeError:
+        print("O arquivo config.json possui um JSON inválido.")
+        exit()
 
 
 # Função para verificar se o node já está registrado
-def ativarAgente(token_instalacao, token_perfil_servidor):
-    endereco_mac = obter_endereco_mac()
-
+def ativar_agente(
+    token_instalacao,
+    token_perfil_servidor,
+    endereco_mac
+):
     dados = {
         "tokenInstalacaoServer": token_instalacao,
-        "tokenPerfilServidor": token_perfil_servidor,
+        "tokenPerfilServidorServer": token_perfil_servidor,
         "enderecoMacServer": endereco_mac
     }
 
-    resposta = requests.post(
-        f"{API_BASE_URL}/servidor/ativarAgente",
-        json=dados
-    )
+    try:
+        resposta = requests.post(
+            f"{API_BASE_URL}/servidor/ativarAgente",
+            json=dados
+        )
 
-    if resposta.status_code == 200:
-        print(f"Agente ativado no MAC {endereco_mac}")
-        return True
+        if resposta.status_code == 200:
+            print(f"Agente ativado no MAC {endereco_mac}")
+            return True
 
-    print("Erro ao ativar agente")
-    print(resposta.text)
+        print(f"Erro ao ativar agente ({resposta.status_code})")
+        print(resposta.text)
 
-    return False
+        return False
+
+    except requests.RequestException as erro:
+        print(f"Falha de conexão com a API de ativação: {erro}")
+        return False
 
 
-def buscar_metricas_cliente(token_instalacao, token_perfil_servidor):
-    # Usa a nossa API pra pegar os "comando_parametro" que foram cadastrados para o perfil do servidor
-
+def buscar_metricas_cliente(
+    token_instalacao,
+    token_perfil_servidor
+):
+    # Usa a nossa API pra pegar os "comando_parametro" que foram cadastrados pro perfil do servidor
     try:
         resposta = requests.get(
-            f"http://localhost:3334/empresa/metricas",
+            f"{API_FILTRO_URL}/empresa/metricas",
             headers={
                 "Authorization": f"Bearer {token_instalacao}",
                 "token-perfil": token_perfil_servidor
@@ -90,17 +99,17 @@ def buscar_metricas_cliente(token_instalacao, token_perfil_servidor):
 
             return metricas
 
-        else:
-            print(
-                f"Houve um erro ao consultar as métricas: "
-                f"({resposta.status_code})."
-            )
+        print(
+            f"Houve um erro ao consultar as métricas "
+            f"({resposta.status_code})."
+        )
 
-            return []
+        print(resposta.text)
 
-    except Exception as e:
-        print(f"Falha de conexão com a API: {e}")
+        return []
 
+    except requests.RequestException as erro:
+        print(f"Falha de conexão com a API de métricas: {erro}")
         return []
 
 
@@ -150,13 +159,16 @@ def converter_valor(valor):
 #    "argumento_nome": "logical",
 #    "argumento_valor": "true"
 # }
-# Precisa virar -> p.cpu_count(logica=true)
+# Precisa virar -> p.cpu_count(logical=True)
 #
 
 # Monta os parâmetros que são enviados para a função do psutil
 def montar_argumentos(metrica):
     nome = metrica.get("argumento_nome")
-    valor = converter_valor(metrica.get("argumento_valor"))
+
+    valor = converter_valor(
+        metrica.get("argumento_valor")
+    )
 
     # Retorna um dicionário montado com o nome e o valor do argumento
     if nome is None:
@@ -188,14 +200,19 @@ def executar_funcao(metrica, cache):
         # Executa a função de forma conceitual, onde o getattr acesso o atributo de um objeto usando o nome dele em forma de texto
         # nome_funcao = "cpu_percent"
         # funcao = p.cpu_percent
-        funcao = getattr(p, nome_funcao)
+        funcao = getattr(
+            p,
+            nome_funcao
+        )
 
         # **argumentos é equivalente a
         # argumentos = {
         #     "logical": True
         # }
         # assim funcao(**argumentos) é equivalente a funcao(logical=True)
-        cache[chave_cache] = funcao(**argumentos)
+        cache[chave_cache] = funcao(
+            **argumentos
+        )
 
     return cache[chave_cache]
 
@@ -228,13 +245,24 @@ def executar_funcao(metrica, cache):
 
 
 # Verifica qual campo deve ser retornado da função do psutil
-def extrair_retorno(resultado, metrica):
-    atributo = metrica.get("atributo_retorno")
-    indice = metrica.get("indice_retorno")
+def extrair_retorno(
+    resultado,
+    metrica
+):
+    atributo = metrica.get(
+        "atributo_retorno"
+    )
+
+    indice = metrica.get(
+        "indice_retorno"
+    )
 
     # Equivalente a resultado = resultado.atributo, porque algumas funções do psutil retornam objetos com atributos
     if atributo is not None:
-        resultado = getattr(resultado, atributo)
+        resultado = getattr(
+            resultado,
+            atributo
+        )
 
     # Equivalente a resultado = resultado[indice], porque algumas funções do psutil retornam listas ou tuplas
     if indice is not None:
@@ -243,14 +271,23 @@ def extrair_retorno(resultado, metrica):
     return resultado
 
 
-def capturar_metrica(metrica, cache):
+def capturar_metrica(
+    metrica,
+    cache
+):
     try:
 
         # Executa a função do psutil
-        resultado = executar_funcao(metrica, cache)
+        resultado = executar_funcao(
+            metrica,
+            cache
+        )
 
         # Pega o valor específico desejado
-        resultado = extrair_retorno(resultado, metrica)
+        resultado = extrair_retorno(
+            resultado,
+            metrica
+        )
 
         return resultado
 
@@ -263,51 +300,84 @@ def capturar_metrica(metrica, cache):
 
         print(
             f"Não foi possível capturar "
-            f"{metrica['nome_coluna']}: {erro}"
+            f"{metrica['nome_coluna']}: "
+            f"{erro}"
         )
 
         return None
 
 
-def capturar_dados(metricas):
+def capturar_dados(
+    metricas,
+    endereco_mac
+):
     # Criar um cache para armazenar os resultados a cada rodada e evitar chamadas repetidas
     cache = {}
 
     dados = {
-        "TIMESTAMP": datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
-        "USUARIO": NOME_USUARIO,
-        "HOSTNAME": NOME_MAQUINA
+        "TIMESTAMP": datetime.now().strftime(
+            "%Y-%m-%d %H:%M:%S"
+        ),
+
+        "ENDERECO_MAC": endereco_mac
     }
 
     for metrica in metricas:
         coluna = metrica["nome_coluna"]
 
-        dados[coluna] = capturar_metrica(metrica, cache)
+        dados[coluna] = capturar_metrica(
+            metrica,
+            cache
+        )
 
     return dados
 
 
 config = carregar_config()
 
-token_instalacao = config.get("token_instalacao")
-token_perfil_servidor = config.get("token_perfil_servidor")
+
+token_instalacao = config.get(
+    "token_instalacao"
+)
+
+token_perfil_servidor = config.get(
+    "token_perfil_servidor"
+)
 
 
 if token_instalacao is None:
-    print("Token de instalação não encontrado no arquivo de configuração.")
+    print(
+        "Token de instalação não encontrado "
+        "no arquivo de configuração."
+    )
+
     exit()
 
 
 if token_perfil_servidor is None:
-    print("Token do perfil do servidor não encontrado no arquivo de configuração.")
+    print(
+        "Token do perfil do servidor não encontrado "
+        "no arquivo de configuração."
+    )
+
     exit()
 
 
-print("Ativando agente...")
+endereco_mac = obter_endereco_mac()
 
-agente_ativado = ativarAgente(
+if endereco_mac is None:
+    print(
+        "Não foi possível identificar "
+        "o endereço MAC da máquina."
+    )
+
+    exit()
+
+
+agente_ativado = ativar_agente(
     token_instalacao,
-    token_perfil_servidor
+    token_perfil_servidor,
+    endereco_mac
 )
 
 if not agente_ativado:
@@ -315,25 +385,24 @@ if not agente_ativado:
     exit()
 
 
-print("Agente ativado com sucesso.")
-
-
 metricas = buscar_metricas_cliente(
     token_instalacao,
     token_perfil_servidor
 )
 
-
 if not metricas:
-    print("Nenhuma métrica configurada")
+    print(
+        "Nenhuma métrica configurada "
+        "para este perfil."
+    )
+
     exit()
 
 
 # Colunas padrão
 colunas = [
     "TIMESTAMP",
-    "USUARIO",
-    "HOSTNAME"
+    "ENDERECO_MAC"
 ]
 
 
@@ -344,10 +413,19 @@ colunas.extend(
 )
 
 
-caminho_arquivo = f'./coretrace_coleta_{NOME_MAQUINA}.csv'
+mac_arquivo = endereco_mac.replace(
+    ":",
+    "-"
+)
+
+caminho_arquivo = (
+    f"./coretrace_coleta_{mac_arquivo}.csv"
+)
 
 
-arquivo_existe = os.path.exists(caminho_arquivo)
+arquivo_existe = os.path.exists(
+    caminho_arquivo
+)
 
 arquivo = open(
     caminho_arquivo,
@@ -369,17 +447,22 @@ if not arquivo_existe:
 
 try:
     while True:
+        dados = capturar_dados(
+            metricas,
+            endereco_mac
+        )
 
-        dados = capturar_dados(metricas)
-
-        escritor.writerow(dados)
+        escritor.writerow(
+            dados
+        )
 
         arquivo.flush()
 
         print(
             f"{dados['TIMESTAMP']} - "
-            f"Captura salva na máquina "
-            f"{NOME_MAQUINA}: {dados}"
+            f"Captura salva para o MAC "
+            f"{endereco_mac}: "
+            f"{dados}"
         )
 
         time.sleep(1)
@@ -391,4 +474,3 @@ except KeyboardInterrupt:
 
 finally:
     arquivo.close()
-    
