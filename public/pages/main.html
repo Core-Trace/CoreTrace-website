@@ -9,41 +9,10 @@
     <link rel="stylesheet" href="../css/global.css">
     <link rel="stylesheet" href="../css/navbar.css">
     <link rel="stylesheet" href="../css/main.css">
-    <link rel="stylesheet" href="../css/aside-home.css">
     <link rel="stylesheet" href="../css/fonts.css">
 </head>
 
 <body>
-    <div class="fullScreen" id="fullScreen" style="display: none;">
-        <div class="asideStylish">
-            <div class="asideTop">
-                <div class="asideCoreTraceLogo">
-                    <img src="../assets/images/CoreTraceLogoLetterSymbol.avif" alt="CoreTraceLogo" class="lsCoreTrace">
-                </div>
-                <div class="burgerButton" onclick="asidePlot()">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 60 60" fill="none">
-                        <path fill-rule="evenodd" clip-rule="evenodd"
-                            d="M7.5 40H52.5V45H7.5V40ZM7.5 27.5H52.5V32.5H7.5V27.5ZM7.5 15H52.5V20H7.5V15Z"
-                            fill="#F6ECE6" />
-                    </svg>
-                </div>
-            </div>
-
-            <div class="asideScrollable">
-                <div class="scrollableAsideTopics">
-                    <p class="title">Páginas</p>
-                    <a href="/" class="clickable">Home</a>
-                    <a href="/pages/equipe.html" class="clickable">Equipe</a>
-                    <a href="/pages/login.html" class="clickable">Login</a>
-                </div>
-            </div>
-            <div class="asideBottom">
-                <div class="footerDesktopAside">
-                    <p class="copyRight">© CoreTrace 2026</p>
-                </div>
-            </div>
-        </div>
-    </div>
     <div class="page-wrapper">
         <header class="cabecalho">
             <nav class="navbar" aria-label="Navegação principal">
@@ -51,25 +20,35 @@
                     <img src="../assets/images/CoreTraceBlackLogo.png" alt="CoreTrace" width="581" height="154">
                 </a>
 
-                <ul class="navbar-links">
-                    <li>
-                        <a href="/" aria-current="page">Página inicial</a>
-                    </li>
+                <button class="navbar-toggle" type="button" aria-expanded="false" aria-controls="menu-principal"
+                    aria-label="Abrir menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
 
-                    <li>
-                        <a href="#sobre">Sobre nós</a>
-                    </li>
+                <div class="navbar-menu" id="menu-principal">
+                    <div class="navbar-menu-cabecalho">
+                        <a class="navbar-side-logo" href="/" aria-label="CoreTrace — início">
+                            <img src="../assets/images/CoreTraceBlackLogo.png" alt="CoreTrace" width="581" height="154">
+                        </a>
+                    </div>
 
-                    <li>
-                        <a href="#contato">Contato</a>
-                    </li>
-                </ul>
+                    <ul class="navbar-links">
+                        <li>
+                            <a href="/" aria-current="page">Página inicial</a>
+                        </li>
+                        <li>
+                            <a href="#about">Sobre nós</a>
+                        </li>
+                        <li>
+                            <a href="#footer">Contato</a>
+                        </li>
+                    </ul>
 
-                <div class="navbar-acoes">
-                    <a class="navbar-login" href="/pages/login.html">
-                        Login
-                    </a>
-
+                    <div class="navbar-acoes">
+                        <a class="navbar-login" href="/pages/login.html">Login</a>
+                    </div>
                 </div>
             </nav>
         </header>
@@ -269,7 +248,7 @@
         </footer>
     </div>
 
-    <script src="./../scripts/aside-home.js"></script>
+    <script src="../scripts/navbar.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             const elementsToReveal = document.querySelectorAll(".reveal");
