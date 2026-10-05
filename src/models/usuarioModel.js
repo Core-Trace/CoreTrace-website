@@ -1,5 +1,24 @@
 const database = require("../database/config")
 
+function cadastrar(nome, email, senha, cpf, telefone, empresa, nivelAcesso) {
+    const instrucaoSql = `
+        INSERT INTO usuario (nome, email, senha, cpf, telefone, fkEmpresa, fkNivel_acesso, status)
+        VALUES (?, ?, ?, ?, ?, ?, ?, 'ATIVO');
+    `;
+
+    return database.executar(instrucaoSql, [nome, email, senha, cpf, telefone, empresa, nivelAcesso]);
+}
+
+function autenticar(email, senha) {
+    const instrucaoSql = `
+        SELECT idusuario, nome, email, fkEmpresa, fkNivel_acesso, status
+        FROM usuario
+        WHERE email = ? AND senha = ? AND status = 'ATIVO';
+    `;
+
+    return database.executar(instrucaoSql, [email, senha]);
+}
+
 async function criarUser(nome, email, token) {
 // cria o usuário quando você manda o convite
     const instrucao = `
@@ -32,6 +51,8 @@ async function ativarUsuario(idUsuario, senha) {
 }
 
 module.exports = {
+    cadastrar,
+    autenticar,
     criarUser,
     buscarUsuarioPorToken,
     ativarUsuario

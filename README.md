@@ -38,3 +38,34 @@ APP_HOST=''
 ```bash
 npm start
 ```
+
+### Rotas da tabela `usuario`
+
+`POST /usuario/cadastrar` recebe JSON no padrão dos outros controllers:
+
+```json
+{
+  "nomeServer": "Ana Silva",
+  "emailServer": "ana@empresa.com",
+  "senhaServer": "senha123",
+  "cpfServer": "12345678901",
+  "telefoneServer": "11999999999",
+  "empresaServer": 1,
+  "nivelAcessoServer": 2
+}
+```
+
+CPF e telefone são opcionais. A empresa e o nível de acesso precisam existir
+nas tabelas `empresa` e `nivel_acesso`. O cadastro cria o usuário com status `ATIVO`.
+
+`POST /usuario/autenticar` recebe:
+
+```json
+{
+  "emailServer": "ana@empresa.com",
+  "senhaServer": "senha123"
+}
+```
+
+O login aceita usuários ativos e retorna `idusuario`, `nome`, `email`,
+`fkEmpresa`, `fkNivel_acesso` e `status`.
