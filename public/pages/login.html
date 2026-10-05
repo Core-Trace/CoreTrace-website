@@ -4,281 +4,100 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Acesso à plataforma de monitoramento CoreTrace.">
+    <title>Login | CoreTrace</title>
 
-    <title>Login</title>
-
-    <!-- CSS -->
+    <link rel="stylesheet" href="../css/fonts.css">
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/navbar.css">
     <link rel="stylesheet" href="../css/login.css">
-    <link rel="stylesheet" href="../css/main.css">
-    <link rel="stylesheet" href="../css/cadastro-funcionario.css">
-    <link rel="stylesheet" href="../css/aside-home.css">
-
-    <!-- Fontes -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <link
-        href="https://fonts.googleapis.com/css2?family=Jersey+25&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-        rel="stylesheet">
 </head>
 
-<body>
+<body class="login-page">
+    <header class="cabecalho">
+        <nav class="navbar" aria-label="Navegação principal">
+            <a class="navbar-logo" href="./index.html" aria-label="CoreTrace — início">
+                <img src="../assets/images/CoreTraceBlackLogo.png" alt="CoreTrace" width="581" height="154">
+            </a>
 
-    <!-- ============================= -->
-    <!-- MENU LATERAL / FULLSCREEN -->
-    <!-- ============================= -->
+            <button class="navbar-toggle" type="button" aria-expanded="false" aria-controls="menu-principal"
+                aria-label="Abrir menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
 
-    <div class="fullScreen" id="fullScreen" style="display: none;">
-
-        <div class="asideStylish">
-            <div class="asideTop">
-                <div class="asideCoreTraceLogo">
-                    <img src="../assets/images/CoreTraceLogoLetterSymbol.avif" alt="CoreTraceLogo" class="lsCoreTrace">
-                </div>
-                <div class="burgerButton" onclick="asidePlot()">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 60 60" fill="none">
-                        <path fill-rule="evenodd" clip-rule="evenodd"
-                            d="M7.5 40H52.5V45H7.5V40ZM7.5 27.5H52.5V32.5H7.5V27.5ZM7.5 15H52.5V20H7.5V15Z"
-                            fill="#F6ECE6" />
-                    </svg>
-                </div>
-            </div>
-
-            <div class="asideScrollable">
-                <div class="scrollableAsideTopics">
-                    <p class="title">Páginas</p>
-                    <a href="/" class="clickable">Home</a>
-                    <a href="/pages/equipe.html" class="clickable">Equipe</a>
-                    <a href="/pages/login.html" class="clickable">Login</a>
-                </div>
-            </div>
-            <div class="asideBottom">
-                <div class="footerDesktopAside">
-                    <p class="copyRight">© CoreTrace 2026</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    </div>
-
-
-    <!-- ============================= -->
-    <!-- NAVBAR -->
-    <!-- ============================= -->
-
-    <header class="navbar">
-            <div class="navbar-left">
-                <div class="burgerButton" onclick="asidePlot()">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 60 60" fill="none">
-                        <path fill-rule="evenodd" clip-rule="evenodd"
-                            d="M7.5 40H52.5V45H7.5V40ZM7.5 27.5H52.5V32.5H7.5V27.5ZM7.5 15H52.5V20H7.5V15Z"
-                            fill="#F6ECE6" />
-                    </svg>
-                </div>
-                <canvas class="navbar-logo"></canvas>
-            </div>
-
-            <nav class="navbar-right">
-                <button class="theme-toggle">
-                    <img src="../assets/icons/Mingcute Sun Fill.png" alt="Tema">
-                </button>
-                <a href="/pages/main.html" class="nav-link">Home</a>
-                <a href="/pages/equipe.html" class="nav-link">Equipe</a>
-                <a href="#footer" class="nav-link">Links Úteis</a>
-                <a href="/pages/login.html" class="nav-link">Login</a>
-            </nav>
-        </header>
-
-
-    <!-- ============================= -->
-    <!-- LOGIN -->
-    <!-- ============================= -->
-
-    <main class="login">
-
-        <!-- PRIMEIRA ETAPA -->
-        <div
-            class="login-card form-step active"
-            id="firstStep">
-
-            <h1 class="titulo">
-                Login
-            </h1>
-
-
-            <div class="steps">
-
-                <div
-                    class="dot active"
-                    id="firstDot">
-                </div>
-
-                <div
-                    class="step-line"
-                    id="stepLine">
-                </div>
-
-                <div
-                    class="dot inactive"
-                    id="secondDot">
-                </div>
-
-            </div>
-
-
-            <form
-                class="login-form"
-                id="loginForm">
-
-                <input
-                    type="email"
-                    class="input"
-                    id="emailInput"
-                    placeholder="Email"
-                    required>
-
-                <input
-                    type="password"
-                    class="input"
-                    id="senhaInput"
-                    placeholder="Senha"
-                    required>
-
-
-                <div class="esqueceu">
-
-                    Esqueceu a
-
-                    <a
-                        href="#"
-                        class="link">
-                        senha?
+            <div class="navbar-menu" id="menu-principal">
+                <div class="navbar-menu-cabecalho">
+                    <a class="navbar-side-logo" href="./index.html" aria-label="CoreTrace — início">
+                        <img src="../assets/images/CoreTraceBlackLogo.png" alt="CoreTrace" width="581" height="154">
                     </a>
-
                 </div>
 
+                <ul class="navbar-links">
+                    <li>
+                        <a href="./index.html">Página inicial</a>
+                    </li>
+                    <li>
+                        <a href="./index.html#sobre">Sobre nós</a>
+                    </li>
+                    <li>
+                        <a href="./index.html#contato">Contato</a>
+                    </li>
+                </ul>
 
-                <p
-                    class="form-feedback"
-                    id="loginFeedback"
-                    role="status"
-                    aria-live="polite">
-                </p>
-
-
-                <button
-                    type="button"
-                    id="id_btnext"
-                    class="btn-next">
-
-                    Próximo
-
-                </button>
-
-            </form>
-
-        </div>
-
-
-        <!-- SEGUNDA ETAPA -->
-        <div
-            class="login-card form-step"
-            id="secondStep">
-
-            <h1 class="titulo">
-                Login
-            </h1>
-
-
-            <div class="steps">
-
-                <div
-                    class="dot active"
-                    id="firstDotSecond">
+                <div class="navbar-acoes">
+                    <a class="navbar-login" href="./login.html" aria-current="page">Login</a>
                 </div>
-
-                <div
-                    class="step-line active"
-                    id="stepLineSecond">
-                </div>
-
-                <div
-                    class="dot active"
-                    id="secondDotSecond">
-                </div>
-
             </div>
+        </nav>
+    </header>
 
+    <main class="login-layout">
+        <section class="login-showcase" aria-labelledby="login-showcase-title">
+            <div class="login-showcase__content">
+                <span class="login-showcase__accent" aria-hidden="true"></span>
+                <h1 id="login-showcase-title">Traga controle para a<br>sua <span>infraestrutura</span></h1>
+                <p class="login-showcase__description">Antecipe tomada de decisões de acordo<br class="login-desktop-break">
+                    com o estado dos seus servidores.</p>
+            </div>
+        </section>
 
-            <form
-                class="login-form"
-                id="loginFormSecond"
-                novalidate>
+        <section class="login-access" aria-labelledby="login-title">
+            <div class="login-access__content">
+                <a class="login-access__brand" href="./index.html" aria-label="CoreTrace — página inicial">
+                    <img src="../assets/images/coretrace-login-logo.svg" alt="CoreTrace" width="334" height="75">
+                </a>
 
-                <input
-                    type="text"
-                    class="input"
-                    id="passKeyInput"
-                    placeholder="Insira uma Passkey"
-                    required>
+                <div class="login-access__heading">
+                    <h2 id="login-title">Acesse sua conta</h2>
+                    <p>Entre com seus dados para continuar e<br class="login-desktop-break"> acessar sua plataforma</p>
+                </div>
 
+                <form class="login-form" id="loginForm">
+                    <div class="login-form__control">
+                        <label class="login-visually-hidden" for="email">E-mail</label>
+                        <img src="../assets/icons/email.svg" alt="" width="17" height="14">
+                        <input id="email" name="email" type="email" placeholder="E-mail" autocomplete="username"
+                            autocapitalize="none" spellcheck="false" required>
+                    </div>
 
-                <label class="termos">
+                    <div class="login-form__control">
+                        <label class="login-visually-hidden" for="senha">Senha</label>
+                        <img src="../assets/icons/cadeado.svg" alt="" width="16" height="17">
+                        <input id="senha" name="senha" type="password" placeholder="Senha"
+                            autocomplete="current-password" required>
+                    </div>
 
-                    <input
-                        type="checkbox"
-                        id="termosCheckbox"
-                        required>
-
-                    Concordo com os
-
-                    <a
-                        href="#"
-                        class="link">
-                        Termos de Serviço
-                    </a>
-
-                </label>
-
-
-                <p class="contato">
-
-                    Entre em
-
-                    <a
-                        href="#"
-                        class="link">
-                        Contato
-                    </a>
-
-                </p>
-
-
-                <button
-                    type="button"
-                    id="id_btnlogin"
-                    class="btn-next">
-
-                    Finalizar
-
-                </button>
-
-            </form>
-
-        </div>
-
+                    <button class="login-form__submit" type="submit">Entrar</button>
+                    <p class="login-form__feedback" id="loginFeedback" role="status" aria-live="polite" hidden></p>
+                </form>
+            </div>
+        </section>
     </main>
 
-
-    <!-- ============================= -->
-    <!-- JAVASCRIPT -->
-    <!-- ============================= -->
-
-    <script src="../scripts/api.js"></script>
+    <script src="../scripts/navbar.js"></script>
     <script src="../scripts/login.js"></script>
-    <script src="../scripts/aside-home.js"></script>
-
 </body>
 
 </html>

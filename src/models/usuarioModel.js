@@ -1,38 +1,67 @@
 const database = require("../database/config")
 
-async function criarUser(nome, email, token) {
-// cria o usuário quando você manda o convite
-    const instrucao = `
-        INSERT INTO usuario (nome, email, token, status)
-        VALUES (?, ?, ?, 'PENDENTE');
-    `
+function cadastrar(nome, email, senha, cpf, telefone, empresa, nivelAcesso) {
+    const instrucaoSql = `
+        INSERT INTO usuario (nome, email, senha, cpf, telefone, fk_empresa, fk_nivel_acesso, status)
+        VALUES (?, ?, ?, ?, ?, ?, ?, 'ATIVO');
+    `;
 
-    return database.executar(instrucao, [nome, email, token])
+    return database.executar(instrucaoSql, [nome, email, senha, cpf, telefone, empresa, nivelAcesso]);
 }
 
-async function buscarUsuarioPorToken(token) {
-// procura quem é o dono daquele token
+function autenticar(email, senha) {
+    const instrucaoSql = `
+        SELECT id_usuario, nome, email, fk_empresa, fk_nivel_acesso, status
+        FROM usuario
+        WHERE email = ? AND senha = ? AND status = 'ATIVO';
+    `;
+
+    return database.executar(instrucaoSql, [email, senha]);
+}
+
+function criarUser(nome, email, token, cpf, telefone, empresa, nivelAcesso) {
     const instrucao = `
-        SELECT * FROM usuario
-        WHERE token = ?;
+        INSERT INTO usuario (nome, email, token_acesso, cpf, telefone, fk_empresa, fk_nivel_acesso, status)
+        VALUES (?, ?, ?, ?, ?, ?, ?, 'PENDENTE');
+    `
+
+    return database.executar(instrucao, [nome, email, token, cpf, telefone, empresa, nivelAcesso])
+}
+
+function buscarUsuarioPorToken(token) {
+    const instrucao = `
+        SELECT id_usuario, nome, email
+        FROM usuario
+        WHERE token_acesso = ? AND status = 'PENDENTE';
     `
 
     return database.executar(instrucao, [token])
 }
 
-async function ativarUsuario(idUsuario, senha) {
-
+function ativarUsuario(token, senha) {
     const instrucao = `
         UPDATE usuario
-        SET senha = ?, status = 'ATIVO'
-        WHERE idUsuario = ?;
+        SET senha = ?, status = 'ATIVO', token_acesso = NULL
+        WHERE token_acesso = ? AND status = 'PENDENTE';
     `
 
-    return database.executar(instrucao, [senha, idUsuario])
+    return database.executar(instrucao, [senha, token])
+}
+
+function removerConvite(idUsuario, token) {
+    const instrucao = `
+        DELETE FROM usuario
+        WHERE id_usuario = ? AND token_acesso = ? AND status = 'PENDENTE';
+    `
+
+    return database.executar(instrucao, [idUsuario, token])
 }
 
 module.exports = {
+    cadastrar,
+    autenticar,
     criarUser,
     buscarUsuarioPorToken,
-    ativarUsuario
+    ativarUsuario,
+    removerConvite
 }
