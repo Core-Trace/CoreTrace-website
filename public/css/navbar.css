@@ -31,6 +31,22 @@
     height: auto;
 }
 
+.cabecalho .navbar-menu {
+    display: flex;
+    align-items: stretch;
+    align-self: stretch;
+    flex: 1;
+    min-width: 0;
+}
+
+.cabecalho .navbar-toggle {
+    display: none;
+}
+
+.cabecalho .navbar-menu-cabecalho {
+    display: none;
+}
+
 .cabecalho .navbar-links {
     display: flex;
     align-items: stretch;
@@ -120,49 +136,157 @@
     outline-offset: 2px;
 }
 
+body.menu-aberto {
+    overflow: hidden;
+}
+
 @media (max-width: 800px) {
     .cabecalho .navbar {
-        flex-wrap: wrap;
-        column-gap: 8px;
-        row-gap: 0;
-        padding: 4px 12px 0;
+        min-height: 64px;
+        padding: 4px 16px;
     }
 
     .cabecalho .navbar-logo {
         width: 128px;
-        min-height: 44px;
+        min-height: 56px;
+    }
+
+    .cabecalho .navbar-toggle {
+        position: relative;
+        z-index: 2;
+        order: -1;
+        display: inline-flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 44px;
+        height: 44px;
+        margin-right: 8px;
+        padding: 10px;
+        border: 0;
+        border-radius: 50%;
+        background: transparent;
+        color: var(--cor-texto);
+        transition: background-color 0.2s;
+    }
+
+    .cabecalho .navbar-toggle:hover {
+        background-color: rgba(20, 17, 21, 0.08);
+    }
+
+    .cabecalho .navbar-toggle span {
+        display: block;
+        width: 22px;
+        height: 2px;
+        border-radius: 99px;
+        background-color: currentColor;
+        transition: transform 0.2s, opacity 0.2s;
+    }
+
+    .cabecalho .navbar-toggle span + span {
+        margin-top: 5px;
+    }
+
+    .cabecalho .menu-aberto .navbar-toggle span:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+    }
+
+    .cabecalho .menu-aberto .navbar-toggle span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .cabecalho .menu-aberto .navbar-toggle span:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+    }
+
+    .cabecalho .navbar-menu {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        width: min(340px, 86vw);
+        height: 100dvh;
+        padding: 4px 24px 28px;
+        background-color: var(--cor-fundo);
+        box-shadow: none;
+        opacity: 0;
+        transform: translateX(-100%);
+        visibility: hidden;
+        transition: transform 0.25s ease, opacity 0.2s ease, visibility 0s linear 0.25s, box-shadow 0.25s ease;
+    }
+
+    .cabecalho .menu-aberto .navbar-menu {
+        box-shadow: 0 0 0 100vmax rgba(20, 17, 21, 0.55);
+        opacity: 1;
+        transform: translateX(0);
+        visibility: visible;
+        transition: transform 0.25s ease, opacity 0.2s ease, box-shadow 0.25s ease;
+    }
+
+    .cabecalho .navbar-menu-cabecalho {
+        display: flex;
+        align-items: center;
+        min-height: 56px;
+        margin-left: 52px;
+    }
+
+    .cabecalho .navbar-side-logo {
+        display: block;
+        width: 128px;
+    }
+
+    .cabecalho .navbar-side-logo img {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+
+    .cabecalho .menu-aberto > .navbar-logo {
+        visibility: hidden;
     }
 
     .cabecalho .navbar-links {
-        order: 3;
-        justify-content: center;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
         width: 100%;
+        margin-top: 20px;
+    }
+
+    .cabecalho .navbar-links li {
+        display: block;
     }
 
     .cabecalho .navbar-links a {
-        min-height: 44px;
-        padding: 0 12px;
-        font-size: 12px;
+        justify-content: flex-start;
+        min-height: 52px;
+        padding: 0 4px;
+        font-size: 16px;
+    }
+
+    .cabecalho .navbar-links a::after {
+        right: auto;
+        width: 32px;
     }
 
     .cabecalho .navbar-acoes {
-        gap: 8px;
+        width: 100%;
+        margin-top: auto;
+        margin-left: 0;
     }
 
     .cabecalho .navbar-acoes a {
-        min-height: 44px;
-        padding: 6px 10px;
-        font-size: 12px;
+        width: 100%;
+        min-height: 46px;
+        font-size: 15px;
     }
-
-    .cabecalho .navbar-login {
-        min-width: 60px;
-    }
-
 }
 
 @media (max-width: 360px) {
     .cabecalho .navbar-logo {
-        width: 104px;
+        width: 112px;
     }
 }
