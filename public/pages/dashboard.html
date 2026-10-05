@@ -72,12 +72,15 @@
                     <div class="topbar-left">
                         <button class="icon-btn" id="gearMain" aria-label="Configurações">⚙</button>
                         <button class="btn btn-cream" id="btnVerMais">Ver mais</button>
+                        <button class="btn btn-cream" id="btnBaixarAgente" type="button" onclick="baixarAgente(1)">Baixar agente</button>
                     </div>
                     <div class="topbar-right">
                         <span class="machine-code">Machine Code: UMCumc#2026</span>
                         <span id="id_machine" class="machine-code">Maquina: </span>
                     </div>
                 </div>
+
+                <p id="downloadAgenteFeedback" role="status" hidden></p>
 
                 <!-- BLOCO CPU -->
                 <div class="metric-row" id="metricRowCpu">
@@ -205,6 +208,7 @@
 
     <script src="../scripts/api.js"></script>
     <script src="../scripts/dashboard.js"></script>
+    <script src="../scripts/baixar-agente.js"></script>
 
     <script>
         loggedUserName.textContent = sessionStorage.NOME_USUARIO || 'Usuário';
