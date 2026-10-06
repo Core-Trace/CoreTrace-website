@@ -4,14 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CoreTrace - Visão geral</title>
+    <title>CoreTrace - Perfis de servidor</title>
     <link rel="stylesheet" href="../css/fonts.css">
     <link rel="stylesheet" href="../css/global.css">
     <link rel="stylesheet" href="../css/navbarDashboard.css">
-    <link rel="stylesheet" href="../css/inicioDashboard.css">
+    <link rel="stylesheet" href="../css/perfisServidor.css">
     <link rel="stylesheet" href="../css/wizardPerfilServidor.css">
     <script src="../scripts/navbarDashboard.js" defer></script>
     <script src="../scripts/wizardPerfilServidor.js" defer></script>
+    <script src="../scripts/perfisServidor.js" defer></script>
 </head>
 
 <body class="dashboard-page">
@@ -30,7 +31,7 @@
         <nav class="dashboard-navegacao" aria-label="Navegação do dashboard">
             <div class="dashboard-menu-grupo">
                 <h2 class="dashboard-menu-titulo">Monitoramento</h2>
-                <a href="inicioDashboard.html" class="dashboard-menu-item" aria-current="page">
+                <a href="inicioDashboard.html" class="dashboard-menu-item">
                     <img src="../assets/icons/dashboard.png" alt="" width="20" height="20">
                     <span>Dashboard</span>
                 </a>
@@ -46,7 +47,7 @@
 
             <div class="dashboard-menu-grupo">
                 <h2 class="dashboard-menu-titulo">Gestão</h2>
-                <a href="perfisServidor.html" class="dashboard-menu-item">
+                <a href="perfisServidor.html" class="dashboard-menu-item" aria-current="page">
                     <img src="../assets/icons/perfil.png" alt="" width="20" height="20">
                     <span>Perfis de servidor</span>
                 </a>
@@ -112,55 +113,34 @@
             </div>
         </header>
 
-        <main class="principal" id="conteudo-principal" tabindex="-1">
-            <section class="sem-servidor" aria-labelledby="titulo-sem-servidor">
-                <img src="../assets/icons/imagemespera.png" class="imagem-espera" alt="" width="170" height="162">
-                <p class="aviso">Seu monitoramento começa aqui</p>
-                <h1 id="titulo-sem-servidor">Nenhum servidor encontrado</h1>
-                <p class="descricao">
-                    Crie seu primeiro perfil de servidor para começar a monitorar a
-                    performance, disponibilidade e métricas críticas de infraestrutura.
-                </p>
-                <button class="botao-criar" type="button" data-abrir-wizard-perfil aria-haspopup="dialog">
+        <main class="perfis" id="conteudo-principal" tabindex="-1">
+            <header class="perfis-cabecalho">
+                <div>
+                    <p class="perfis-secao">Gestão</p>
+                    <h1>Perfis de servidor</h1>
+                    <p class="perfis-descricao">Organize os perfis de monitoramento da sua infraestrutura.</p>
+                </div>
+                <button class="perfis-adicionar" type="button" data-abrir-wizard-perfil aria-haspopup="dialog">
                     <span aria-hidden="true">+</span>
-                    Criar perfil de servidor
+                    Adicionar perfil de servidor
                 </button>
-            </section>
+            </header>
 
-            <section class="passos" aria-labelledby="titulo-passos">
-                <h2 class="titulo-passos" id="titulo-passos">Para iniciar</h2>
-                <ol class="lista-passos">
-                    <li class="card-passo">
-                        <div class="imagem-card" aria-hidden="true">
-                            <img src="../assets/icons/arquivos.png" alt="" width="40" height="40">
-                        </div>
-                        <div class="texto-card">
-                            <span class="numero" aria-hidden="true">1</span>
-                            <h3>Crie um perfil de monitoramento</h3>
-                            <p>Crie um perfil de servidor, escolha métricas e defina limites de uso.</p>
-                        </div>
-                    </li>
-                    <li class="card-passo">
-                        <div class="imagem-card" aria-hidden="true">
-                            <img src="../assets/icons/ZIP.png" alt="" width="40" height="40">
-                        </div>
-                        <div class="texto-card">
-                            <span class="numero" aria-hidden="true">2</span>
-                            <h3>Baixe o script</h3>
-                            <p>Geramos um .zip pronto para sua máquina dentro desse perfil.</p>
-                        </div>
-                    </li>
-                    <li class="card-passo">
-                        <div class="imagem-card" aria-hidden="true">
-                            <img src="../assets/icons/grafico.png" alt="" width="40" height="40">
-                        </div>
-                        <div class="texto-card">
-                            <span class="numero" aria-hidden="true">3</span>
-                            <h3>Execute e monitore</h3>
-                            <p>Acompanhe os dados. Se algo sair do normal, você será notificado.</p>
-                        </div>
-                    </li>
-                </ol>
+            <section class="perfis-resultados" aria-label="Perfis cadastrados" aria-busy="true">
+                <p class="perfis-carregando" role="status">Carregando perfis de servidor...</p>
+                <div class="perfis-vazio" hidden>
+                    <img src="../assets/icons/imagemespera.png" alt="" width="170" height="162">
+                    <h2>Nenhum perfil de servidor cadastrado</h2>
+                    <p>Adicione seu primeiro perfil para começar a configurar o monitoramento.</p>
+                </div>
+                <div class="perfis-erro" role="alert" hidden>
+                    <h2>Não foi possível carregar os perfis</h2>
+                    <p id="perfis-mensagem-erro"></p>
+                    <button class="perfis-tentar" type="button">Tentar novamente</button>
+                    <a class="perfis-login" href="login.html" hidden>Ir para o login</a>
+                </div>
+                <p class="perfis-contagem" role="status" hidden></p>
+                <ul class="perfis-lista" role="list" hidden></ul>
             </section>
         </main>
     </div>

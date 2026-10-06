@@ -142,3 +142,18 @@ ativação em outro dispositivo. Sem `APP_URL`, são usados `APP_HOST` e `APP_PO
 
 Se o Resend recusar o envio, o cadastro pendente é desfeito para permitir nova
 tentativa. A página só confirma o envio após o Resend aceitar a solicitação.
+
+### Perfis de servidor e wizard
+
+Na página `/pages/inicioDashboard.html`, “Criar perfil de servidor” abre o modal
+de cadastro. O link “Perfis de servidor” leva a `/pages/perfisServidor.html`,
+que lista os perfis com `GET /servidor/perfis?empresa=<ID_EMPRESA>` usando a empresa
+do `sessionStorage`. A consulta retorna nome, descrição e quantidade de servidores
+vinculados; uma lista vazia e um erro de conexão têm estados distintos na tela.
+
+O botão “Adicionar perfil de servidor” abre o mesmo modal, definido em
+`public/components/wizardPerfilServidor.html`, com CSS e JavaScript próprios.
+Por enquanto, somente a etapa “Informações básicas” está implementada, com nome,
+Linux/Windows e descrição de até 500 caracteres. “Próximo” permanece desabilitado
+até a implementação da etapa seguinte; nenhum perfil incompleto é salvo no banco.
+O preenchimento é mantido ao fechar e reabrir o modal na mesma página.

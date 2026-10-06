@@ -67,4 +67,21 @@ function ativarAgente(req, res) {
         });
 }
 
-module.exports = { ativarAgente };
+function listarPerfis(req, res) {
+    const idEmpresa = Number(req.query.empresa);
+
+    if (typeof req.query.empresa !== "string" || !Number.isSafeInteger(idEmpresa) || idEmpresa <= 0) {
+        return res.status(400).json({ mensagem: "Informe uma empresa válida para consultar os perfis." });
+    }
+
+    return servidorModel.listarPerfisPorEmpresa(idEmpresa)
+        .then(function (perfis) {
+            return res.json(perfis);
+        })
+        .catch(function (erro) {
+            console.error("Erro ao listar perfis de servidor:", erro.message);
+            return res.status(500).json({ mensagem: "Não foi possível carregar os perfis de servidor. Tente novamente." });
+        });
+}
+
+module.exports = { ativarAgente, listarPerfis };

@@ -1,0 +1,403 @@
+body.wizard-perfil-aberto {
+    overflow: hidden;
+}
+
+.wizard-perfil {
+    width: min(900px, calc(100% - 40px));
+    max-width: none;
+    max-height: calc(100dvh - 48px);
+    margin: auto;
+    padding: 24px 38px;
+    overflow-y: auto;
+    border: 0;
+    border-radius: 12px;
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+    box-shadow: 0 24px 48px rgb(20 17 21 / 15%);
+}
+
+.wizard-perfil::backdrop {
+    background-color: rgb(20 17 21 / 35%);
+}
+
+.wizard-fechar {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border: 0;
+    border-radius: 8px;
+    background-color: transparent;
+    color: var(--cor-cinza);
+    font-size: 26px;
+}
+
+.wizard-fechar:hover {
+    background-color: #eeeee8;
+}
+
+.wizard-etapas {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 0;
+    margin: 0 0 26px;
+    padding: 0;
+    list-style: none;
+}
+
+.wizard-etapas li {
+    position: relative;
+    isolation: isolate;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 7px;
+    font-size: 10px;
+    text-align: center;
+}
+
+.wizard-etapas li:not(:last-child)::after {
+    position: absolute;
+    top: 14px;
+    left: 50%;
+    z-index: -1;
+    width: 100%;
+    height: 2px;
+    background-color: #e3e3e3;
+    content: "";
+}
+
+.wizard-etapas li[aria-current="step"] {
+    font-weight: 700;
+}
+
+.wizard-etapas li[aria-current="step"]::after {
+    background-color: var(--cor-primaria);
+}
+
+.wizard-etapa-numero {
+    display: grid;
+    place-items: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background-color: #e3e3e3;
+    color: var(--cor-cinza);
+    font-size: 12px;
+    font-weight: 600;
+}
+
+[aria-current="step"] .wizard-etapa-numero {
+    border: 4px solid #ff4444;
+    background-color: var(--cor-primaria);
+    color: #ffffff;
+}
+
+.wizard-cabecalho {
+    margin-bottom: 20px;
+}
+
+.wizard-cabecalho h2 {
+    margin-bottom: 6px;
+    font-size: 26px;
+    font-weight: 600;
+}
+
+.wizard-cabecalho p {
+    max-width: 560px;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.wizard-formulario {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.wizard-campo > label,
+.wizard-sistemas legend {
+    display: block;
+    margin-bottom: 10px;
+    padding: 0;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.wizard-campo-icone {
+    position: relative;
+}
+
+.wizard-campo-icone > img {
+    position: absolute;
+    top: 20px;
+    left: 18px;
+    pointer-events: none;
+}
+
+.wizard-campo input,
+.wizard-campo textarea {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    padding: 18px 18px 18px 56px;
+    border: 1px solid #dededb;
+    border-radius: 10px;
+    background-color: #fafaf8;
+    color: var(--cor-texto);
+    font-size: 14px;
+}
+
+.wizard-campo input {
+    min-height: 60px;
+}
+
+.wizard-campo input::placeholder,
+.wizard-campo textarea::placeholder {
+    color: #939093;
+    opacity: 1;
+}
+
+.wizard-campo input:focus-visible,
+.wizard-campo textarea:focus-visible {
+    outline: 2px solid var(--cor-cinza);
+    outline-offset: -2px;
+}
+
+.wizard-campo textarea {
+    min-height: 164px;
+    resize: vertical;
+}
+
+.wizard-contador {
+    display: block;
+    margin-top: 8px;
+    color: #939093;
+    font-size: 12px;
+    text-align: right;
+}
+
+.wizard-sistemas {
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+.wizard-sistemas-opcoes {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.wizard-sistema {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    min-height: 136px;
+    padding: 18px;
+    border: 1px solid #dededb;
+    border-radius: 12px;
+    background-color: #fafaf8;
+    cursor: pointer;
+}
+
+.wizard-sistema:has(input:checked) {
+    border-color: var(--cor-preto);
+    box-shadow: inset 0 0 0 1px var(--cor-preto), 0 6px 16px rgb(20 17 21 / 5%);
+}
+
+.wizard-sistema:has(input:focus-visible) {
+    outline: 2px solid var(--cor-primaria);
+    outline-offset: 3px;
+}
+
+.wizard-sistema input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+}
+
+.wizard-sistema-imagem {
+    display: grid;
+    flex-shrink: 0;
+    place-items: center;
+    width: 78px;
+    height: 78px;
+    border-radius: 50%;
+    background-color: #fcece7;
+}
+
+.wizard-sistema-imagem img {
+    width: 46px;
+    height: 55px;
+    object-fit: contain;
+}
+
+.wizard-sistema-imagem .wizard-windows {
+    width: 44px;
+    height: 44px;
+}
+
+.wizard-sistema-texto {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 0;
+}
+
+.wizard-sistema-texto strong {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.wizard-sistema-texto > span {
+    color: #5970a0;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.wizard-sistema-selecao {
+    display: grid;
+    flex-shrink: 0;
+    place-items: center;
+    width: 22px;
+    height: 22px;
+    border: 2px solid #e3e3e3;
+    border-radius: 50%;
+}
+
+input:checked ~ .wizard-sistema-selecao {
+    border-color: var(--cor-primaria);
+    background-color: var(--cor-primaria);
+    color: #ffffff;
+}
+
+input:checked ~ .wizard-sistema-selecao::after {
+    width: 10px;
+    height: 8px;
+    background: url("../assets/icons/check.svg") center / contain no-repeat;
+    content: "";
+}
+
+.wizard-acoes {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+}
+
+.wizard-proximo {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    min-width: 144px;
+    min-height: 44px;
+    padding: 12px 24px;
+    border: 0;
+    border-radius: 8px;
+    background-color: var(--cor-primaria);
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.wizard-proximo:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+}
+
+.wizard-erro-abertura {
+    margin-top: 12px;
+    color: var(--cor-primaria);
+    font-size: 13px;
+}
+
+@media (max-width: 700px) {
+    .wizard-perfil {
+        width: calc(100% - 24px);
+        max-height: calc(100dvh - 24px);
+        padding: 56px 20px 24px;
+    }
+
+    .wizard-etapas {
+        margin-bottom: 24px;
+    }
+
+    .wizard-etapas li {
+        padding-inline: 2px;
+        font-size: 9px;
+    }
+
+    .wizard-etapas li > span:last-child {
+        width: max-content;
+        max-width: 80px;
+    }
+
+    .wizard-cabecalho h2 {
+        font-size: 23px;
+    }
+
+    .wizard-sistemas-opcoes {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .wizard-sistema {
+        gap: 14px;
+        min-height: 112px;
+        padding: 14px;
+    }
+
+    .wizard-sistema-imagem {
+        width: 60px;
+        height: 60px;
+    }
+
+    .wizard-sistema-imagem img {
+        width: 36px;
+        height: 44px;
+    }
+
+    .wizard-sistema-imagem .wizard-windows {
+        width: 34px;
+        height: 34px;
+    }
+
+    .wizard-sistema-texto > span {
+        font-size: 12px;
+    }
+
+    .wizard-campo input,
+    .wizard-campo textarea {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 380px) {
+    .wizard-perfil {
+        padding-inline: 16px;
+    }
+
+    .wizard-etapas li {
+        font-size: 8px;
+    }
+
+    .wizard-sistema {
+        gap: 10px;
+        padding: 12px;
+    }
+
+    .wizard-sistema-imagem {
+        width: 48px;
+        height: 48px;
+    }
+}

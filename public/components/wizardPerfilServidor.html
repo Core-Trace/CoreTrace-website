@@ -1,0 +1,90 @@
+<dialog class="wizard-perfil" aria-labelledby="wizard-titulo" aria-describedby="wizard-descricao">
+    <button class="wizard-fechar" type="button" aria-label="Fechar cadastro de perfil">
+        <span aria-hidden="true">×</span>
+    </button>
+
+    <ol class="wizard-etapas" aria-label="Etapas do cadastro">
+        <li aria-current="step">
+            <span class="wizard-etapa-numero" aria-hidden="true">1</span>
+            <span>Informações básicas</span>
+        </li>
+        <li>
+            <span class="wizard-etapa-numero" aria-hidden="true">2</span>
+            <span>Métricas</span>
+        </li>
+        <li>
+            <span class="wizard-etapa-numero" aria-hidden="true">3</span>
+            <span>Contêineres</span>
+        </li>
+        <li>
+            <span class="wizard-etapa-numero" aria-hidden="true">4</span>
+            <span>Alertas</span>
+        </li>
+        <li>
+            <span class="wizard-etapa-numero" aria-hidden="true">5</span>
+            <span>Equipe</span>
+        </li>
+    </ol>
+
+    <header class="wizard-cabecalho">
+        <h2 id="wizard-titulo">Informações básicas</h2>
+        <p id="wizard-descricao">Comece dando um nome ao perfil do servidor e escolha o sistema operacional que será utilizado.</p>
+    </header>
+
+    <form class="wizard-formulario">
+        <div class="wizard-campo">
+            <label for="perfil-nome">Nome do perfil</label>
+            <div class="wizard-campo-icone">
+                <img src="../assets/icons/servidor.svg" alt="" width="20" height="20">
+                <input id="perfil-nome" name="nome" type="text" placeholder="Ex: Servidor de produção"
+                    maxlength="100" required autofocus>
+            </div>
+        </div>
+
+        <fieldset class="wizard-sistemas">
+            <legend>Sistema operacional</legend>
+            <div class="wizard-sistemas-opcoes">
+                <label class="wizard-sistema">
+                    <input type="radio" name="sistemaOperacional" value="linux" checked required>
+                    <span class="wizard-sistema-imagem">
+                        <img src="../assets/images/linux.svg" alt="" width="46" height="55">
+                    </span>
+                    <span class="wizard-sistema-texto">
+                        <strong>Linux</strong>
+                        <span>Ideal para servidores, alta estabilidade e flexibilidade.</span>
+                    </span>
+                    <span class="wizard-sistema-selecao" aria-hidden="true"></span>
+                </label>
+
+                <label class="wizard-sistema">
+                    <input type="radio" name="sistemaOperacional" value="windows" required>
+                    <span class="wizard-sistema-imagem">
+                        <img class="wizard-windows" src="../assets/images/w10.png" alt="" width="44" height="44">
+                    </span>
+                    <span class="wizard-sistema-texto">
+                        <strong>Windows</strong>
+                        <span>Compatibilidade com diversas aplicações e fácil gerenciamento.</span>
+                    </span>
+                    <span class="wizard-sistema-selecao" aria-hidden="true"></span>
+                </label>
+            </div>
+        </fieldset>
+
+        <div class="wizard-campo">
+            <label for="perfil-descricao">Descrição (opcional)</label>
+            <div class="wizard-campo-icone wizard-textarea">
+                <img src="../assets/icons/documento.svg" alt="" width="16" height="20">
+                <textarea id="perfil-descricao" name="descricao" rows="5" maxlength="500"
+                    aria-describedby="perfil-contador" placeholder="Adicione uma descrição para este perfil..."></textarea>
+            </div>
+            <span class="wizard-contador" id="perfil-contador">0/500</span>
+        </div>
+
+        <footer class="wizard-acoes">
+            <!-- Habilitar quando a etapa Métricas for implementada. O perfil só deve ser salvo ao concluir o wizard. -->
+            <button class="wizard-proximo" type="submit" disabled title="A próxima etapa ainda não está disponível.">
+                Próximo <span aria-hidden="true">→</span>
+            </button>
+        </footer>
+    </form>
+</dialog>

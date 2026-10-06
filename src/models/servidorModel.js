@@ -40,4 +40,18 @@ function ativar(idServidor, idPerfilServidor) {
     return database.executar(instrucaoSql, [idServidor, idPerfilServidor]);
 }
 
-module.exports = { buscarPerfil, buscarPorMac, cadastrar, ativar };
+function listarPerfisPorEmpresa(idEmpresa) {
+    const instrucaoSql = `
+        SELECT p.id_perfil_servidor, p.nome, p.descricao,
+               COUNT(s.id_servidor) AS total_servidores
+        FROM perfil_servidor p
+        LEFT JOIN servidores s ON s.fk_perfil_servidor = p.id_perfil_servidor
+        WHERE p.fk_empresa = ?
+        GROUP BY p.id_perfil_servidor, p.nome, p.descricao
+        ORDER BY p.nome ASC, p.id_perfil_servidor ASC;
+    `;
+
+    return database.executar(instrucaoSql, [idEmpresa]);
+}
+
+module.exports = { buscarPerfil, buscarPorMac, cadastrar, ativar, listarPerfisPorEmpresa };
