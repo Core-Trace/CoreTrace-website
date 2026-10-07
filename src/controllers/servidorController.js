@@ -1,4 +1,5 @@
 const servidorModel = require("../models/servidorModel");
+const { agruparMetricas } = require("../services/metricasService");
 
 function ativarAgente(req, res) {
     const dados = req.body || {};
@@ -84,4 +85,15 @@ function listarPerfis(req, res) {
         });
 }
 
-module.exports = { ativarAgente, listarPerfis };
+function listarMetricas(req, res) {
+    return servidorModel.listarMetricas()
+        .then(function (componentes) {
+            return res.json({ categorias: agruparMetricas(componentes) });
+        })
+        .catch(function (erro) {
+            console.error("Erro ao listar métricas:", erro.message);
+            return res.status(500).json({ mensagem: "Não foi possível carregar as métricas. Tente novamente." });
+        });
+}
+
+module.exports = { ativarAgente, listarPerfis, listarMetricas };

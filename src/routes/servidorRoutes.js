@@ -4,5 +4,6 @@ const servidorController = require("../controllers/servidorController");
 
 router.post("/ativarAgente", servidorController.ativarAgente);
 router.get("/perfis", servidorController.listarPerfis);
+router.get("/metricas", servidorController.listarMetricas);
 
 module.exports = router;

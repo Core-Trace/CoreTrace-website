@@ -54,4 +54,12 @@ function listarPerfisPorEmpresa(idEmpresa) {
     return database.executar(instrucaoSql, [idEmpresa]);
 }
 
-module.exports = { buscarPerfil, buscarPorMac, cadastrar, ativar, listarPerfisPorEmpresa };
+function listarMetricas() {
+    return database.executar(`
+        SELECT id_componente, nome, nome_coluna, funcao_psutil, unidade
+        FROM componentes
+        ORDER BY id_componente ASC;
+    `);
+}
+
+module.exports = { buscarPerfil, buscarPorMac, cadastrar, ativar, listarPerfisPorEmpresa, listarMetricas };
