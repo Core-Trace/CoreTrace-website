@@ -31,3 +31,9 @@ async function enviar() {
         alert("Erro ao enviar")
     }
 }
+
+document.getElementById("btn-contato").addEventListener("click", function () {
+    document.getElementById("estamos-prontos").scrollIntoView({
+        behavior: "smooth"
+    });
+});
