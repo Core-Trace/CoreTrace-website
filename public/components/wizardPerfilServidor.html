@@ -38,6 +38,7 @@
                 <div>
                     <h2 id="wizard-titulo" tabindex="-1">Informações básicas</h2>
                     <p id="wizard-descricao">Comece dando um nome ao perfil do servidor e escolha o sistema operacional que será utilizado.</p>
+                    <p class="wizard-docker-introducao" hidden>Os contêineres serão identificados automaticamente pelo agente.</p>
                 </div>
                 <button class="wizard-recomendar" type="button" hidden disabled>
                     <img src="../assets/icons/estrela.svg" alt="" width="16" height="16">
@@ -104,6 +105,29 @@
                 <p class="wizard-metricas-vazio" role="status" hidden>Nenhuma métrica cadastrada no momento.</p>
                 <p class="wizard-metricas-resumo" role="status" aria-live="polite" hidden></p>
                 <div class="wizard-metricas-lista" hidden></div>
+            </section>
+
+            <section class="wizard-conteineres" aria-label="Monitoramento de contêineres Docker" data-etapa="3" hidden>
+                <label class="wizard-docker-opcao">
+                    <span class="wizard-docker-icone">
+                        <img src="../assets/icons/docker.svg" alt="" width="43" height="31">
+                    </span>
+                    <span class="wizard-docker-texto">
+                        <strong id="perfil-docker-titulo">Ativar monitoramento de Docker</strong>
+                        <span id="perfil-docker-descricao">Monitore os contêineres Docker em execução no servidor.</span>
+                    </span>
+                    <input id="perfil-docker" name="monitorarDocker" type="checkbox" role="switch"
+                        aria-labelledby="perfil-docker-titulo" aria-describedby="perfil-docker-descricao">
+                    <span class="wizard-docker-interruptor" aria-hidden="true"></span>
+                </label>
+
+                <div class="wizard-docker-status" role="status" aria-live="polite" aria-atomic="true">
+                    <img src="../assets/icons/info.svg" alt="" width="17" height="17">
+                    <div>
+                        <strong class="wizard-docker-status-titulo">Monitoramento desativado</strong>
+                        <p class="wizard-docker-status-descricao">Ative a opção acima para monitorar contêineres.</p>
+                    </div>
+                </div>
             </section>
         </div>
 

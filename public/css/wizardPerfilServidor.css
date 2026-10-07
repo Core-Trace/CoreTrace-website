@@ -90,7 +90,7 @@ body.wizard-perfil-aberto {
 }
 
 .wizard-etapas li[aria-current="step"]::after,
-.wizard-etapas .wizard-etapa-concluida::after {
+.wizard-etapas li.wizard-etapa-concluida::after {
     background-color: var(--cor-primaria);
 }
 
@@ -117,7 +117,8 @@ body.wizard-perfil-aberto {
     color: transparent;
 }
 
-.wizard-perfil[data-etapa="2"] [aria-current="step"] .wizard-etapa-nome {
+.wizard-perfil[data-etapa="2"] [aria-current="step"] .wizard-etapa-nome,
+.wizard-perfil[data-etapa="3"] [aria-current="step"] .wizard-etapa-nome {
     color: var(--cor-primaria);
 }
 
@@ -559,6 +560,136 @@ input:checked ~ .wizard-sistema-selecao::after {
     font-weight: 600;
 }
 
+.wizard-perfil[data-etapa="3"] {
+    height: 800px;
+}
+
+.wizard-perfil[data-etapa="3"] .wizard-cabecalho {
+    margin-bottom: 26px;
+}
+
+.wizard-perfil[data-etapa="3"] .wizard-cabecalho p {
+    max-width: 680px;
+}
+
+.wizard-perfil[data-etapa="3"] [aria-current="step"]::after {
+    background-color: #e3e3e3;
+}
+
+.wizard-docker-opcao {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    min-height: 110px;
+    padding: 20px 18px;
+    border: 1px solid #dededb;
+    border-radius: 12px;
+    background-color: #fafaf8;
+    box-shadow: 0 5px 12px rgb(20 17 21 / 5%);
+    cursor: pointer;
+}
+
+.wizard-docker-icone {
+    display: grid;
+    flex-shrink: 0;
+    place-items: center;
+    width: 54px;
+    height: 54px;
+    border-radius: 12px;
+    background-color: #fcece7;
+}
+
+.wizard-docker-icone img {
+    width: 43px;
+    height: 31px;
+    object-fit: contain;
+}
+
+.wizard-docker-texto {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 0;
+}
+
+.wizard-docker-texto strong,
+.wizard-docker-status strong {
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.wizard-docker-texto > span,
+.wizard-docker-status p {
+    color: #6f6a6d;
+    font-size: 11px;
+    line-height: 1.5;
+}
+
+.wizard-docker-opcao input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+}
+
+.wizard-docker-interruptor {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    width: 46px;
+    height: 26px;
+    padding: 4px;
+    border-radius: 20px;
+    background-color: #e3e3e3;
+}
+
+.wizard-docker-interruptor::before {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    content: "";
+}
+
+.wizard-docker-opcao input:checked + .wizard-docker-interruptor {
+    justify-content: flex-end;
+    background-color: var(--cor-primaria);
+}
+
+.wizard-docker-opcao input:focus-visible + .wizard-docker-interruptor {
+    outline: 2px solid var(--cor-primaria);
+    outline-offset: 4px;
+}
+
+.wizard-docker-status {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 26px;
+    padding: 12px 16px;
+    border-radius: 8px;
+    background-color: #efeeec;
+    color: var(--cor-cinza);
+}
+
+.wizard-docker-status > img {
+    flex-shrink: 0;
+    width: 17px;
+    height: 17px;
+}
+
+.wizard-docker-status strong {
+    display: block;
+    margin-bottom: 4px;
+}
+
+.wizard-docker-status.ativo {
+    background-color: #fcece7;
+}
+
 @media (max-width: 900px) and (min-width: 701px) {
     .wizard-metricas-lista:not([hidden]) {
         grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -574,7 +705,8 @@ input:checked ~ .wizard-sistema-selecao::after {
 }
 
 @media (max-width: 700px) {
-    .wizard-perfil {
+    .wizard-perfil,
+    .wizard-perfil[data-etapa="3"] {
         width: calc(100% - 12px);
         height: calc(100dvh - 12px);
         max-height: calc(100dvh - 12px);
@@ -794,6 +926,35 @@ input:checked ~ .wizard-sistema-selecao::after {
         align-self: flex-start;
         min-height: 40px;
     }
+
+    .wizard-perfil[data-etapa="3"] .wizard-cabecalho {
+        margin-bottom: 18px;
+    }
+
+    .wizard-docker-opcao {
+        gap: 10px;
+        padding: 16px 12px;
+    }
+
+    .wizard-docker-icone {
+        width: 40px;
+        height: 40px;
+    }
+
+    .wizard-docker-icone img {
+        width: 32px;
+        height: 24px;
+    }
+
+    .wizard-docker-texto strong,
+    .wizard-docker-status strong {
+        font-size: 12px;
+    }
+
+    .wizard-docker-status {
+        margin-top: 18px;
+        padding: 12px;
+    }
 }
 
 @media (max-width: 380px) {
@@ -805,5 +966,17 @@ input:checked ~ .wizard-sistema-selecao::after {
 @media (forced-colors: active) {
     .wizard-metrica-opcao input {
         appearance: auto;
+    }
+
+    .wizard-docker-opcao input {
+        position: static;
+        width: 24px;
+        height: 24px;
+        clip-path: none;
+        flex-shrink: 0;
+    }
+
+    .wizard-docker-interruptor {
+        display: none;
     }
 }

@@ -18,6 +18,8 @@
         const carregando = dialogo.querySelector(".wizard-metricas-carregando");
         const erro = dialogo.querySelector(".wizard-metricas-erro");
         const vazio = dialogo.querySelector(".wizard-metricas-vazio");
+        const monitorarDocker = formulario.elements.monitorarDocker;
+        const statusDocker = dialogo.querySelector(".wizard-docker-status");
         let etapa = 1;
         let catalogoCarregado = false;
         let buscandoMetricas = false;
@@ -26,6 +28,24 @@
             cpu: "cpu.svg", ram: "ram.svg", disco: "disco.svg", swap: "swap.svg",
             carga: "carga.svg", rede: "carga.svg", outros: "servidor.svg"
         };
+
+        function atualizarProximo() {
+            // Alertas ainda não foi implementado. Não salvar um perfil incompleto.
+            proximo.disabled = etapa === 3 || (etapa === 2
+                && (!catalogoCarregado || !lista.querySelector("input:checked")));
+            if (etapa === 3) proximo.title = "A etapa de Alertas ainda não está disponível.";
+            else proximo.removeAttribute("title");
+        }
+
+        function atualizarDocker() {
+            const ativo = monitorarDocker.checked;
+            statusDocker.classList.toggle("ativo", ativo);
+            statusDocker.querySelector(".wizard-docker-status-titulo").textContent = ativo
+                ? "Monitoramento ativado" : "Monitoramento desativado";
+            statusDocker.querySelector(".wizard-docker-status-descricao").textContent = ativo
+                ? "Ao concluir o cadastro, o agente identificará os contêineres Docker automaticamente."
+                : "Ative a opção acima para monitorar contêineres.";
+        }
 
         function atualizarContadores() {
             let total = 0;
@@ -44,6 +64,7 @@
                 ? "Selecione ao menos uma métrica para este perfil."
                 : `${total} ${total === 1 ? "métrica selecionada" : "métricas selecionadas"} em ${categoriasSelecionadas} ${categoriasSelecionadas === 1 ? "categoria" : "categorias"}`;
             resumo.classList.toggle("sem-selecao", total === 0);
+            atualizarProximo();
         }
 
         function criarCategoria(categoria, indice) {
@@ -116,6 +137,7 @@
                 carregando.hidden = true;
                 metricas.setAttribute("aria-busy", "false");
                 buscandoMetricas = false;
+                atualizarProximo();
             }
         }
 
@@ -132,19 +154,21 @@
                 else item.removeAttribute("aria-current");
             });
 
-            const nomeEtapa = numero === 1 ? "Informações básicas" : "Métricas";
-            titulo.textContent = nomeEtapa;
-            introducao.textContent = numero === 1
-                ? "Comece dando um nome ao perfil do servidor e escolha o sistema operacional que será utilizado."
-                : "Selecione ao menos uma métrica para os servidores deste perfil. Após vincular servidores, as métricas ficam bloqueadas.";
+            const nomesEtapas = ["Informações básicas", "Métricas", "Contêineres"];
+            const descricoesEtapas = [
+                "Comece dando um nome ao perfil do servidor e escolha o sistema operacional que será utilizado.",
+                "Selecione ao menos uma métrica para os servidores deste perfil. Após vincular servidores, as métricas ficam bloqueadas.",
+                "Habilite o monitoramento de contêineres Docker e acompanhe CPU, RAM, I/O Disco, Rede e Status dos contêineres."
+            ];
+            const nomeEtapa = nomesEtapas[numero - 1];
+            titulo.textContent = numero === 3 ? "Monitoramento de Contêineres Docker" : nomeEtapa;
+            introducao.textContent = descricoesEtapas[numero - 1];
+            dialogo.querySelector(".wizard-docker-introducao").hidden = numero !== 3;
             dialogo.querySelector(".wizard-etapa-contagem").textContent = `Etapa ${numero} de 5`;
             dialogo.querySelector(".wizard-etapa-atual").textContent = nomeEtapa;
             recomendar.hidden = numero !== 2;
 
-            // Contêineres será implementado na próxima entrega. Não salvar o perfil incompleto.
-            proximo.disabled = numero === 2;
-            if (numero === 2) proximo.title = "A próxima etapa ainda não está disponível.";
-            else proximo.removeAttribute("title");
+            atualizarProximo();
             conteudo.scrollTop = 0;
             titulo.focus({ preventScroll: true });
             if (numero === 2) carregarMetricas();
@@ -152,14 +176,18 @@
 
         formulario.addEventListener("submit", (event) => {
             event.preventDefault();
-            if (etapa !== 1) return;
-            nome.setCustomValidity(nome.value.trim() === "" ? "Informe o nome do perfil." : "");
-            if (formulario.reportValidity()) mostrarEtapa(2);
+            if (etapa === 1) {
+                nome.setCustomValidity(nome.value.trim() === "" ? "Informe o nome do perfil." : "");
+                if (formulario.reportValidity()) mostrarEtapa(2);
+            } else if (etapa === 2 && catalogoCarregado && lista.querySelector("input:checked")) {
+                mostrarEtapa(3);
+            }
         });
         dialogo.querySelector(".wizard-voltar").addEventListener("click", () => {
             if (etapa === 1) dialogo.close();
-            else mostrarEtapa(1);
+            else mostrarEtapa(etapa - 1);
         });
+        monitorarDocker.addEventListener("change", atualizarDocker);
         lista.addEventListener("change", atualizarContadores);
         recomendar.addEventListener("click", () => {
             lista.querySelectorAll("input").forEach((checkbox) => {
