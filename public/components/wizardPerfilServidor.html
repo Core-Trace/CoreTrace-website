@@ -129,11 +129,26 @@
                     </div>
                 </div>
             </section>
+
+            <section class="wizard-alertas" aria-label="Configuração de alertas e limites" data-etapa="4" hidden>
+                <div class="wizard-alertas-abas" aria-label="Origem das métricas">
+                    <button class="wizard-alertas-aba" type="button" aria-pressed="true">
+                        <img src="../assets/icons/servidor.svg" alt="" width="18" height="18">
+                        Servidor
+                    </button>
+                    <button class="wizard-alertas-aba" type="button" aria-pressed="false" disabled
+                        title="A configuração de alertas de contêineres Docker ainda não está disponível.">
+                        <img src="../assets/icons/docker.svg" alt="" width="20" height="16">
+                        Contêineres Docker
+                    </button>
+                </div>
+                <div class="wizard-alertas-lista"></div>
+            </section>
         </div>
 
         <footer class="wizard-acoes">
-            <button class="wizard-voltar" type="button"><span aria-hidden="true">←</span> Voltar</button>
-            <button class="wizard-proximo" type="submit">Próximo <span aria-hidden="true">→</span></button>
+            <button class="wizard-voltar" type="button"><img src="../assets/icons/seta-preta.svg" alt="" width="12" height="12"> Voltar</button>
+            <button class="wizard-proximo" type="submit">Próximo <img src="../assets/icons/seta-branca.svg" alt="" width="12" height="12"></button>
         </footer>
     </form>
 </dialog>

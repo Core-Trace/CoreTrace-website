@@ -20,6 +20,9 @@
         const vazio = dialogo.querySelector(".wizard-metricas-vazio");
         const monitorarDocker = formulario.elements.monitorarDocker;
         const statusDocker = dialogo.querySelector(".wizard-docker-status");
+        const listaAlertas = dialogo.querySelector(".wizard-alertas-lista");
+        const linhasAlertas = new Map();
+        let categoriasMetricas = [];
         let etapa = 1;
         let catalogoCarregado = false;
         let buscandoMetricas = false;
@@ -30,10 +33,10 @@
         };
 
         function atualizarProximo() {
-            // Alertas ainda não foi implementado. Não salvar um perfil incompleto.
-            proximo.disabled = etapa === 3 || (etapa === 2
+            // Equipe ainda não foi implementado. Não salvar um perfil incompleto.
+            proximo.disabled = etapa === 4 || (etapa === 2
                 && (!catalogoCarregado || !lista.querySelector("input:checked")));
-            if (etapa === 3) proximo.title = "A etapa de Alertas ainda não está disponível.";
+            if (etapa === 4) proximo.title = "A etapa de Equipe ainda não está disponível.";
             else proximo.removeAttribute("title");
         }
 
@@ -103,6 +106,139 @@
             return card;
         }
 
+        function validarLimites(linha) {
+            const operador = linha.querySelector("select").value;
+            const atencao = linha.querySelector('[data-limite="atencao"]');
+            const critico = linha.querySelector('[data-limite="critico"]');
+            const mensagem = linha.querySelector(".wizard-alerta-erro");
+            critico.setCustomValidity("");
+            let erroLimites = "";
+            if (!atencao.validity.valid || !critico.validity.valid) {
+                erroLimites = atencao.max === "100"
+                    ? "Informe limites entre 0 e 100%." : "Informe limites numéricos válidos.";
+            } else if ((atencao.value === "") !== (critico.value === "")) {
+                erroLimites = "Preencha os dois limites ou deixe ambos vazios.";
+            } else if (atencao.value !== "" && critico.value !== "") {
+                const ordemValida = operador.startsWith(">")
+                    ? critico.valueAsNumber > atencao.valueAsNumber
+                    : critico.valueAsNumber < atencao.valueAsNumber;
+                if (!ordemValida) erroLimites = operador.startsWith(">")
+                    ? "O limite crítico deve ser maior que o de atenção."
+                    : "O limite crítico deve ser menor que o de atenção.";
+            }
+            critico.setCustomValidity(erroLimites);
+            atencao.setAttribute("aria-invalid", String(!atencao.validity.valid));
+            critico.setAttribute("aria-invalid", String(!critico.validity.valid));
+            mensagem.textContent = erroLimites;
+            mensagem.hidden = !erroLimites;
+        }
+
+        function criarLinhaAlerta(metrica) {
+            const linha = document.createElement("tr");
+            const identificador = `alerta-${metrica.id}`;
+            const nomeMetrica = document.createElement("th");
+            nomeMetrica.scope = "row";
+            nomeMetrica.textContent = metrica.nome;
+            linha.append(nomeMetrica);
+            const celulaOperador = document.createElement("td");
+            celulaOperador.dataset.rotulo = "Operador";
+            const operador = document.createElement("select");
+            operador.name = `alertas[${metrica.id}][operador]`;
+            operador.setAttribute("aria-label", `Operador de ${metrica.nome}`);
+            [[">", "Maior que"], [">=", "Maior ou igual a"], ["<", "Menor que"], ["<=", "Menor ou igual a"]]
+                .forEach(([valor, descricao]) => {
+                    const opcao = document.createElement("option");
+                    opcao.value = valor;
+                    opcao.textContent = valor;
+                    opcao.setAttribute("aria-label", descricao);
+                    operador.append(opcao);
+                });
+            celulaOperador.append(operador);
+            linha.append(celulaOperador);
+
+            ["atencao", "critico"].forEach((nivel) => {
+                const rotulo = nivel === "atencao" ? "Atenção" : "Crítico";
+                const celula = document.createElement("td");
+                celula.dataset.rotulo = rotulo;
+                const campo = document.createElement("div");
+                campo.className = `wizard-alerta-limite wizard-alerta-${nivel}`;
+                const icone = document.createElement("img");
+                icone.src = `../assets/icons/alerta_${nivel === "atencao" ? "amarelo" : "vermelho"}.svg`;
+                icone.alt = "";
+                icone.width = 13;
+                icone.height = 12;
+                const input = document.createElement("input");
+                input.type = "number";
+                input.step = "any";
+                input.name = `alertas[${metrica.id}][${nivel}]`;
+                input.dataset.limite = nivel;
+                input.setAttribute("aria-label", `${rotulo}: ${metrica.nome}${metrica.unidade ? ` (${metrica.unidade})` : ""}`);
+                input.setAttribute("aria-describedby", `${identificador}-erro`);
+                input.placeholder = "—";
+                if (metrica.unidade === "%") {
+                    input.min = "0";
+                    input.max = "100";
+                    input.value = nivel === "atencao" ? "70" : "90";
+                }
+                const unidade = document.createElement("span");
+                unidade.className = "wizard-alerta-unidade";
+                unidade.textContent = metrica.unidade || "—";
+                unidade.setAttribute("aria-hidden", "true");
+                campo.append(icone, input, unidade);
+                celula.append(campo);
+                if (nivel === "critico") {
+                    const erroLimite = document.createElement("p");
+                    erroLimite.id = `${identificador}-erro`;
+                    erroLimite.className = "wizard-alerta-erro";
+                    erroLimite.setAttribute("aria-live", "polite");
+                    erroLimite.hidden = true;
+                    celula.append(erroLimite);
+                }
+                linha.append(celula);
+            });
+            linha.addEventListener("input", () => validarLimites(linha));
+            linha.addEventListener("change", () => validarLimites(linha));
+            return linha;
+        }
+
+        function atualizarAlertas() {
+            const selecionadas = new Set([...lista.querySelectorAll("input:checked")].map(input => input.value));
+            const grupos = [];
+            categoriasMetricas.forEach((categoria) => {
+                const metricasSelecionadas = categoria.metricas.filter(metrica => selecionadas.has(String(metrica.id)));
+                if (!metricasSelecionadas.length) return;
+                const grupo = document.createElement("div");
+                grupo.className = "wizard-alertas-categoria";
+                const tabela = document.createElement("table");
+                tabela.setAttribute("aria-label", `Limites de alerta: ${categoria.nome}`);
+                const cabecalho = tabela.createTHead().insertRow();
+                [categoria.nome, "Operador", "Atenção", "Crítico"].forEach((texto, indice) => {
+                    const coluna = document.createElement("th");
+                    coluna.scope = "col";
+                    const rotulo = document.createElement("span");
+                    rotulo.textContent = texto;
+                    if (indice !== 1) {
+                        const icone = document.createElement("img");
+                        icone.alt = "";
+                        icone.src = `../assets/icons/${indice === 0 ? (icones[categoria.id] || icones.outros)
+                            : indice === 2 ? "alerta_amarelo.svg" : "alerta_vermelho.svg"}`;
+                        if (indice === 0) coluna.append(icone, rotulo);
+                        else coluna.append(rotulo, icone);
+                    } else coluna.append(rotulo);
+                    cabecalho.append(coluna);
+                });
+                const corpo = tabela.createTBody();
+                metricasSelecionadas.forEach((metrica) => {
+                    const id = String(metrica.id);
+                    if (!linhasAlertas.has(id)) linhasAlertas.set(id, criarLinhaAlerta(metrica));
+                    corpo.append(linhasAlertas.get(id));
+                });
+                grupo.append(tabela);
+                grupos.push(grupo);
+            });
+            listaAlertas.replaceChildren(...grupos);
+        }
+
         async function carregarMetricas() {
             if (catalogoCarregado || buscandoMetricas) return;
             buscandoMetricas = true;
@@ -124,6 +260,7 @@
                 }
 
                 const categorias = dados.categorias.filter((categoria) => categoria.metricas.length > 0);
+                categoriasMetricas = categorias;
                 lista.replaceChildren(...categorias.map(criarCategoria));
                 vazio.hidden = categorias.length > 0;
                 lista.hidden = categorias.length === 0;
@@ -154,14 +291,16 @@
                 else item.removeAttribute("aria-current");
             });
 
-            const nomesEtapas = ["Informações básicas", "Métricas", "Contêineres"];
+            const nomesEtapas = ["Informações básicas", "Métricas", "Contêineres", "Alertas"];
             const descricoesEtapas = [
                 "Comece dando um nome ao perfil do servidor e escolha o sistema operacional que será utilizado.",
                 "Selecione ao menos uma métrica para os servidores deste perfil. Após vincular servidores, as métricas ficam bloqueadas.",
-                "Habilite o monitoramento de contêineres Docker e acompanhe CPU, RAM, I/O Disco, Rede e Status dos contêineres."
+                "Habilite o monitoramento de contêineres Docker e acompanhe CPU, RAM, I/O Disco, Rede e Status dos contêineres.",
+                "Defina os limites de alerta para cada métrica. Você será notificado quando os valores excederem os limites configurados."
             ];
             const nomeEtapa = nomesEtapas[numero - 1];
-            titulo.textContent = numero === 3 ? "Monitoramento de Contêineres Docker" : nomeEtapa;
+            titulo.textContent = numero === 4 ? "Configuração de alertas e limites"
+                : numero === 3 ? "Monitoramento de Contêineres Docker" : nomeEtapa;
             introducao.textContent = descricoesEtapas[numero - 1];
             dialogo.querySelector(".wizard-docker-introducao").hidden = numero !== 3;
             dialogo.querySelector(".wizard-etapa-contagem").textContent = `Etapa ${numero} de 5`;
@@ -172,15 +311,18 @@
             conteudo.scrollTop = 0;
             titulo.focus({ preventScroll: true });
             if (numero === 2) carregarMetricas();
+            if (numero === 4) atualizarAlertas();
         }
 
         formulario.addEventListener("submit", (event) => {
             event.preventDefault();
             if (etapa === 1) {
                 nome.setCustomValidity(nome.value.trim() === "" ? "Informe o nome do perfil." : "");
-                if (formulario.reportValidity()) mostrarEtapa(2);
+                if (nome.reportValidity()) mostrarEtapa(2);
             } else if (etapa === 2 && catalogoCarregado && lista.querySelector("input:checked")) {
                 mostrarEtapa(3);
+            } else if (etapa === 3) {
+                mostrarEtapa(4);
             }
         });
         dialogo.querySelector(".wizard-voltar").addEventListener("click", () => {
