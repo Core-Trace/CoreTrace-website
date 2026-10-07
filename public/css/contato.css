@@ -469,7 +469,7 @@
     }
 
     .botao-rede{
-        width: 25%;
+        width: 10%;
     }
     
     .container-mais-que-tecnologia{
@@ -493,7 +493,11 @@
     }
 
     .imagens-boxes{
-        width: 15%;
+        width: 10%;
+    }
+
+    .imagem-contato{
+        width: 20%;
     }
 }
 
