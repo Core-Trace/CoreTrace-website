@@ -14,8 +14,8 @@ async function enviarContato(req, res){
     try{
         await resend.emails.send({
             from:"CoreTrace <onboarding@resend.dev>",
-            to: "kadu12020@gmail.com",
-            replyTo: "kadu12020@gmail.com",
+            to: "coretrace.tech@gmail.com",
+            replyTo: "coretrace.tech@gmail.com",
             subject: `[CoreTrace] ${assunto}`,
             html: `
             <h2> Nova mensagem de contato! </h2>
