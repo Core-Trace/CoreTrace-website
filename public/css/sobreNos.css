@@ -42,4 +42,50 @@
     object-fit: cover;
     border-radius: 0.8vw;
 }
+.historia-texto {
+    width: 35vw;
+}
+
+.traco {
+
+    width: 2.5vw;
+    height: 0.5vh;
+    background-color: #cc0301;
+    margin-bottom: 2vh;
+}
+
+.historia-texto h1 {
+    font-size: 3.5vw;
+    line-height: 1.5;
+    font-weight: 700;
+    margin-bottom: 2vh;
+}
+
+.historia-texto h1 span {
+    color: #cc0301;
+}
+
+.historia-texto p {
+    font-size: 1vw;
+    line-height: 1.5;
+    margin-bottom: 2.5vh;
+}
+
+.botao-contato {
+    display: inline-flex;
+    align-items: center;
+    gap: 1.5vw;
+    background-color: #cc0301;
+    color: white;
+    padding: 1.5vh 2vw;
+    border-radius: 0.5vw;
+    text-decoration: none;
+    font-size: 1vw;
+    font-weight: 600;
+}
+
+.botao-contato:hover {
+    background-color: #a40000;
+}
+
 
