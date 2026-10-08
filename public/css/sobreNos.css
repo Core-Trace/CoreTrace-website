@@ -1,0 +1,45 @@
+.sobre-container {
+    width: 84vw;
+    margin: auto;
+}
+
+/* NOSSA HISTÓRIA */
+
+.historia {
+    padding: 8vh 0;
+    background-color: #f8f8f6;
+}
+
+.historia-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5vw;
+    align-items: center;
+}
+
+.historia-imagem {
+    position: relative;
+    isolation: isolate;
+}
+
+.historia-imagem::before {
+    content: "";
+    position: absolute;
+    width: 11vw;
+    height: 11vw;
+    border-radius: 50%;
+    background-color: #cc0301;
+    bottom: -3vh;
+    left: -3vw;
+    z-index: -1;
+}
+
+.historia-imagem img {
+    display: block;
+    width: 100%;
+    height: 48vh;
+    width: 58vw;
+    object-fit: cover;
+    border-radius: 0.8vw;
+}
+
