@@ -3,7 +3,7 @@
     margin: auto;
 }
 
-/* NOSSA HISTÓRIA */
+
 
 .historia {
     padding: 8vh 0;
@@ -87,5 +87,26 @@
 .botao-contato:hover {
     background-color: #a40000;
 }
+.beneficios {
+    background-color: #141215;
+    color: white;
+    padding: 7vh 0;
+}
+
+.beneficios-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 4vw;
+    align-items: center;
+}
+
+.dashboard-imagem img {
+    display: block;
+    width: 100%;
+    height: 45vh;
+    object-fit: cover;
+    border-radius: 0.5vw;
+}
+
 
 
