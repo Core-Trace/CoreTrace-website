@@ -143,8 +143,14 @@
     color: #aaa5a8;
     line-height: 1.6;
 }
-
-
+.beneficios{
+    gap: 1.5vh;
+}
+.beneficios-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 2vh;
+}
 
 
 
