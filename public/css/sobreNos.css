@@ -107,6 +107,45 @@
     object-fit: cover;
     border-radius: 0.5vw;
 }
+.beneficio {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5vw;
+    padding: 2vh 1.5vw;
+    background-color: #1e1e1e;
+    border-radius: 0.6vw;
+}
+
+.beneficio-icone {
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+    background-color: #cc0301;
+    width: 3vw;
+    height: 3vw;
+    border-radius: 50%;
+}
+
+.beneficio-icone img {
+    width: 1.6vw;
+    height: 1.6vw;
+    object-fit: contain;
+}
+
+.beneficio h2 {
+    font-size: 1.15vw;
+    font-weight: 700;
+    margin-bottom: 1vh;
+}
+
+.beneficio p {
+    font-size: 0.85vw;
+    color: #aaa5a8;
+    line-height: 1.6;
+}
+
+
+
 
 
 
