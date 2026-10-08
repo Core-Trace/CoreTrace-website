@@ -150,3 +150,42 @@
     gap: 2vh;
 }
 
+.equipe {
+    background-color: #f8f8f6;
+    padding: 7vh 8vw;
+}
+
+.equipe-topo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 5vw;
+    margin-bottom: 7vh;
+}
+
+.equipe-texto {
+    width: 30vw;
+}
+
+.equipe-texto h1 {
+    font-size: 3.5vw;
+    line-height: 1.4;
+    margin-bottom: 2vh;
+}
+
+.equipe-texto h1 span {
+    display: block;
+    color: #cc0301;
+}
+
+.equipe-texto p {
+    font-size: 1vw;
+    line-height: 1.6;
+}
+
+.equipe-imagem {
+    width: 45vw;
+    height: 35vh;
+    object-fit: cover;
+    border-radius: 0.8vw;
+}
