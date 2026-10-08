@@ -189,3 +189,52 @@
     object-fit: cover;
     border-radius: 0.8vw;
 }
+.membros {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2vw;
+    width: 70vw;
+    margin: auto;
+}
+
+.membro {
+    background-color: white;
+    border-radius: 0.8vw;
+    overflow: hidden;
+}
+
+.foto {
+    height: 25vh;
+    background-color: white;
+}
+
+.foto img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.informacoes {
+    background-color: #141215;
+    color: white;
+    padding: 1.5vh 1vw;
+}
+
+.informacoes h3 {
+    font-size: 1vw;
+    margin-bottom: 0.5vh;
+}
+
+.informacoes p {
+    font-size: 0.8vw;
+    color: #aaa5a8;
+}
+.redes {
+    display: flex;
+    align-items: center;
+    gap: 1vw;
+    margin-top: 1vh;
+}
+
+
+
