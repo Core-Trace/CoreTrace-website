@@ -236,5 +236,86 @@
     margin-top: 1vh;
 }
 
+.diferencial {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7vw;
+    background-color: #f8f8f6;
+    padding: 7vh 8vw;
+}
 
+.diferencial-texto {
+    width: 38vw;
+}
+
+.diferencial-texto h1 {
+    font-size: 3.5vw;
+    line-height: 1.4;
+    margin-bottom: 2vh;
+}
+
+.diferencial-texto h1 span {
+    display: block;
+    color: #cc0301;
+}
+
+.diferencial-texto > p {
+    font-size: 1vw;
+    margin-bottom: 2vh;
+    line-height: 1.6;
+}
+
+.vantagens {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5vh;
+}
+
+.vantagem {
+    background-color: #141215;
+    color: white;
+    padding: 2vh 1.5vw;
+    border-radius: 0.6vw;
+}
+
+.vantagem h3 {
+    font-size: 1.1vw;
+    border-left: 0.3vw solid #cc0301;
+    padding-left: 1vw;
+    margin-bottom: 1vh;
+}
+
+.vantagem p {
+    font-size: 0.85vw;
+    color: #aaa5a8;
+    line-height: 1.6;
+}
+
+.diferencial-imagem {
+    width: 32vw;
+    height: 60vh;
+    position: relative;
+}
+
+.diferencial-imagem img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 0.8vw;
+}
+
+.diferencial-imagem h2 {
+    position: absolute;
+    bottom: 3vh;
+    left: 2vw;
+    right: 2vw;
+    color: white;
+    font-size: 1.7vw;
+    line-height: 1.4;
+}
+
+.diferencial-imagem h2 span {
+    color: #ff3333;
+}
 
